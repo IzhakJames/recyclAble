@@ -25,11 +25,10 @@ footer{
     background-color: white;
     border-radius: 20px;
     position: absolute;
-    width: 250px;
-    height: 40px;
-    left: 43%;
-    right: 29.3%;
-    top: 90%;
+    width: 20%;
+    height: 5%;
+    bottom:0%;
+    margin-left:40%;
 }
 p{
     font-family: Roboto;
