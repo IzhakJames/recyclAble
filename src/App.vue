@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <app-header></app-header>
+
+    <app-nav></app-nav>
     
     <router-view></router-view>    
 
@@ -12,14 +14,17 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import Navigation from './components/Nav.vue'
+
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
     'app-header':Header,
-    'app-footer':Footer
-    
+    'app-footer':Footer,
+    "app-nav": Navigation,
+
   }
 }
 </script>
