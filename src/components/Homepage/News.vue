@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style scoped>
+
 #Subheader {
     position: absolute;
     width: 90%;
@@ -32,6 +33,7 @@ export default {
 
 }
 #Header {
+    text-align: center;
     position: absolute;
     width: 20%;
     height: 8%;
@@ -39,5 +41,6 @@ export default {
     top: 10%;
     background: #57A890;
     border-radius: 30px;
+     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 </style>

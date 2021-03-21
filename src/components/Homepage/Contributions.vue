@@ -8,11 +8,11 @@
             <div id="Content">
               <doughnut></doughnut>
               <div id='donut-inner'> 
-                 <h2>100%</h2>
+                 <h2>{{this.percent}}%</h2>
               </div>
             </div>
             </div>
-        <button class='button' > CLICK TO INPUT TRIP  </button>
+        <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button>
         
            
         </div>
@@ -21,17 +21,48 @@
 </template>
 
 <script>
+import database from '../../firebase.js'
 import Doughnut from './DoughnutChart.vue'
 export default {
   name: 'Contributions',
   components: {
   Doughnut
- 
-  }
+  },
+  data() {
+    return {
+      total :0,
+      userCounter:0,
+      percent:0
+    }
+  }, methods : {
+     route:function(){
+        //pass user prop id here
+        this.$router.push({ path: '/form' ,name: 'Form'}
+        )
+    },
+       fetchItems:function(){
+          //   to edit again - need to pass user id prop from login to this file
+          // Total number of recycling trip in the webapp 
+          database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
+          this.total=docRef.data().TotalCounter
+          console.log(this.total)
+          })  
+          //User recycling trip --> pass prop here
+          database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').get().then((docRef) => { 
+          this.userCounter=docRef.data().Counter
+          this.percent = this.userCounter /this.total *100
+          })
+        }
+  },
+    created(){
+      this.fetchItems()  
+      }
+
 }
 </script>
 
 <style scoped>
+
 #donut-inner {
     position:absolute;
     width: 100%;
@@ -78,6 +109,8 @@ export default {
 
 }
 #Header {
+  text-align: center;
+   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: absolute;
   left:10%;
   right: 8.61%;

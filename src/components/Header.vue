@@ -25,22 +25,22 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header{
-    position: absolute;
     line-height: 20px;
     width:100%;
-    background: #255029;
-    margin-top: -50px;
+    background-color: #255029;
     font-size:20px;
+    height:50px;
 }
 h1{
-    float: left;
     margin-left: 20px;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
-    line-height: 20px;
+    line-height: 15px;
     color: #FFFFFF;
+    float:left;
+    width:10%;
 }
 a{
     color: #fff;
@@ -52,7 +52,7 @@ a{
     height:20px;
     margin-top: 18px;
     font-size:20px;
-    width: 300px;
+    width: 200px;
     float:right;
 }
 </style>

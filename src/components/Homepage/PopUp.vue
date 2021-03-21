@@ -5,6 +5,7 @@
             <News></News> 
             <contribution> </contribution>
             <forum></forum>
+            <Input></Input>
         </div>
   </div>
 </template>
@@ -13,10 +14,11 @@
 import News from './News.vue'
 import Contribution from './Contributions.vue'
 import Forum from './Forum.vue'
+import Input from './Input.vue'
 export default {
   name: 'Homepage',
   components : {
-      News,Contribution,Forum
+      News,Contribution,Forum,Input
   }
 }
 </script>
