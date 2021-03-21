@@ -26,8 +26,8 @@ export default {
     position: relative;
     width: 95%;
     height: 75%;
-    left: 2.5%;
-    top: 8%;
+    left: 73px;
+    top: 10%;
     background: white;
     border-radius: 20px;
 

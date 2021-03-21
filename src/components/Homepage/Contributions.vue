@@ -3,14 +3,10 @@
 
         <!-- Contributions Card-->
         <div id = "Contribution">
-            <div id="Header"> 
-              <h1> YOUR CONTRIBUTIONS</h1>
+            <div id="Header"> YOUR CONTRIBUTIONS </div>
             <div id="Content">
               <doughnut></doughnut>
-              <div id='donut-inner'> 
-                 <h2>{{this.percent}}%</h2>
-              </div>
-            </div>
+              <div id='donut-inner'> {{this.percent}}%</div>
             </div>
         <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button>
         
@@ -65,10 +61,9 @@ export default {
 
 #donut-inner {
     position:absolute;
-    width: 100%;
-    height: 5%;
-    top: 30%;
-    font-size: 250%;
+    top: 50%;
+    font-size:80px;
+    left:40%;
 }
 
 .button {
@@ -76,10 +71,10 @@ export default {
   width: 80%;
   height: 8%;
   right: 10%;
-  top: 70%;
+  top: 80%;
   display: inline-block;
   padding: 15px 25px;
-  font-size: 24px;
+  font-size: 16px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -100,24 +95,27 @@ export default {
 #Content {
   padding-top: 10%;
   position: absolute;
-  width: 100%;
-  height: 600%;
-  left: 0%;
-  top: 130%;
+  width: 80%;
+  height: 50%;
+  left: 10%;
+  top: 15%;
   background: #FFFFFF;
   border-radius: 30px;
 
 }
 #Header {
   text-align: center;
-   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: absolute;
   left:10%;
   right: 8.61%;
   top: 2.5%;
   bottom: 90%;
+  font-size:25px;
   background: #FFFFFF;
   border-radius: 30px;
+  font-weight: bold;
+
 }
 #Contribution {
     position: absolute;

@@ -1,8 +1,6 @@
 <template>
    <div id = 'Form'>
-       <div id="Header">
-           <h1>RECYCLING TRIP INPUT FORM</h1>
-       </div>
+       <div id="Header">RECYCLING TRIPS</div>
        <div id="Content"> 
            <label id="Label-header">
                LOCATION :
@@ -55,6 +53,7 @@ export default {
 </script>
 
 <style scoped>
+
 .button {
   
   width: 80%;
@@ -119,8 +118,8 @@ export default {
     background: #FFFFFF;
     border-radius: 30px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 30;
-    font-size: 100%;
+    font-weight: bold;
+    font-size: 30px;
     line-height: 41px;
     text-align: center;
 
@@ -132,7 +131,7 @@ export default {
     text-align: center;
     left:25%;
     width: 50%;
-    height: 50%;
+    height: 60%;
     background: #57A890;
     border: 10px solid #FFFFFF;
     box-sizing: border-box;

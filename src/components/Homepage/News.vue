@@ -2,10 +2,7 @@
    <div>
         <!-- Recent Envrionmental News-->
         <div id="Header">
-            <div id="Subheader"> 
-                <h1> RECENT NEWS</h1>
-
-            </div>
+            <div id="Subheader"> RECENT NEWS </div>
         </div> 
 
   </div>
@@ -25,11 +22,14 @@ export default {
 #Subheader {
     position: absolute;
     width: 90%;
-    height: 80%;
+    height: 70%;
     left: 20px;
     top: 10%;
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
+    font-size:25px;
+    font-weight:bold;
+    padding-top:2%;
 
 }
 #Header {
