@@ -28,13 +28,12 @@ export default {
     position: relative;
     width: 95%;
     height: 75%;
-    left: 73px;
-    top: 163px;
+    left: 2.5%;
+    top: 8%;
     background: white;
     border-radius: 20px;
 
 }
-
 #Homepage {
     position: absolute;
     width: 100%;
