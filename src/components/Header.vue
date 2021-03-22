@@ -27,6 +27,7 @@ export default {
 header{
     line-height: 20px;
     width:100%;
+    min-width:1400px;
     background-color: #255029;
     font-size:20px;
     height:50px;

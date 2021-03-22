@@ -1,7 +1,7 @@
 import SignUp from './components/SignUp.vue'
 import Login from './components/Login.vue'
 import Homepage from './components/Homepage/Homepage.vue'
-import Reward from './components/Reward.vue'
+import Reward from './components/RewardPage/Reward.vue'
 import Form from './components/Homepage/PopUp.vue'
 
 export default[
