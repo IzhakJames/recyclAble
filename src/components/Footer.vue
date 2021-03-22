@@ -21,24 +21,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.footer {
+  background:#57A890;
+  margin:0;
+}
+
 footer{
     background-color: white;
     border-radius: 20px;
-    position: absolute;
+    position: relative;
     width: 20%;
-    height: 5%;
-    bottom:0%;
+    height: 40px;
+    bottom:10px;
     margin-left:40%;
+    min-width:230px;
 }
 p{
     font-family: Roboto;
     font-style: italic;
     font-weight: 900;
     font-size: 24px;
-    vertical-align: center;
+    line-height:50%;
     text-align: center;
-    color: #000000;
-    margin-top: 6px;
+    color: #57A890;
+    margin:0;
 }
 </style>
 

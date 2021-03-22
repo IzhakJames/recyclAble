@@ -14,13 +14,12 @@
       <div id="bottom-row">
       <div id="left-box">
         <p id="point-text"> You have <strong>20</strong> points remaining</p>
-        <button id="redeem-btn">REWARDS REDEEMED</button>
-        <button id="avail-btn">REWARDS AVAILABLE</button>
-        <div id="reward-box">
-          <br>
+        <button id="redeem-btn" v-on:click="selectRedeem=true">REWARDS REDEEMED</button>
+        <button id="avail-btn" v-on:click="selectRedeem=false">REWARDS AVAILABLE</button>
+        <div class="reward-box" v-if="!selectRedeem">
           <!-- scrolling? -->
           <div class="reward" v-for="voucher in vouchers" v-bind:key="voucher.name">
-            <img class="logo" :src="require(`../assets/${voucher.name}.png`)"/>
+            <img class="logo" :src="require(`../../assets/${voucher.name}.png`)"/>
             <p class="voucher">${{voucher.value}} SHOPPING VOUCHER</p>
             <div class="redeem-box">
             <p class="point">{{voucher.point}} PTS</p>
@@ -28,10 +27,16 @@
             </div>
           </div>
         </div>
+
+        <div v-else class="reward-box">
+        </div>
+        
       </div>
       <div id="right-box">
         <div id="trip-title">RECYCLING TRIPS</div>
-        <div id="trip-box">BOX</div>
+          <div id="trip-box">
+            <doughnut></doughnut>
+          </div>
         <p id = "trip-text"> 1 more trips before the next reward point</p>
         <button id="home-btn" v-on:click="route">Click to return to homepage</button>
       </div>
@@ -42,14 +47,20 @@
 </template>
 
 <script>
-import database from '../firebase.js'
+import database from '../../firebase.js'
+import Doughnut from './DoughnutChart.vue'
 
 export default {
   data() {
     return {
-      vouchers: []
+      vouchers: [],
+      selectRedeem:false
     }
-  }, methods : {
+  }, 
+  components: {
+    Doughnut
+  }
+  ,methods : {
      route:function(){
         //pass user prop id here
         this.$router.push({ path: '/home'}
@@ -104,7 +115,7 @@ margin-top:0px;
   float:left;
   font-family: Roboto;
   font-style: italic;
-  font-size: 25px;
+  font-size: 20px;
   margin-left:3%;
   margin-top:35px;
 }
@@ -113,12 +124,13 @@ margin-top:0px;
   float:left;
   margin-top:30px;
   margin-left:3%;
+  width:20%;
 }
 
 #home-btn {
 font-family: Roboto;
 font-style: italic;
-font-size: 16px;
+font-size: 25px;
 font-weight:bold;
 text-align: center;
 border-radius: 30px;
@@ -133,7 +145,8 @@ margin-left:20%;
 font-family: Roboto;
 font-style: italic;
 font-weight: 300;
-font-size: 20px;
+font-size: 30px;
+margin-left:1%;
 text-align: center;
 color:white;
 }
@@ -142,8 +155,8 @@ color:white;
   margin-top:40px;
   border-radius:20px;
   height:300px;
-  width:80%;
-  margin-left:10%;
+  width:60%;
+  margin-left:20%;
   background:white;
 }
 
@@ -171,7 +184,7 @@ padding:5px;
   height:100px;
 }
 
-#reward-box {
+.reward-box {
   margin-top:20px;
   border-radius:20px;
   height:500px;
