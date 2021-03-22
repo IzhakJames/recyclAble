@@ -65,10 +65,11 @@ p {
 #background {
   height:95vh;
   background-color:#57A890;
-  min-width:1000px;
+  min-width:1400px;
 }
 
 #rectangle {
+    min-width:700px;
     width: 55%;
     height: 70%;
     margin:5% 25%;

@@ -134,10 +134,10 @@ p {
 }
 
 #background {
-    height:95vh;
+    height:100%;
     background-color:#57A890;
     width: 100%;
-    min-width:1000px;
+    min-width:1400px;
     position:absolute;
 }
 
@@ -177,10 +177,9 @@ label {
 button { 
     width: 15%;
     height: 8%;
-    margin:2% 0% 0% 78%;
+    margin:2% 0% 10% 78%;
     background: #4776EE;
     border-radius: 20px;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;

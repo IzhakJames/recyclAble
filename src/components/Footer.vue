@@ -22,13 +22,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 footer{
+    min-width:300px;
     background-color: white;
     border-radius: 20px;
     position: absolute;
     width: 20%;
     height: 5%;
+    offset:initial;
     bottom:0%;
-    margin-left:40%;
+    margin:0px 40%;
 }
 p{
     font-family: Roboto;
