@@ -39,15 +39,6 @@ export default {
         .catch((error) => {
           alert(error.message);
         });
-      // try {
-      //   const user = firebase
-      //     .auth()
-      //     .signInWithEmailAndPassword(this.email, this.password);
-      //   console.log(user);
-      //   this.$router.push({ name: "Home" });
-      // } catch (err) {
-      //   console.log(err);
-      // }
     },
   },
 };
@@ -77,6 +68,7 @@ button {
   width: 100vw;
   height: 100vh;
   background-size: cover;
+  text-align: center;
 }
 
 form {

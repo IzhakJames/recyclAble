@@ -4,6 +4,9 @@
     <form @submit.prevent="pressed">
       <br />
       Sign Up
+      <div class="name">
+        <input type="text" v-model="fullName" placeholder="Full Name" />
+      </div>
       <div class="email">
         <input type="email" v-model="email" placeholder="Email" />
       </div>
@@ -23,12 +26,14 @@
 </template>
 
 <script>
+import database from "../firebase.js";
 import firebase from "firebase/app";
 import "firebase/auth";
 
 export default {
   data() {
     return {
+      fullName: "",
       email: "",
       password: "",
       repeatPassword: "",
@@ -48,24 +53,22 @@ export default {
           .catch((error) => {
             alert(error.message);
           });
+        database
+          .collection("Users")
+          .add({
+            email: this.email,
+            fullName: this.fullName,
+            password: this.password,
+            points: 0,
+            pointsRedeemed: [],
+            rewardsRedeemed: [],
+            recyclingTripCounter: 0,
+            RecyclingHistory: [],
+          })
+          .then(() => console.log("successfully added to datase"));
       } else {
         alert("Passwords not the same");
       }
-
-      // try {
-      //   if (this.password === this.repeatPassword) {
-      //     const user = firebase
-      //       .auth()
-      //       .createUserWithEmailAndPassword(this.email, this.password);
-      //     console.log(user);
-      //     alert("submitted");
-      //     this.$router.push({ name: "Home" });
-      //   } else {
-      //     alert("Passwords not the same");
-      //   }
-      // } catch (err) {
-      //   console.log(err);
-      // }
     },
   },
 };
@@ -96,6 +99,7 @@ button {
   width: 100vw;
   height: 100vh;
   background-size: cover;
+  text-align: center;
 }
 
 form {

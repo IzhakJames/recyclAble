@@ -8,6 +8,12 @@
         <button v-else v-on:click="signOut">Logout</button>
       </div>
     </header>
+    <nav v-show="!loggedOut">
+      <span v-on:click="moveHome">Home</span>
+      <span v-on:click="moveHome">Map</span>
+      <span v-on:click="moveRewards">Rewards</span>
+      <span v-on:click="moveRewards">Contact Us</span>
+    </nav>
   </div>
 </template>
 
@@ -20,7 +26,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.loggedOut = false;
-        this.$router.push({ name: "Home" });
+        //this.$router.push({ name: "Home" });
       } else {
         this.loggedOut = true;
       }
@@ -41,6 +47,12 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    moveHome() {
+      this.$router.push({ path: "/home" });
+    },
+    moveRewards() {
+      this.$router.push({ path: "/reward" });
     },
   },
 };
@@ -79,5 +91,14 @@ a {
   font-size: 20px;
   width: 200px;
   float: right;
+}
+
+span {
+  margin: 0 20px;
+}
+
+nav {
+  background: rgb(124, 180, 161);
+  font-size: 25px;
 }
 </style>
