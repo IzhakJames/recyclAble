@@ -8,7 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+<<<<<<< HEAD
     "filepond": "^4.26.0",
     "filepond-plugin-file-validate-type": "^1.2.6",
     "filepond-plugin-image-preview": "^4.6.6",
@@ -20,6 +23,14 @@
     "vue-picture-input": "^2.1.6",
     "vue-router": "^3.5.1",
     "vue-upload-image": "^1.1.5"
+=======
+    "firebase": "^8.3.1",
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1",
+    "vue-firebase": "^1.0.8",
+    "vue-loader": "^15.9.6",
+    "vue-router": "^3.5.1"
+>>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
