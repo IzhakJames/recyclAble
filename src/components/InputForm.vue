@@ -138,7 +138,7 @@ p {
     background-color:#57A890;
     width: 100%;
     min-width:1400px;
-    position:absolute;
+    margin-top: -30px;
 }
 
 #fname, #lname {
@@ -172,18 +172,19 @@ label {
     font-size: 35px;
     line-height: 41px;
     color: #FFFFFF;
+    margin-left: 10px;
 }
 
 button { 
-    width: 15%;
-    height: 8%;
+    width: 200px;
+    height: 50px;
     margin:2% 0% 10% 78%;
     background: #4776EE;
     border-radius: 20px;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 25px;
 
     color: #FFFFFF;

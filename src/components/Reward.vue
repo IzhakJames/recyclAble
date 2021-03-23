@@ -11,29 +11,13 @@
           </div>
           </div>
       </div>
-<<<<<<< HEAD
-
-=======
       <div id="bottom-row">
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
       <div id="left-box">
         <p id="point-text"> You have <strong>20</strong> points remaining</p>
         <button id="redeem-btn">REWARDS REDEEMED</button>
         <button id="avail-btn">REWARDS AVAILABLE</button>
         <div id="reward-box">
           <br>
-<<<<<<< HEAD
-          <!-- connect to firebase rewards -->
-          <!-- scrolling? -->
-          <div class="reward">
-            a
-          </div>
-          <div class="reward">
-            b
-          </div>
-          <div class="reward">
-            c
-=======
           <!-- scrolling? -->
           <div class="reward" v-for="voucher in vouchers" v-bind:key="voucher.name">
             <img class="logo" :src="require(`../assets/${voucher.name}.png`)"/>
@@ -42,7 +26,6 @@
             <p class="point">{{voucher.point}} PTS</p>
             <button class="collect-btn">COLLECT</button>
             </div>
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
           </div>
         </div>
       </div>
@@ -50,12 +33,8 @@
         <div id="trip-title">RECYCLING TRIPS</div>
         <div id="trip-box">BOX</div>
         <p id = "trip-text"> 1 more trips before the next reward point</p>
-<<<<<<< HEAD
-        <button id="home-btn">Click to return to homepage</button>
-=======
         <button id="home-btn" v-on:click="route">Click to return to homepage</button>
       </div>
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
       </div>
 
     </div>
@@ -63,9 +42,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-
-=======
 import database from '../firebase.js'
 
 export default {
@@ -93,14 +69,11 @@ export default {
       }
 
 }
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-<<<<<<< HEAD
-=======
 .redeem-box {
   float:right;
   margin-right:5%;
@@ -142,7 +115,6 @@ margin-top:0px;
   margin-left:3%;
 }
 
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 #home-btn {
 font-family: Roboto;
 font-style: italic;
@@ -167,15 +139,9 @@ color:white;
 }
 
 #trip-box {
-<<<<<<< HEAD
-  margin-top:10%;
-  border-radius:20px;
-  height:35%;
-=======
   margin-top:40px;
   border-radius:20px;
   height:300px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   width:80%;
   margin-left:10%;
   background:white;
@@ -189,11 +155,7 @@ font-size: 20px;
 text-align: center;
 border-radius: 30px;
 background: #FFFFFF;
-<<<<<<< HEAD
-margin-top:5%;
-=======
 margin-top:20px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 margin-left:20%;
 width:60%;
 padding:5px;
@@ -202,22 +164,6 @@ padding:5px;
 .reward {
   width:95%;
   margin-left:2.5%;
-<<<<<<< HEAD
-  margin-top:4%;
-  border-radius:20px;
-  background-color:lightgrey;
-  height:20%;
-}
-
-#reward-box {
-  margin-top:4%;
-  border-radius:20px;
-  height:60%;
-  width:80%;
-  margin-left:10%;
-  background:white;
-  
-=======
   margin-top:20px;
   margin-bottom:25px;
   border-radius:20px;
@@ -233,7 +179,6 @@ padding:5px;
   margin-left:10%;
   background:white;
   overflow:scroll;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 }
 
 #redeem-btn {
@@ -269,16 +214,6 @@ padding:7px;
   font-style: italic;
   font-weight: 300;
   font-size: 25px;
-<<<<<<< HEAD
-  margin:2%;
-}
-
-#left-box {
-  float:left;
-  margin-top:2%;
-  margin-left:4%;
-  height:80%;
-=======
   margin:15px;
 }
 
@@ -287,24 +222,16 @@ padding:7px;
   float:left;
   margin-left:5%;
   height:670px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   width:50%;
   border-radius:30px;
   background-color:#57A890;
 }
 
 #right-box {
-<<<<<<< HEAD
-  float:left;
-  margin-top:2%;
-  margin-left:8%;
-  height:80%;
-=======
   float:right;
   margin-right:5%;
   margin-top:30px;
   height:670px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   width:33%;
   border-radius:30px;
   background-color:#57A890;
@@ -327,57 +254,33 @@ padding:7px;
 #point-box {
   float:left;
   width:70%;
-<<<<<<< HEAD
-=======
   height:125px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   margin-right:5%;
 }
 
 #background {
-<<<<<<< HEAD
-  height:95vh;
-  background-color:#57A890;
-  min-width:1000px;
-=======
   height:860px;
   background-color:#57A890;
   min-width:1400px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 }
 
 #rectangle {
 width: 90%;
-<<<<<<< HEAD
-height: 85%;
-margin:0% 5%;
-=======
 height: 780px;
 margin:0px 5%;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 background: white;
 border-radius: 30px;
 }
 
 #top-row {
-<<<<<<< HEAD
-  margin-top:2%;
-  height:20%;
-=======
   margin-top:30px;
   height:120px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
 }
 
 .dot {
   float:left;
-<<<<<<< HEAD
-  margin:1.5% 3% 1% 7%;
-  height: 70%;
-=======
   margin:15px 3% 0% 7%;
   height: 110px;
->>>>>>> 3988d465cf12dab4c14847bb1e872913cd96970a
   width: 8%;
   background-color: #bbb;
   border-radius: 50%;
