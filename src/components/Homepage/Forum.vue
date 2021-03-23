@@ -2,7 +2,7 @@
    <div>
         <!-- Forum -->
         <div id="Header">
-            <div id="Subheader"> FORUM  </div>
+            <div id="Subheader"> FORUM </div>
         </div> 
 
   </div>
@@ -18,12 +18,12 @@ export default {
 </script>
 
 <style scoped>
+
 #Subheader {
-    position: absolute;
     width: 90%;
-    height: 70%;
+    padding-left:1%;
     left: 20px;
-    top: 10%;
+    top: 55%;
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
     font-size:25px;
@@ -33,13 +33,14 @@ export default {
 }
 #Header {
     text-align: center;
-    position: absolute;
     width: 20%;
-    height: 8%;
-    left: 0px;
-    top: 55%;
+    height: 10%;
+    padding-top:0.5%;
+    padding-bottom: 0.5%;
+    padding-left:1%;
+    top: 10%;
     background: #57A890;
     border-radius: 30px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 </style>

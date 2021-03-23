@@ -2,10 +2,15 @@
    <div id="Homepage">
        <div id="Innerpage">
        <br><br>
+      
             <News></News> 
             <contribution> </contribution>
-            <forum></forum>
-            <Input></Input>
+                <Input></Input>
+            <div id='forum-content'> 
+              <forum></forum>
+            </div>
+         
+
         </div>
   </div>
 </template>
@@ -24,20 +29,25 @@ export default {
 </script>
 
 <style scoped>
-#Innerpage {
-    position: relative;
-    width: 95%;
-    height: 75%;
-    left: 2.5%;
-    top: 8%;
-    background: white;
-    border-radius: 20px;
+#forum-content {
+  padding-top:10%;
 
 }
+#Innerpage {
+  width: 90%;
+  height: 780px;
+  margin:0px 5%;
+  background: white;
+  border-radius: 30px;
+
+}
+
+
 #Homepage {
-    position: absolute;
+    padding-top:1.5%;
     width: 100%;
-    height: 100%;
+    min-width:1400px;
+    height:860px;
     background: #57A890;
 }
 </style>

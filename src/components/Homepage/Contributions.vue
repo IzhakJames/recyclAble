@@ -4,9 +4,9 @@
         <!-- Contributions Card-->
         <div id = "Contribution">
             <div id="Header"> YOUR CONTRIBUTIONS </div>
+            <div id='donut-inner'> {{this.percent}}%</div>
             <div id="Content">
               <doughnut></doughnut>
-              <div id='donut-inner'> {{this.percent}}%</div>
             </div>
         <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button>
         
@@ -58,20 +58,20 @@ export default {
 </script>
 
 <style scoped>
-
 #donut-inner {
-    position:absolute;
-    top: 50%;
-    font-size:80px;
-    left:40%;
+  position:absolute;
+  margin-Left:150px;
+  margin-top:250px;
+  font-Size:50px;
 }
-
 .button {
-  position: absolute;
-  width: 80%;
-  height: 8%;
-  right: 10%;
-  top: 80%;
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:60%;
+  margin-left:20%;
+  margin-top: 15%;
   display: inline-block;
   padding: 15px 25px;
   font-size: 16px;
@@ -93,37 +93,38 @@ export default {
   transform: translateY(4px);
 }
 #Content {
-  padding-top: 10%;
-  position: absolute;
-  width: 80%;
-  height: 50%;
-  left: 10%;
-  top: 15%;
-  background: #FFFFFF;
-  border-radius: 30px;
+  margin-top:40px;
+  border-radius:20px;
+  height:400px;
+  width:70%;
+  margin-left:10%;
+  background:white;
+  padding-left:8%;
+  padding-right:5%;
+  padding-bottom:5%;
+
 
 }
 #Header {
-  text-align: center;
-  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  position: absolute;
-  left:10%;
-  right: 8.61%;
-  top: 2.5%;
-  bottom: 90%;
-  font-size:25px;
-  background: #FFFFFF;
-  border-radius: 30px;
-  font-weight: bold;
+font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-style: italic;
+font-size: 25px;
+text-align: center;
+border-radius: 30px;
+background: #FFFFFF;
+margin-top:20px;
+margin-left:10%;
+width:80%;
+padding:5px;
 
 }
 #Contribution {
-    position: absolute;
-    width: 22%;
-    height: 90%;
-    left: 70%;
-    bottom:0px;
-    background: #57A890;
-    border-radius: 30px;
+  float:right;
+  margin-right:5%;
+  margin-top:30px;
+  height:670px;
+  width:22%;
+  border-radius:30px;
+  background-color:#57A890;
 }
 </style>

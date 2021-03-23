@@ -14,7 +14,7 @@ export default {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
 
         }
     }
