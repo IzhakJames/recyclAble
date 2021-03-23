@@ -38,7 +38,7 @@ export default {
     padding-top:0.5%;
     padding-bottom: 0.5%;
     padding-left:1%;
-    top: 10%;
+    top: 20%;
     background: #57A890;
     border-radius: 30px;
      font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;

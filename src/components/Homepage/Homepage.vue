@@ -1,15 +1,16 @@
 <template>
-   <div id="Homepage">
+    <div id="Homepage">
        <div id="Innerpage">
        <br><br>
             <News></News> 
             <contribution> </contribution>
-            <div id='forum-content'> 
-              <forum></forum>
-            </div>
-
+        <div id='forum-content'> 
+          <forum></forum>
         </div>
-  </div>
+      </div>
+     
+    </div>
+
 </template>
 
 <script>
@@ -26,7 +27,7 @@ export default {
 
 <style scoped>
 #forum-content {
-  padding-top:10%;
+  padding-top:15%;
 
 }
 #Innerpage {
