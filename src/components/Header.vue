@@ -10,9 +10,9 @@
     </header>
     <nav v-show="!loggedOut">
       <span v-on:click="moveHome">Home</span>
-      <span v-on:click="moveHome">Map</span>
+      <span v-on:click="moveMap">Map</span>
       <span v-on:click="moveRewards">Rewards</span>
-      <span v-on:click="moveRewards">Contact Us</span>
+      <span v-on:click="moveContact">Contact Us</span>
     </nav>
   </div>
 </template>
@@ -53,6 +53,16 @@ export default {
     },
     moveRewards() {
       this.$router.push({ path: "/reward" });
+    },
+    moveContact() {
+      this.$router.push({
+        path: "/contact_us",
+      });
+    },
+    moveMap() {
+      this.$router.push({
+        path: "/map",
+      });
     },
   },
 };
