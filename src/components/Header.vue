@@ -26,7 +26,6 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.loggedOut = false;
-        //this.$router.push({ name: "Home" });
       } else {
         this.loggedOut = true;
       }
