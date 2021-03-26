@@ -3,7 +3,7 @@
 
         <!-- Contributions Card-->
         <div id = "Contribution">
-            <div id="Header"> YOUR CONTRIBUTIONS </div>
+            <div id="Header"> CONTRIBUTIONS </div>
             <div id='donut-inner'> {{this.percent}}%</div>
             <div id="Content">
               <doughnut></doughnut>
@@ -63,9 +63,9 @@ export default {
 <style scoped>
 #donut-inner {
   position:absolute;
-  margin-Left:150px;
+  margin-Left:50px;
   margin-top:250px;
-  font-Size:50px;
+  font-Size:18px;
 }
 .button {
   text-align: center;
@@ -110,7 +110,7 @@ export default {
 }
 #Header {
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-font-size: 25px;
+font-size: 18px;
 font-weight: bold;
 text-align: center;
 border-radius: 30px;

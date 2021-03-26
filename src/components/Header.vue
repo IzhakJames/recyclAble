@@ -82,9 +82,9 @@ export default {
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  width: 100%;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -118,9 +118,10 @@ export default {
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: white;
+  font-size: 14px;
   text-decoration: none;
   padding-left:2%;
-   padding-right:2%;
+  padding-right:2%;
 
 }
 
@@ -133,8 +134,8 @@ export default {
 }
 
 img {
-  width: 80px;
-  height: 58px;
+  width: 60px;
+  height: 40px;
   float:left;
   margin-left:1%;
 
@@ -144,15 +145,14 @@ header {
   width: 100%;
   min-width: 1400px;
   background-color: #255029;
-  font-size: 20px;
-  height: 50px;
+  height: 40px;
 }
 h1 {
   float:right;
-  margin-top: 20px;
+  margin-top: 10px;
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-style: normal;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 15px;
   color: #ffffff;
   float: left;
@@ -179,7 +179,6 @@ span {
 nav {
   background: rgb(124, 180, 161);
   font-size: 25px;
-  padding-top:0.5%;
 
 }
 </style>

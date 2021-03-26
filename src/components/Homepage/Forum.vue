@@ -26,7 +26,7 @@ export default {
     top: 55%;
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
-    font-size:25px;
+    font-size:18px;
     font-weight:bold;
     padding-top:2%;
 

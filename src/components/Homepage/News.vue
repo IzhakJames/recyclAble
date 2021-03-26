@@ -13,7 +13,7 @@
               <br>
               <img v-bind:src="news.urlToImage"  id='image'>
               <br>
-              <h4> {{news.description}} </h4>
+              <p> {{news.description}} </p>
               <button class='button'><a v-bind:href="news.url">  See More </a> </button>
               </div>
               </div>
@@ -71,7 +71,7 @@ export default {
 
   display: inline-block;
   padding: 15px 25px;
-  font-size: 16px;
+  font-size: 10px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -104,7 +104,7 @@ export default {
   background-color:  #FFFAF0;
    border-radius: 10px;
    padding-top: 1%;
-   height:450px;
+   height:400px;
 
 }
 #content h4 {
@@ -115,7 +115,7 @@ export default {
 #news-card {
    display: inline-block;
     width: 300px;
-    height: 400px;
+    height: 200px;
     padding: 10px; 
 }
 
@@ -136,7 +136,7 @@ img {
     top: 10%;
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
-    font-size:25px;
+    font-size:18px;
     font-weight:bold;
     padding-top:2%;
 

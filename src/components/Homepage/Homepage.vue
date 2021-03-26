@@ -97,7 +97,7 @@ export default {
   margin-top: 10%;
   display: inline-block;
   padding: 15px 25px;
-  font-size: 16px;
+  font-size: 10px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
