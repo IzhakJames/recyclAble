@@ -6,6 +6,7 @@ import Form from './components/Homepage/PopUp.vue'
 import ContactUs from './components/ContactUs.vue'
 import InputForm from './components/InputForm.vue'
 import Map from './components/Map.vue'
+import LandingPage from './components/LandingPage.vue'
 
 export default[
     { path: '/signup', component: SignUp},
@@ -15,6 +16,7 @@ export default[
     { path: '/reward', component: Reward, meta: {requiresAuth: true}},
     { path: '/contact_us', component: ContactUs},
     { path: '/input_form', component: InputForm},
-    { path: '/map', component: Map}
+    { path: '/map', component: Map},
+    { path: '/', component: LandingPage}
 ]
 
