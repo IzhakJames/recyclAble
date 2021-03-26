@@ -26,12 +26,13 @@ export default {
 footer {
   background-color: white;
   border-radius: 20px;
-  position: fixed;
+  float: bottom;
   width: 20%;
   height: 40px;
   bottom: 10px;
   margin-left: 40%;
   min-width: 230px;
+  text-align: center;
 }
 p {
   font-family: Roboto;
@@ -41,6 +42,7 @@ p {
   line-height: 50%;
   text-align: center;
   color: #57a890;
-  margin: 0;
+  display: inline-block;
+  margin-top: 10px;
 }
 </style>
