@@ -33,6 +33,7 @@ import "firebase/auth";
 export default {
   data() {
     return {
+      uid: "",
       fullName: "",
       email: "",
       password: "",
@@ -47,25 +48,29 @@ export default {
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password)
           .then(() => {
+            console.log(firebase.auth().currentUser.uid);
+            this.uid = firebase.auth().currentUser.uid;
+            database
+              .collection("Users")
+              .doc(this.uid)
+              .set({
+                userID: this.uid,
+                email: this.email,
+                fullName: this.fullName,
+                password: this.password,
+                points: 0,
+                pointsRedeemed: [],
+                rewardsRedeemed: [],
+                recyclingTripCounter: 0,
+                RecyclingHistory: [],
+              })
+              .then(() => console.log("successfully added to datase"));
             alert("Successfully registered! Welcome!");
             this.$router.push({ name: "Home" });
           })
           .catch((error) => {
             alert(error.message);
           });
-        database
-          .collection("Users")
-          .add({
-            email: this.email,
-            fullName: this.fullName,
-            password: this.password,
-            points: 0,
-            pointsRedeemed: [],
-            rewardsRedeemed: [],
-            recyclingTripCounter: 0,
-            RecyclingHistory: [],
-          })
-          .then(() => console.log("successfully added to datase"));
       } else {
         alert("Passwords not the same");
       }
