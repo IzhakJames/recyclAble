@@ -110,7 +110,7 @@ import database from "../firebase.js";
 	background-repeat: no-repeat, repeat;
 	background-position: right .7em top 50%, 0 0;
 	background-size: .65em auto, 100%;
-    opacity:60%;
+    opacity:0.6;
 }
 
 .select-css::-ms-expand {
