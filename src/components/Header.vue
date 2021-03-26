@@ -79,6 +79,7 @@ header {
 }
 h1 {
   margin-left: 20px;
+  margin-top: 20px;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
