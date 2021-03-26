@@ -1,5 +1,5 @@
 <template>
-   <div id = 'Form'>
+   <div>
        <div id="Header">RECYCLING TRIPS</div>
        <div id="Content"> 
            <label id="Label-header">
@@ -12,8 +12,6 @@
             </label><br><br>
             <input type="file"  id='image'
             accept="image/*" class="input-file">
-        <br><br><br><br>
-            <button class='button' v-on:click="SubmitTrip()">SUBMIT</button>
            
     
 

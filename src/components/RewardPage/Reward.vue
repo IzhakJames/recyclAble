@@ -231,7 +231,7 @@ padding:7px;
 }
 
 #left-box {
-  margin-top:30px;
+  margin-top:140px;
   float:left;
   margin-left:5%;
   height:670px;
@@ -243,7 +243,7 @@ padding:7px;
 #right-box {
   float:right;
   margin-right:5%;
-  margin-top:30px;
+  margin-top:140px;
   height:670px;
   width:33%;
   border-radius:30px;
@@ -272,14 +272,14 @@ padding:7px;
 }
 
 #background {
-  height:860px;
+  height:1000px;
   background-color:#57A890;
   min-width:1400px;
 }
 
 #rectangle {
 width: 90%;
-height: 780px;
+height: 920px;
 margin:0px 5%;
 background: white;
 border-radius: 30px;

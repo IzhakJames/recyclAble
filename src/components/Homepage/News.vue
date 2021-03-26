@@ -4,19 +4,25 @@
         <div id="Header">
             <div id="Subheader"> RECENT NEWS </div>
         </div> 
-        <ul class="side-by-side">
-          <li v-for= "news in articles[0].slice(1,4)" :key="news.source.id" >
+        <div class ='scroller' >
+          <div v-for= "news in articles[0]" :key="news.source.id" >
               <div id='news-card'>
+                <div id='content'>
+
               <h3> {{news.title}}</h3>
-              <div id='image'><img v-bind:src="news.urlToImage"></div>
+              <br>
+              <img v-bind:src="news.urlToImage"  id='image'>
+              <br>
               <h4> {{news.description}} </h4>
-              <a v-bind:href="news.url">  See More </a> 
-            
-        
+              <button class='button'><a v-bind:href="news.url">  See More </a> </button>
+              </div>
               </div>
       
-    </li>
-  </ul>
+    </div>
+
+             
+ 
+   </div>
   </div>
 </template>
 
@@ -40,7 +46,7 @@ export default {
       .then(response=>{
 
            console.log(response.data)
-           this.articles.push(response.data.articles)
+           this.articles.push(response.data.articles.slice(1,8))
 
           })
           
@@ -54,31 +60,65 @@ export default {
 </script>
 
 <style scoped>
-.side-by-side ul {
-    float: left;
-}
-.side-by-side li {
-    display: block;
-    float: left;
-    width:20%;
-    height:400px;
-    padding-left:10%;
-    padding-right:1%;
-    padding: 0 1em;
-    border-radius: 10px;
-    padding-left:1em;
-}
-#news-card {
-    background-color:  #FFFAF0;
-    padding-left:2%;
-    padding-right:2%;
-    padding-top:1%;
-    border-radius: 10px;
-}
-#news-card p {
+
+.button {
   text-align: center;
-  font-size:14px;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:50%;
+  margin-left:20%;
+
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
 }
+.button:hover {background-color: #FFFFF0}
+
+.button:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.scroller {
+  display: flex;
+  flex-wrap: no-wrap;
+  overflow-x: auto;
+  margin: 20px;
+  padding-left:1%;
+  
+
+}
+
+#content{
+  background-color:  #FFFAF0;
+   border-radius: 10px;
+   padding-top: 1%;
+   height:450px;
+
+}
+#content h4 {
+  text-align: center;
+
+}
+
+#news-card {
+   display: inline-block;
+    width: 300px;
+    height: 400px;
+    padding: 10px; 
+}
+
 
 img {
   width: 150px;

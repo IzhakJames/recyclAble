@@ -8,7 +8,9 @@
             <div id="Content">
               <doughnut></doughnut>
             </div>
-        <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button>
+      
+
+        <!-- <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button> -->
         
            
         </div>
@@ -19,6 +21,7 @@
 <script>
 import database from '../../firebase.js'
 import Doughnut from './DoughnutChart.vue'
+
 export default {
   name: 'Contributions',
   components: {
@@ -71,7 +74,7 @@ export default {
   padding:7px;
   width:60%;
   margin-left:20%;
-  margin-top: 15%;
+  margin-top: 10%;
   display: inline-block;
   padding: 15px 25px;
   font-size: 16px;
@@ -96,7 +99,7 @@ export default {
   margin-top:40px;
   border-radius:20px;
   height:400px;
-  width:70%;
+  width:80%;
   margin-left:10%;
   background:white;
   padding-left:8%;
@@ -107,8 +110,8 @@ export default {
 }
 #Header {
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-font-style: italic;
 font-size: 25px;
+font-weight: bold;
 text-align: center;
 border-radius: 30px;
 background: #FFFFFF;
@@ -118,13 +121,5 @@ width:80%;
 padding:5px;
 
 }
-#Contribution {
-  float:right;
-  margin-right:5%;
-  margin-top:30px;
-  height:670px;
-  width:22%;
-  border-radius:30px;
-  background-color:#57A890;
-}
+
 </style>

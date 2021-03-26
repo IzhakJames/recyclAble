@@ -1,9 +1,19 @@
 <template>
     <div id="Homepage">
+
        <div id="Innerpage">
        <br><br>
+        <div v-if="this.popup" id='popup'>
+               <Input></Input> 
+              <button class='button-1' v-on:click="SubmitTrip()">SUBMIT</button> 
+          </div>
+        <div id='news' >
             <News></News> 
+        </div>
+        <div id='contribution'>
             <contribution> </contribution>
+            <button class='button-2'  v-on:click="changed()">CLICK TO INPUT TRIP </button>
+        </div>
         <div id='forum-content'> 
           <forum></forum>
         </div>
@@ -17,22 +27,126 @@
 import News from './News.vue'
 import Contribution from './Contributions.vue'
 import Forum from './Forum.vue'
+import Input from './Input.vue'
+
 export default {
   name: 'Homepage',
   components : {
-      News,Contribution,Forum
+      News,Contribution,Forum,Input
+  }, data() {
+    return {
+      popup:false
+      
+    }
+  }, methods:{
+    changed:function(){
+      this.popup = true
+    }, 
+    SubmitTrip: function() {
+      this.popup = false
+
+    }
   }
 }
 </script>
 
 <style scoped>
-#forum-content {
-  padding-top:15%;
 
+#popup {
+  float:left;
+  margin-left: 20%;
+  height:570px;
+  width:50%;
+  border-radius:30px;
+  background-color:#57A890;
+  text-align: center;
+  background: #57A890;
+  border: 10px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 30px;
+  position: absolute;
+}
+.button-1 {
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:60%;
+  margin-top: 5%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
+  
+}
+.button-2 {
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:60%;
+  margin-left:20%;
+  margin-top: 10%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
+  
+}
+.button-1:hover {background-color: #FFFFF0}
+
+.button-1:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.button-2:hover {background-color: #FFFFF0}
+
+.button-2:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#news {
+  float:left;
+  margin-left:-0.5%;
+  height:400px;
+  width:70%;
+}
+#forum-content {
+  float:left;
+  margin-top:100px;
+  width:70%;
+  height:400px;
+}
+#contribution {
+  float:right;
+  margin-right:5%;
+  margin-top:100px;
+  height:800px;
+  width:20%;
+  border-radius:30px;
+  background-color:#57A890;
 }
 #Innerpage {
   width: 90%;
-  height: 780px;
+  height: 920px;
   margin:0px 5%;
   background: white;
   border-radius: 30px;
@@ -44,7 +158,7 @@ export default {
     padding-top:1.5%;
     width: 100%;
     min-width:1400px;
-    height:860px;
+    height:1000px;
     background: #57A890;
 }
 </style>
