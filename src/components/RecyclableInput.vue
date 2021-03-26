@@ -51,6 +51,7 @@ import database from "../firebase.js";
           })
           }) 
         },
+
         handleChange:function() {
             this.itemOptions = [];
             for (var ele of this.data) {
@@ -58,6 +59,7 @@ import database from "../firebase.js";
                     this.itemOptions.push(ele);
                 }
             }
+            this.itemOptions.sort((a,b) => {return (a.item > b.item) ? 1 : -1});
             this.item_selected = "";
         }
         },

@@ -170,6 +170,10 @@ a {
   padding: 6px 8px;
 }
 
+a:hover {
+  text-decoration:underline;
+}
+
 #link {
   height: 20px;
   margin-top: 10px;
