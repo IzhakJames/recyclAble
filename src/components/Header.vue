@@ -11,12 +11,12 @@
     </header>
 
     <nav v-show="!loggedOut">
-    <div id='navborder'>
-      <span v-on:click="moveHome" id='nav-content'>Home</span>
-      <span v-on:click="moveMap" id='nav-content'>Map</span>
-      <span v-on:click="moveRewards" id='nav-content'>Rewards</span>
-      <span v-on:click="moveContact" id='nav-content'>Contact Us</span>
-     </div>
+    <ul>
+            <li><router-link to="/home" exact>Home</router-link></li>
+            <li><router-link to="/map" exact>Map</router-link></li>
+            <li><router-link to="/reward" exact>Rewards</router-link></li>
+            <li><router-link to="/contact_us" exact>Contact Us</router-link></li>
+    </ul>
     </nav>
 
   </div>
@@ -78,16 +78,15 @@ export default {
 .button {
   display: inline-block;
   border-radius: 4px;
-  background-color:green;
   border: none;
+  background:transparent;
   color: #FFFFFF;
   text-align: center;
   font-size: 18px;
-  padding: 10px;
-  width: 100%;
+  width: 60%;
+  margin-left:30%;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
 }
 
 .button span {
@@ -125,12 +124,19 @@ export default {
 
 }
 
+li:hover{
+   text-decoration:underline;
+}
 
-#navborder span:hover{
-   background-color: #255029;
-   border-radius: 20px;
-
-
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  text-align: center;
+  margin: 3px 10px;
 }
 
 img {
@@ -166,7 +172,7 @@ a {
 
 #link {
   height: 20px;
-  margin-top: 18px;
+  margin-top: 10px;
   font-size: 20px;
   width: 200px;
   float: right;

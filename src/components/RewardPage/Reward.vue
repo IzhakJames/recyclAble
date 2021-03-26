@@ -231,7 +231,7 @@ padding:7px;
 }
 
 #left-box {
-  margin-top:140px;
+  margin-top:80px;
   float:left;
   margin-left:5%;
   height:670px;
@@ -243,7 +243,7 @@ padding:7px;
 #right-box {
   float:right;
   margin-right:5%;
-  margin-top:140px;
+  margin-top:80px;
   height:670px;
   width:33%;
   border-radius:30px;
@@ -279,7 +279,7 @@ padding:7px;
 
 #rectangle {
 width: 90%;
-height: 920px;
+height: 850px;
 margin:0px 5%;
 background: white;
 border-radius: 30px;

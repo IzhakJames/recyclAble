@@ -40,6 +40,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+input {
+  border-radius:5px;
+  padding:10px;
+  border:none;
+}
+
 h1 {
     text-align: center;
     font-family: Roboto;
@@ -114,7 +120,7 @@ button {
     font-weight: bold;
     font-size: 20px;
     line-height: 25px;
-
+    border:none;
     color: #FFFFFF;
 
 }
