@@ -1,5 +1,7 @@
 <template>
     <div>
+        <p id="title">RECYCLABLE OR NOT?</p>
+        <p id="subtitle">Try our our most unique feature, RECYCLABLE OR NOT? A feature that allows you to find out if your item is recycable approved!</p>  
         <div class="dropdown">
         <label>Item Category:</label><br/>
         <select class="select-css" v-model="cat_selected" v-on:change="handleChange()">
@@ -67,8 +69,27 @@ import database from "../firebase.js";
 
 <style scoped>
 
+#title {
+    font-family: Roboto;
+    font-style: italic;
+    font-size: 60px;  
+    width:80%;
+    margin-top:10px;
+    margin-left:10%;
+    color:white;
+    text-align:center;
+}
+
+#subtitle {
+    color:white;
+    margin-top:5px;
+    width:90%;
+    margin-left:5%;
+    text-align:center;
+}
+
 .dropdown:first-of-type {
-    margin-top:90px;    
+    margin-top:15px;    
 }
 
 .dropdown {
