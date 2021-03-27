@@ -8,14 +8,15 @@
           <div v-for= "news in articles[0]" :key="news.source.id" >
               <div id='news-card'>
                 <div id='content'>
-
-              <h3> {{news.title}}</h3>
-              <br>
-              <img v-bind:src="news.urlToImage"  id='image'>
-              <br>
-              <p> {{news.description}} </p>
-              <button class='button'><a v-bind:href="news.url">  See More </a> </button>
-              </div>
+                  <h3> {{news.title}}</h3>
+                  <br>
+                  <img v-bind:src="news.urlToImage"  id='image'>
+                  <br>
+                  <p> {{news.description}} </p> 
+                  <a  id='newslink' v-bind:href="news.url"> MORE >> </a> 
+                </div>
+                
+               
               </div>
       
     </div>
@@ -61,67 +62,58 @@ export default {
 
 <style scoped>
 
-.button {
-  text-align: center;
-  border-radius: 30px;
-  border:none;
-  padding:7px;
-  width:50%;
-  margin-left:20%;
-
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 10px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  background-color: white;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  font-weight:bold;
+#newslink {
+  float:right;
 }
-.button:hover {background-color: #FFFFF0}
-
-.button:active {
-  background-color: #FFFFF0 ;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
 .scroller {
   display: flex;
   flex-wrap: no-wrap;
   overflow-x: auto;
   margin: 20px;
   padding-left:1%;
-  
-
 }
 
 #content{
-  background-color:  #FFFAF0;
-   border-radius: 10px;
-   padding-top: 1%;
-   height:400px;
-
+  border-radius: 10px;
+  padding-top: 1%;
+  height:350px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding-left:3%;
+  padding-right:4%;
 }
-#content h4 {
-  text-align: center;
-
+#content a {
+  background-color: white;
+  padding-left:1%;
+  padding-right:1%;
+  text-decoration: none;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight:700;
+  font-size:14px;
+  color:#006400;
 }
+
+#content:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+#content h3 {
+  height:60px;
+}
+#content p {
+  height:120px;
+}
+
 
 #news-card {
-   display: inline-block;
-    width: 300px;
-    height: 200px;
-    padding: 10px; 
+  display: inline-block;
+  width: 350px;
+  padding: 10px; 
+
 }
 
 
 img {
-  width: 150px;
+  width:200px;
   display: block;
   height: 100px;
   margin-left: auto;

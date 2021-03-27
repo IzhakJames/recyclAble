@@ -13,6 +13,7 @@
         <div id='contribution'>
             <contribution> </contribution>
             <button class='button-2'  v-on:click="changed()">CLICK TO INPUT TRIP </button>
+  
         </div>
         <div id='forum-content'> 
           <forum></forum>
@@ -52,10 +53,11 @@ export default {
 
 <style scoped>
 
+
 #popup {
   float:left;
   margin-left: 20%;
-  height:570px;
+  height:400px;
   width:50%;
   border-radius:30px;
   background-color:#57A890;
@@ -92,12 +94,12 @@ export default {
   border-radius: 30px;
   border:none;
   padding:7px;
-  width:60%;
-  margin-left:20%;
+  width:80%;
+  margin-left:10%;
   margin-top: 10%;
   display: inline-block;
   padding: 15px 25px;
-  font-size: 10px;
+  font-size: 10gpx;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -131,16 +133,17 @@ export default {
 }
 #forum-content {
   float:left;
-  margin-top:100px;
+  margin-top:50px;
+    margin-left:-0.5%; 
   width:70%;
   height:400px;
 }
 #contribution {
   float:right;
-  margin-right:5%;
-  margin-top:100px;
-  height:800px;
-  width:20%;
+  margin-right:3%;
+  margin-top:200px;
+  height:700px;
+  width:25%;
   border-radius:30px;
   background-color:#57A890;
 }
@@ -152,7 +155,6 @@ export default {
   border-radius: 30px;
 
 }
-
 
 #Homepage {
     padding-top:1.5%;
