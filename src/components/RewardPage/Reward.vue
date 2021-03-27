@@ -111,7 +111,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .user {
-  width:50px;
+  width:70px;
   margin-top:1%;
   float:left;
   margin-left:5%;
@@ -270,9 +270,9 @@ padding:5px;
 }
 
 .reward-box {
-  margin-top:10px;
+  margin-top:7px;
   width:95%;
-  height:500px;
+  height:480px;
   margin-left:2.5%;
   overflow:scroll;
 }
@@ -322,7 +322,7 @@ padding:7px;
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin:30px;
   width:90%;
-  height: 70px;
+  height: 100px;
   margin-left:5%;
   padding-top:0.5%;
   background-color: white;
@@ -331,7 +331,7 @@ padding:7px;
 #point-text p {
   float:left;
   margin-left:25%;
-  margin-top:8%;
+  margin-top:15%;
   font-size:12px;
   font-weight: 100;
 }
@@ -340,7 +340,7 @@ padding:7px;
   float:left;
   font-size:18px;
   margin-left:-2%;
-  margin-top:1%;
+  margin-top:2%;
 }
 #point-text h6{
   float:right;
