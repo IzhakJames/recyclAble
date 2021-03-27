@@ -3,11 +3,14 @@
     <div id="rectangle">
         <h1>Ask Us Anything!</h1>
         <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application, please fill up the form below!</p>
-
-        <input v-show="this.loggedOut" v-model="question.Fname" type="text" id="fname" name="fname" placeholder="First Nameout">
+        <label id="fnLabel">First Name:</label>
+        <input v-show="this.loggedOut" v-model="question.Fname" type="text" id="fname" name="fname" placeholder="First Name">
         <input v-show="!this.loggedOut" v-model="this.question.Fname" type="text" id="fname" name="fname">
-        <input v-model="question.Lname" type="text" id="lname" name="lname" placeholder="Last Name"><br>
-        <input v-show="this.loggedOut" v-model="question.Email" type="text" id="email" name="email" placeholder="Email"><br>
+        <label id="lnLabel">Last Name:</label>
+        <input v-show="this.loggedOut" v-model="question.Lname" type="text" id="lname" name="lname" placeholder="Last Name"><br v-show="this.loggedOut">
+        <input v-show="!this.loggedOut" v-model="question.Lname" type="text" id="lname" name="lname"><br>
+        <label id="emLabel">Email:</label>
+        <input v-show="this.loggedOut" v-model="question.Email" type="text" id="email" name="email" placeholder="Email"><br v-show="this.loggedOut">
         <input v-show="!this.loggedOut" v-model="question.Email" type="text" id="email" name="email"><br>
         <input v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"><br>
         <button v-on:click="sendQuestion()">Submit</button>
@@ -43,7 +46,9 @@ export default {
         database.collection('Users').doc(uid).get().then((doc) => {
             if (doc.exists) {
               this.thisUser = doc.data();
-              this.question.Fname = doc.data().fullName;
+              var fullName =  doc.data().fullName.split(/\s+/);
+              this.question.Fname = fullName[0];
+              this.question.Lname = fullName[1];
               this.question.Email = doc.data().email;
             } else {
                 // doc.data() will be undefined in this case
@@ -118,19 +123,29 @@ p {
 }
 
 #fname, #lname {
-    width: 38%;
+    width: 25%;
     height: 10%;
     margin: 1% 5%;
 
     background: #E9E9E9;
 }
 
+#fnLabel, #lnLabel {
+    width: 10%;
+    height: 10%;
+    margin: 1% -1% 1% 5%;
+
+}
+
 #email {
-    width: 87%;
+    width: 77%;
     height: 10%;
     margin: 1% 5%;
     background: #E9E9E9;
+}
 
+#emLabel {
+    margin: 1% -1% 1% 5%;
 }
 
 #detail {
@@ -154,7 +169,6 @@ button {
     line-height: 25px;
     border:none;
     color: #FFFFFF;
-
 }
 
 </style>
