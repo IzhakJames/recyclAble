@@ -69,6 +69,7 @@ p {
 }
 
 #background {
+  background: url(../assets/RecycleBg.png);
   height:95vh;
   background-color:#57A890;
   min-width:1400px;
@@ -96,15 +97,12 @@ p {
     width: 87%;
     height: 10%;
     margin: 1% 5%;
-
-    background: #E9E9E9;
 }
 
 #detail {
     width: 87%;
     height: 20%;
     margin: 1% 5%;
-
     background: #E9E9E9;
 }
 
