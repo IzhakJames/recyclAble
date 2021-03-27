@@ -4,11 +4,12 @@
         <h1>Ask Us Anything!</h1>
         <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application, please fill up the form below!</p>
 
-        <input v-model="question.Fname" type="text" id="fname" name="fname" placeholder="First Name">
+        <input v-show="this.loggedOut" v-model="question.Fname" type="text" id="fname" name="fname" placeholder="First Nameout">
+        <input v-show="!this.loggedOut" v-model="this.question.Fname" type="text" id="fname" name="fname">
         <input v-model="question.Lname" type="text" id="lname" name="lname" placeholder="Last Name"><br>
-        <input v-model="question.Email" type="text" id="email" name="email" placeholder="Email"><br>
+        <input v-show="this.loggedOut" v-model="question.Email" type="text" id="email" name="email" placeholder="Email"><br>
+        <input v-show="!this.loggedOut" v-model="question.Email" type="text" id="email" name="email"><br>
         <input v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"><br>
-
         <button v-on:click="sendQuestion()">Submit</button>
 
     </div>
@@ -17,23 +18,53 @@
 
 <script>
 import database from "../firebase.js"
+import firebase from "firebase/app";
+import "firebase/auth";
+
 export default {
-  data(){
-    return{
-        question: {
-            Fname:'',
-            Lname:'',
-            Email:'',
-            Question:'',
+    data(){
+      return{
+          question: {
+              Fname:'',
+              Lname:'',
+              Email:'',
+              Question:'',
+          },
+          loggedOut: true,
+          thisUser: {},
         }
-        }
+    },
+
+    created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.loggedOut = false;
+        var uid = firebase.auth().currentUser.uid;
+        database.collection('Users').doc(uid).get().then((doc) => {
+            if (doc.exists) {
+              this.thisUser = doc.data();
+              this.question.Fname = doc.data().fullName;
+              this.question.Email = doc.data().email;
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+      } else {
+        this.loggedOut = true;
+      }
+    });    
   },
 
+
   methods: {
-    sendQuestion:function(){        
+    sendQuestion:function(){      
         database.collection('Questions').add(this.question).then(() => {location.reload(alert("Your question is submitted successfully. Our team will respond within 3 working days."))});
     }
-  }
+  },
+
 }
 </script>
 
@@ -73,6 +104,7 @@ p {
   height:95vh;
   background-color:#57A890;
   min-width:1400px;
+  background-size:1530px 830px;
 }
 
 #rectangle {
@@ -97,6 +129,8 @@ p {
     width: 87%;
     height: 10%;
     margin: 1% 5%;
+    background: #E9E9E9;
+
 }
 
 #detail {

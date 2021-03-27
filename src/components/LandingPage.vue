@@ -26,7 +26,7 @@ export default {
   background: url(../assets/RecycleBg.png);
   width: 100vw;
   height: 100vh;
-  background-size: cover;
+  background-size:1530px 860px;
 }
 
 #header {

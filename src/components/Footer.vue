@@ -21,8 +21,7 @@ export default {
 .footer {
   background: url(../assets/footer_background.png);
   margin: 0;
-  background-size: cover;
-  background-position-x: 6px;
+  background-size:1530px 80px;
 }
 
 footer {
