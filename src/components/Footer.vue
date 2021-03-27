@@ -19,8 +19,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .footer {
-  background: #57a890;
+  background: url(../assets/footer_background.png);
   margin: 0;
+  background-size: cover;
+  background-position-x: 6px;
 }
 
 footer {
