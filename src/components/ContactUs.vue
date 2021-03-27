@@ -171,4 +171,9 @@ button {
     color: #FFFFFF;
 }
 
+button:hover {
+  cursor:pointer;
+  background: lightblue;
+}
+
 </style>

@@ -1,11 +1,10 @@
 <template>
-    <div id="Homepage">
-
+    <div id="Homepage" >
+      <div id = "transparent" v-if="this.popup"></div>
        <div id="Innerpage">
        <br><br>
         <div v-if="this.popup" id='popup'>
                <Input></Input> 
-              <button class='button-1' v-on:click="SubmitTrip()">SUBMIT</button> 
           </div>
         <div id='news' >
             <News></News> 
@@ -44,6 +43,7 @@ export default {
       this.popup = true
     }, 
     SubmitTrip: function() {
+      alert(3);
       this.popup = false
 
     }
@@ -53,11 +53,19 @@ export default {
 
 <style scoped>
 
+#transparent {
+  z-index:99;
+  position:absolute;
+  width:100%;
+  height:130%;
+  background-color:white;
+  opacity:0.8;
+}
 
 #popup {
   float:left;
   margin-left: 20%;
-  height:400px;
+  height:800px;
   width:50%;
   border-radius:30px;
   background-color:#57A890;
@@ -67,6 +75,7 @@ export default {
   box-sizing: border-box;
   border-radius: 30px;
   position: absolute;
+  z-index:100;
 }
 .button-1 {
   text-align: center;
@@ -141,7 +150,7 @@ export default {
 #contribution {
   float:right;
   margin-right:3%;
-  margin-top:200px;
+  margin-top:100px;
   height:700px;
   width:25%;
   border-radius:30px;

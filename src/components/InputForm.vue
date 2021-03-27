@@ -51,7 +51,9 @@ import PictureInput from 'vue-picture-input'
                     ],
                     placholder: "Select your location",
                     backgroundColor: "white",
-                    width: this.width
+                    width: this.width,
+                    newCounter:0,
+                    newTotal:0
                 },
             }
         },
@@ -97,6 +99,25 @@ import PictureInput from 'vue-picture-input'
                     console.log('FileReader API not supported: use the <form>, Luke!')
                 }
                 
+            },
+            SubmitTrip: function() {
+        //   to edit again - need to pass user id prop from login to this file
+      
+            database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
+                this.newTotal=docRef.data().TotalCounter +1
+                database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').update({TotalCounter:this.newTotal})
+                })  
+            database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').get().then((docRef) => { 
+            console.log(docRef.data().Counter)
+            this.newCounter=docRef.data().Counter+ 1
+            console.log(this.newCounter)
+            database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').update({Counter:this.newCounter})
+            alert("Thank You For Your Submission!")
+
+            }).then(
+                        () => this.$router.push({path:'/home'})
+                    )
+
             }
         }
     }

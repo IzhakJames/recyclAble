@@ -1,19 +1,27 @@
 <template>
-   <div>
-       <div id="Header">RECYCLING TRIPS</div>
+  <div id = "background">
+       <div id="Header">Recycling Trip Input Form</div>
        <div id="Content"> 
-           <label id="Label-header">
-               LOCATION :
-            </label><br>
-          <input type="text"   id="location" class='input-box'>
+           <label id="Label-header">RECYCLING LOCATION:</label><br>
+        <vue-dropdown :config="config" @setSelectedOption="setNewSelectedOption($event)"></vue-dropdown>
         <br><br>
-          <label id="Label-header">
-               IMAGE UPLOAD :
-            </label><br>
-            <input type="file"  id='image'
-            accept="image/*" class="input-file">
-           
-    
+          <label id="Label-header">IMAGE OF RECYCLING TRIP:</label><br>
+        <picture-input id="image"
+            ref="pictureInput"
+            width="300" 
+            height="300" 
+            margin="10" 
+            accept="image/jpeg,image/png" 
+            size="10" 
+            button-class="btn"
+            :custom-strings="{
+                upload: '<h1>Bummer!</h1>',
+                drag: 'Drag or upload your image here 😺'
+            }"
+            @change="onChange">
+        </picture-input>
+
+        <button class='button-1' v-on:click="sendTrip();SubmitTrip(); ">SUBMIT</button> 
 
        </div>
   </div>
@@ -21,16 +29,79 @@
 
 <script>
 import database from '../../firebase.js'
+import VueDropdown from 'vue-dynamic-dropdown'
+import PictureInput from 'vue-picture-input'
+
 export default {
     data() {
         return {
             newCounter:0,
-            newTotal:0
+            newTotal:0,
+            image:"",
+            width : window.innerWidth,
+            config: {
+                options: [
+                    {
+                        value: "Jurong East"
+                    },
+                    {
+                        value: "Bugis"
+                    },
+                    {
+                        value: "Kent Ridge"
+                    },
+                ],
+                placholder: "Select your location",
+                backgroundColor: "white",
+                width: this.width,
+                newCounter:0,
+                newTotal:0
+            }
         }
     },
   name: 'Input',
   components: {
-  }, methods: {
+      "vue-dropdown": VueDropdown,
+      PictureInput
+  },
+  mounted() {
+    this.$nextTick(() => {
+    window.addEventListener('resize', this.onResize);
+    })
+  },
+
+  beforeDestroy() { 
+    window.removeEventListener('resize', this.onResize); 
+  },
+
+
+  methods: {
+    setNewSelectedOption(selectedOption) {
+        this.config.placeholder = selectedOption.value;
+    },
+    onResize() {
+        this.width = window.innerHeight
+    },
+
+    sendTrip () {     
+      const tripDetails = {
+          image: this.image,
+          location: this.config.placeholder    
+      }
+      database.collection('Temp Trip Form').add(tripDetails).then(() => {});
+
+    },
+
+    onChange (image) {
+        console.log('New picture selected!')
+        if (image) {
+            console.log('Picture loaded.')
+            this.image = image
+        } else {
+            console.log('FileReader API not supported: use the <form>, Luke!')
+        }
+        
+    },
       SubmitTrip: function() {
         //   to edit again - need to pass user id prop from login to this file
       
@@ -46,7 +117,7 @@ export default {
        alert("Thank You For Your Submission!")
 
       }).then(
-                 () => this.$router.push({path:'/home'})
+        () => {location.reload()}  
                )
 
       }
@@ -74,6 +145,36 @@ export default {
   font-weight:bold;
 }
 .button:hover {background-color: #FFFFF0}
+
+.button-1 {
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:60%;
+  margin-top: 5%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
+  
+}
+
+.button-1:hover {background-color: #FFFFF0}
+
+.button-1:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .button:active {
   background-color: #FFFFF0 ;
