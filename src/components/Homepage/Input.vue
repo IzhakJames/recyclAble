@@ -4,12 +4,12 @@
        <div id="Content"> 
            <label id="Label-header">
                LOCATION :
-            </label><br><br>
+            </label><br>
           <input type="text"   id="location" class='input-box'>
-        <br><br><br><br>
+        <br><br>
           <label id="Label-header">
                IMAGE UPLOAD :
-            </label><br><br>
+            </label><br>
             <input type="file"  id='image'
             accept="image/*" class="input-file">
            
@@ -82,25 +82,26 @@ export default {
 }
 .input-file {
     height:50px;
-    font-size:18pt;
+    font-size:15pt;
 }
 .input-box {
     width:80%;
     height:50px;
-    font-size:18pt;
+    font-size:13pt;
 }
 #Label-header {
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 30;
-    font-size: 30px;
+    font-size: 18px;
     line-height: 41px;
     color:white;
     text-align: left;
 
 
 }
+
 #Content {
-     margin-left:5%;
+    margin-left:5%;
     margin-top:2%;
     padding-top:1%;
     width: 90%;
@@ -115,7 +116,7 @@ export default {
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size:25px;
+    font-size:15px;
     font-weight:bold;
 
 
@@ -123,7 +124,7 @@ export default {
 }
 #Form {
   float:right;
-  height:570px;
+  height:300px;
   width:50%;
   border-radius:30px;
   background-color:#57A890;

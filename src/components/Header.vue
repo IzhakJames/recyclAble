@@ -2,7 +2,7 @@
   <div>
     <header>
       <img class="logo" :src="require(`../assets/MainLogo.png`)"/>
-      <h1>{{ msg }}</h1>
+      <h1 >{{ msg }}</h1>
       <div id="link">
         <router-link to="/signup" exact v-if="loggedOut">Sign Up</router-link>
         <router-link to="/login" exact v-if="loggedOut">Login</router-link>
@@ -12,10 +12,11 @@
 
     <nav v-show="!loggedOut">
     <ul>
-            <li><router-link to="/home" exact>Home</router-link></li>
-            <li><router-link to="/map" exact>Map</router-link></li>
-            <li><router-link to="/reward" exact>Rewards</router-link></li>
-            <li><router-link to="/contact_us" exact>Contact Us</router-link></li>
+            <li> 
+            <router-link to="/home" exact id='nav-content'>Home</router-link></li>
+            <li><router-link to="/map" exact id='nav-content'>Map</router-link></li>
+            <li><router-link to="/reward" exact id='nav-content'>Rewards</router-link></li>
+            <li><router-link to="/contact_us" exact id='nav-content'>Contact Us</router-link></li>
     </ul>
     </nav>
 
@@ -117,16 +118,11 @@ export default {
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
-  padding-left:2%;
-  padding-right:2%;
 
 }
 
-li:hover{
-   text-decoration:underline;
-}
 
 ul {
   display: flex;
@@ -163,6 +159,7 @@ h1 {
   color: #ffffff;
   float: left;
   width: 10%;
+  font-style:oblique;
 }
 a {
   color: #fff;
@@ -171,7 +168,8 @@ a {
 }
 
 a:hover {
-  text-decoration:underline;
+  background-color: #255029;
+  border-radius: 20px;
 }
 
 #link {

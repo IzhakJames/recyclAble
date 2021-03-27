@@ -64,7 +64,7 @@ export default {
 #donut-inner {
   position:absolute;
   margin-Left:50px;
-  margin-top:250px;
+  margin-top:150px;
   font-Size:18px;
 }
 .button {
@@ -96,9 +96,9 @@ export default {
   transform: translateY(4px);
 }
 #Content {
-  margin-top:40px;
+  margin-top:10px;
   border-radius:20px;
-  height:400px;
+  height:350px;
   width:80%;
   margin-left:10%;
   background:white;

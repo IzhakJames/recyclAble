@@ -16,6 +16,7 @@
     "vue-chartjs": "^3.5.1",
     "vue-dynamic-dropdown": "^1.0.12",
     "vue-firebase": "^1.0.8",
+    "vue-icon": "^2.2.0",
     "vue-loader": "^15.9.6",
     "vue-picture-input": "^2.1.6",
     "vue-router": "^3.5.1"
