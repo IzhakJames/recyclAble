@@ -46,7 +46,6 @@ export default {
           // Total number of recycling trip in the webapp 
           database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
           this.total=docRef.data().TotalCounter
-          console.log(this.total)
           })  
             firebase.auth().onAuthStateChanged(() => {
         

@@ -43,7 +43,7 @@ export default {
   methods: {
    
     fetchData : function(){
-      axios.get("http://newsapi.org/v2/everything?domains=channelnewsasia.com&q=recycling&apiKey=95b5a7d7204e43a89a0daa2c06938374")
+      axios.get("https://newsapi.org/v2/everything?domains=channelnewsasia.com&q=recycling&apiKey=95b5a7d7204e43a89a0daa2c06938374")
       .then(response=>{
 
            console.log(response.data)
