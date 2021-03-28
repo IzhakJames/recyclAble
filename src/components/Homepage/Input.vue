@@ -31,10 +31,13 @@
 import database from '../../firebase.js'
 import VueDropdown from 'vue-dynamic-dropdown'
 import PictureInput from 'vue-picture-input'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
     data() {
         return {
+            user:[],
             newCounter:0,
             newTotal:0,
             image:"",
@@ -88,6 +91,7 @@ export default {
           image: this.image,
           location: this.config.placeholder    
       }
+      database.collection
       database.collection('Temp Trip Form').add(tripDetails).then(() => {});
 
     },
@@ -103,17 +107,29 @@ export default {
         
     },
       SubmitTrip: function() {
-        //   to edit again - need to pass user id prop from login to this file
-      
+      //add to the total trip in the Website 
       database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
           this.newTotal=docRef.data().TotalCounter +1
           database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').update({TotalCounter:this.newTotal})
           })  
-      database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').get().then((docRef) => { 
-       console.log(docRef.data().Counter)
-       this.newCounter=docRef.data().Counter+ 1
-       console.log(this.newCounter)
-       database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').update({Counter:this.newCounter})
+      //add to the total trip of user
+       firebase.auth().onAuthStateChanged(() => {
+        
+           var uid = firebase.auth().currentUser.uid;
+           console.log(uid)
+           database.collection('Users').doc(uid).get().then((doc) => {
+              this.user =  doc.data()
+              console.log(this.user.recyclingTripCounter)
+              this.newCounter= this.user.recyclingTripCounter+1
+              this.user.recyclingTripCounter = this.newCounter
+              database.collection('Users').doc(uid).update(this.user)
+        })})
+
+
+
+       database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
+        this.newTotal=docRef.data().TotalCounter +1
+        database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').update({TotalCounter:this.newTotal})
        alert("Thank You For Your Submission!")
 
       }).then(

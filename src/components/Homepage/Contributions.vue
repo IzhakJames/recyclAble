@@ -49,7 +49,7 @@ export default {
           //User recycling trip --> pass prop here
           database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').get().then((docRef) => { 
           this.userCounter=docRef.data().Counter
-          this.percent = this.userCounter /this.total *100
+          this.percent = Number( (this.userCounter /this.total *100).toPrecision(3) )
           })
         }
   },
