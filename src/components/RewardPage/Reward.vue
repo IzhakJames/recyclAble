@@ -3,10 +3,9 @@
     <br>
     <div id="rectangle">
       <div id="top-row">
-          <img id="tier-logo" :src="require(`../../assets/${this.tier}.png`)"/>
+          <img v-if="this.tier != ''" id="tier-logo" :src="require(`../../assets/${this.tier}.png`)"/>
           <div id="point-box">
           <h1> REWARD POINTS: {{this.points}}/ {{this.nextTierPoints}}</h1>
-
           <div id="bar-box">
           <div id="bar-progress" v-bind:style="{width: Math.floor(this.points / this.nextTierPoints * 100) + '%' }"></div>
               <br>
@@ -70,7 +69,7 @@
       <div id="right-box">
         <div id="trip-title">RECYCLING TRIPS</div>
           <div id="trip-box">
-            <doughnut></doughnut>
+            <Doughnut v-bind:trip="this.user.recyclingTripCounter % 5"></Doughnut>
           </div>
        <br>
         <p id = "trip-text"> {{5 - this.user.recyclingTripCounter % 5}} more trips before the next reward point</p>
@@ -85,9 +84,9 @@
 
 <script>
 import database from '../../firebase.js'
-import Doughnut from './DoughnutChart.vue'
 import firebase from "firebase/app";
 import "firebase/auth";
+import Doughnut from './Doughnut.vue';
 
 export default {
   data() {
@@ -100,7 +99,7 @@ export default {
       nextTierPoints:0,
       tier:""
     }
-  }, 
+  },
   components: {
     Doughnut
   }
@@ -117,7 +116,28 @@ export default {
             obj.id = doc.id;
             this.vouchers.push(obj);
           })
-          }) 
+          })
+          var uid = firebase.auth().currentUser.uid;
+          database.collection('Users').doc(uid).get().then(
+            doc => {
+          this.user = doc.data();
+          this.points = Math.floor(this.user.recyclingTripCounter / 5);
+          this.pointsRemaining = this.points - this.user.pointsRedeemed;
+          if (this.points < 40) {
+            this.tier = "bronze";
+            this.nextTierPoints = 40;
+          } else if (this.points < 100) {
+            this.tier = "silver";
+            this.nextTierPoints = 100;
+          } else if (this.points < 200) {
+            this.tier = "gold";
+            this.nextTierPoints = 200;
+          } else {
+            this.tier = "platinum";
+            this.nextTierPoints = 200;
+          }
+          } 
+          ) 
         },
         voucherCollect:function(voucher) {
           if (this.pointsRemaining >= voucher.point) {
@@ -145,33 +165,14 @@ export default {
   },
     created(){
       this.fetchItems()  
-      var uid = firebase.auth().currentUser.uid;
-      database.collection('Users').doc(uid).get().then(
-        doc => {
-      this.user = doc.data();
-      this.points = Math.floor(this.user.recyclingTripCounter / 5);
-      this.pointsRemaining = this.points - this.user.pointsRedeemed;
-      if (this.points < 40) {
-        this.tier = "bronze";
-        this.nextTierPoints = 40;
-      } else if (this.points < 100) {
-        this.tier = "silver";
-        this.nextTierPoints = 100;
-      } else if (this.points < 200) {
-        this.tier = "gold";
-        this.nextTierPoints = 200;
-      } else {
-        this.tier = "platinum";
-        this.nextTierPoints = 200;
-      }
-      } 
-      )
     }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+/* Set the sizes of the elements that make up the progress bar */
 
 .user {
   width:70px;
@@ -245,8 +246,6 @@ margin-top:60px;
   margin-left:3%;
   width:30%;
   height:70px;
-
-
 }
 
 #home-btn {
@@ -289,15 +288,12 @@ color:white;
 }
 
 #trip-box {
- margin-top:10px;
+  margin-top:10px;
   border-radius:20px;
   height:350px;
   width:80%;
   margin-left:10%;
   background:white;
-  padding-left:8%;
-  padding-right:5%;
-  padding-bottom:5%;
 }
 
 
