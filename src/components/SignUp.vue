@@ -54,12 +54,10 @@ export default {
               .collection("Users")
               .doc(this.uid)
               .set({
-                userID: this.uid,
                 email: this.email,
                 fullName: this.fullName,
                 password: this.password,
-                points: 0,
-                pointsRedeemed: [],
+                pointsRedeemed: 0,
                 rewardsRedeemed: [],
                 recyclingTripCounter: 0,
                 RecyclingHistory: [],

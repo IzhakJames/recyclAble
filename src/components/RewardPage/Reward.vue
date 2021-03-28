@@ -3,14 +3,17 @@
     <br>
     <div id="rectangle">
       <div id="top-row">
-          <span class="dot"></span>
+          <img id="tier-logo" :src="require(`../../assets/${this.tier}.png`)"/>
           <div id="point-box">
-          <h1> REWARD POINTS: /40 </h1>
+          <h1> REWARD POINTS: {{this.points}}/ {{this.nextTierPoints}}</h1>
 
           <div id="bar-box">
-          <div id="bar-progress"></div>
+          <div id="bar-progress" v-bind:style="{width: Math.floor(this.points / this.nextTierPoints * 100) + '%' }"></div>
               <br>
-          <p>125pts to NEXT TIER >></p>
+          <p v-if="this.tier == 'bronze'">{{40 - this.points}} pts to SILVER TIER >></p>
+          <p v-else-if="this.tier == 'silver'">{{100 - this.points}} pts to GOLD TIER >></p>
+          <p v-else-if="this.tier == 'gold'">{{200 - this.points}} pts to PLATINUM TIER >></p>
+          <p v-else>You have reached PLATINUM TIER </p>
           </div>
           </div>
       </div>
@@ -19,11 +22,10 @@
    
           <div id="point-text">
             <img class="user" :src="require(`../../assets/crown.png`)"/>
-             <h5> Username
+             <h5>{{this.user.fullName}}
 
-               <p>20pts remaining </p>
+               <p>{{this.pointsRemaining}} pts unredeemed </p>
              </h5>
-             
              <!-- change to button to link to user profile -->
              <h6> View Profile >> </h6> 
             
@@ -44,17 +46,26 @@
                 </div>
                 <div class="redeem-box">
                 <p class="point">{{voucher.point}} PTS</p>
-                <button class="collect-btn">COLLECT</button>
-           
+                <button class="collect-btn" v-on:click="voucherCollect(voucher)">COLLECT</button>
                 </div>
               </div>
           </div>
 
-
         <div v-else class="reward-box">
+          <div class="reward" v-for="voucher in this.user.rewardsRedeemed" v-bind:key="voucher.name">
+                <img class="logo" :src="require(`../../assets/${voucher.name}.png`)"/>
+                <div class="voucher">
+                  ${{voucher.value}} SHOPPING VOUCHER
+                <p> Expires 31 Dec 2022</p>
+                </div>
+                <div class="redeem-box">
+                <p class="point">QTY: {{voucher.count}}</p>
+                <button class="collect-btn">REDEEM</button>
+                </div>
+              </div>
+
         </div>
       
-        
       </div>
       <div id="right-box">
         <div id="trip-title">RECYCLING TRIPS</div>
@@ -62,7 +73,7 @@
             <doughnut></doughnut>
           </div>
        <br>
-        <p id = "trip-text"> 1 more trips before the next reward point</p>
+        <p id = "trip-text"> {{5 - this.user.recyclingTripCounter % 5}} more trips before the next reward point</p>
         <button id="home-btn" v-on:click="route">Click to return to homepage</button>
 
       </div>
@@ -75,12 +86,19 @@
 <script>
 import database from '../../firebase.js'
 import Doughnut from './DoughnutChart.vue'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   data() {
     return {
       vouchers: [],
-      selectRedeem:false
+      selectRedeem:false,
+      user:{},
+      points:0,
+      pointsRemaining:0,
+      nextTierPoints:0,
+      tier:""
     }
   }, 
   components: {
@@ -95,21 +113,66 @@ export default {
        fetchItems:function(){
           database.collection('Voucher').get().then(snapshot => { 
           snapshot.docs.forEach(doc => {
-            var obj = doc.data()
+            var obj = doc.data();
+            obj.id = doc.id;
             this.vouchers.push(obj);
           })
           }) 
+        },
+        voucherCollect:function(voucher) {
+          if (this.pointsRemaining >= voucher.point) {
+            var uid = firebase.auth().currentUser.uid;
+            var currRedeemed = this.user.rewardsRedeemed;
+            var inside = false;
+            this.pointsRemaining -= voucher.point;
+            for (var obj of currRedeemed) {
+              if (obj.voucherID == voucher.id) {
+                obj.count++;
+                inside = true;
+              }
+            }
+            if (!inside) {
+              currRedeemed.push({voucherID:voucher.id,name:voucher.name,value:voucher.value,count:1});
+            } 
+            database.collection('Users').doc(uid).update({rewardsRedeemed:currRedeemed,
+            pointsRedeemed:firebase.firestore.FieldValue.increment(voucher.point)})
+            alert("Voucher successfully redeemed!");
+          } else {
+            alert("Insufficient points to redeem voucher");
+          }
+
         }
   },
     created(){
       this.fetchItems()  
+      var uid = firebase.auth().currentUser.uid;
+      database.collection('Users').doc(uid).get().then(
+        doc => {
+      this.user = doc.data();
+      this.points = Math.floor(this.user.recyclingTripCounter / 5);
+      this.pointsRemaining = this.points - this.user.pointsRedeemed;
+      if (this.points < 40) {
+        this.tier = "bronze";
+        this.nextTierPoints = 40;
+      } else if (this.points < 100) {
+        this.tier = "silver";
+        this.nextTierPoints = 100;
+      } else if (this.points < 200) {
+        this.tier = "gold";
+        this.nextTierPoints = 200;
+      } else {
+        this.tier = "platinum";
+        this.nextTierPoints = 200;
       }
-
+      } 
+      )
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .user {
   width:70px;
   margin-top:1%;
@@ -386,8 +449,8 @@ padding:7px;
   background-color:green;
   height:20px;
   border-radius:10px;
-  width:30%;
   margin-top:3%;
+  max-width:100%;
 }
 
 #point-box {
@@ -420,14 +483,12 @@ padding:7px;
   border-radius:30px;
 }
 
-.dot {
+#tier-logo {
   float:left;
   margin:15px 3% 0% 7%;
   height: 140px;
   width: 12%;
   margin-top:5%;
-  background-color: #bbb;
-  border-radius: 50%;
 }
 
 #point-box h1 {
