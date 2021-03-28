@@ -4,6 +4,7 @@
        <div id="Innerpage">
        <br><br>
         <div v-if="this.popup" id='popup'>
+              <button v-on:click="close()" class="close"></button>
                <Input></Input> 
           </div>
         <div id='news' >
@@ -42,8 +43,7 @@ export default {
     changed:function(){
       this.popup = true
     }, 
-    SubmitTrip: function() {
-      alert(3);
+   close: function() {
       this.popup = false
 
     }
@@ -172,4 +172,42 @@ export default {
     height:1000px;
     background: #57A890;
 }
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: -50px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+  background-color: transparent;
+  border-style:none !important;
+}
+.close:hover {
+  border-style:none;
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+  border:0px;
+}
+
+.close:active {
+  border:0px;
+}
+
+.close:before {
+  border:0px;
+  transform: rotate(45deg);
+
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
 </style>
