@@ -4,8 +4,8 @@
         <!-- Contributions Card-->
         <div id = "Contribution">
             <div id="Header"> CONTRIBUTIONS </div>
-            <div id='donut-inner'> {{this.percent}}%</div>
             <div id="Content">
+                 <div id='donut-inner'> {{this.percent}}%</div>
               <doughnut></doughnut>
             </div>
       
@@ -21,6 +21,8 @@
 <script>
 import database from '../../firebase.js'
 import Doughnut from './DoughnutChart.vue'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   name: 'Contributions',
@@ -46,11 +48,15 @@ export default {
           this.total=docRef.data().TotalCounter
           console.log(this.total)
           })  
-          //User recycling trip --> pass prop here
-          database.collection('Users').doc('cJG5lMjs7C90cC0TTNUY').get().then((docRef) => { 
-          this.userCounter=docRef.data().Counter
-          this.percent = Number( (this.userCounter /this.total *100).toPrecision(3) )
-          })
+            firebase.auth().onAuthStateChanged(() => {
+        
+           var uid = firebase.auth().currentUser.uid;
+        
+           database.collection('Users').doc(uid).get().then((doc) => {
+            
+              this.userCounter= doc.data().recyclingTripCounter+1
+                this.percent = Number( (this.userCounter /this.total *100).toPrecision(3) )
+        })})
         }
   },
     created(){
@@ -63,9 +69,13 @@ export default {
 <style scoped>
 #donut-inner {
   position:absolute;
-  margin-Left:50px;
-  margin-top:150px;
-  font-Size:18px;
+  font-Size:30px;
+  margin-left:6%;
+  text-align:center;
+  padding-top:5%;
+  padding-bottom:7%;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight:500;
 }
 .button {
   text-align: center;
@@ -98,7 +108,7 @@ export default {
 #Content {
   margin-top:10px;
   border-radius:20px;
-  height:350px;
+  height:400px;
   width:80%;
   margin-left:10%;
   background:white;
