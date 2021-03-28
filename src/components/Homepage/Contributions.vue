@@ -10,7 +10,7 @@
             </div>
       
 
-        <!-- <button class='button' v-on:click="route()"> CLICK TO INPUT TRIP  </button> -->
+     
         
            
         </div>

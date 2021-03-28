@@ -6,13 +6,17 @@
         <div v-if="this.popup" id='popup'>
                <Input></Input> 
           </div>
+           <div v-if="this.checkpopup" id='popup'>
+               <recyclable-input-auth></recyclable-input-auth>
+          </div>
         <div id='news' >
             <News></News> 
         </div>
         <div id='contribution'>
             <contribution> </contribution>
             <button class='button-2'  v-on:click="changed()">CLICK TO INPUT TRIP </button>
-  
+              <button class='button-3'  v-on:click="changed_2()"> RECYCLABLE OR NOT? </button>
+        
         </div>
         <div id='forum-content'> 
           <forum></forum>
@@ -28,20 +32,25 @@ import News from './News.vue'
 import Contribution from './Contributions.vue'
 import Forum from './Forum.vue'
 import Input from './Input.vue'
+import RecyclableInputAuth from './RecyclableInputAuth.vue';
 
 export default {
   name: 'Homepage',
   components : {
-      News,Contribution,Forum,Input
+      News,Contribution,Forum,Input,RecyclableInputAuth 
   }, data() {
     return {
-      popup:false
+      popup:false,
+      checkpopup:false,
       
     }
   }, methods:{
     changed:function(){
       this.popup = true
     }, 
+    changed_2:function(){
+      this.checkpopup = true
+    },
     SubmitTrip: function() {
       alert(3);
       this.popup = false
@@ -134,6 +143,35 @@ export default {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.button-3 {
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:80%;
+  margin-left:10%;
+  margin-top: 10%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10gpx;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
+  
+}
+.button-3:hover {background-color: #FFFFF0}
+
+.button-3:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 #news {
   float:left;
   margin-left:-0.5%;
@@ -149,10 +187,10 @@ export default {
 }
 #contribution {
   float:right;
-  margin-right:3%;
-  margin-top:100px;
   height:700px;
   width:25%;
+  margin-top:18%;
+  margin-right:3%;
   border-radius:30px;
   background-color:#57A890;
 }
