@@ -19,7 +19,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .footer {
-  background: url(../assets/footer_background.png);
+  background: url(../../assets/footer_background.png);
   margin: 0;
   background-size:1530px 80px;
 }

@@ -23,7 +23,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #background {
-  background: url(../assets/RecycleBg.png);
+  background: url(../../assets/RecycleBg.png);
   width: 100vw;
   height: 100vh;
   background-size:1530px 860px;

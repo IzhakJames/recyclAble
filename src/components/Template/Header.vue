@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <img class="logo" :src="require(`../assets/MainLogo.png`)"/>
+      <img class="logo" :src="require(`../../assets/MainLogo.png`)"/>
       <h1 >{{ msg }}</h1>
       <div id="link">
         <router-link to="/signup" exact v-if="loggedOut">Sign Up</router-link>

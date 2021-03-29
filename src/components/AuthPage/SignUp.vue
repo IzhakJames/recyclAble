@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import database from "../firebase.js";
+import database from "../../firebase.js";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -98,7 +98,7 @@ button {
 }
 
 #background {
-  background: url(../assets/RecycleBg.png);
+  background: url(../../assets/RecycleBg.png);
   width: 100vw;
   height: 100vh;
   background-size: cover;
