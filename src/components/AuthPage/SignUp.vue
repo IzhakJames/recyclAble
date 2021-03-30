@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import database from "../firebase.js";
+import database from "../../firebase.js";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -54,12 +54,10 @@ export default {
               .collection("Users")
               .doc(this.uid)
               .set({
-                userID: this.uid,
                 email: this.email,
                 fullName: this.fullName,
                 password: this.password,
-                points: 0,
-                pointsRedeemed: [],
+                pointsRedeemed: 0,
                 rewardsRedeemed: [],
                 recyclingTripCounter: 0,
                 RecyclingHistory: [],
@@ -100,7 +98,7 @@ button {
 }
 
 #background {
-  background: url(../assets/RecycleBg.png);
+  background: url(../../assets/RecycleBg.png);
   width: 100vw;
   height: 100vh;
   background-size: cover;

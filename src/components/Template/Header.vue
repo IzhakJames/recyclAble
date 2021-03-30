@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <img class="logo" :src="require(`../assets/MainLogo.png`)"/>
+      <img class="logo" :src="require(`../../assets/MainLogo.png`)"/>
       <h1 >{{ msg }}</h1>
       <div id="link">
         <router-link to="/signup" exact v-if="loggedOut">Sign Up</router-link>
@@ -16,6 +16,7 @@
             <router-link to="/home" exact id='nav-content'>Home</router-link></li>
             <li><router-link to="/map" exact id='nav-content'>Map</router-link></li>
             <li><router-link to="/reward" exact id='nav-content'>Rewards</router-link></li>
+            <li><router-link to="/info" exact id='nav-content'>Data</router-link></li>
             <li><router-link to="/contact_us" exact id='nav-content'>Contact Us</router-link></li>
     </ul>
     </nav>

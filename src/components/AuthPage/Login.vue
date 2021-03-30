@@ -64,7 +64,7 @@ button {
   font-size: 100%;
 }
 #background {
-  background: url(../assets/RecycleBg.png);
+  background: url(../../assets/RecycleBg.png);
   width: 100vw;
   height: 100vh;
   background-size: cover;
