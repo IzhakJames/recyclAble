@@ -27,7 +27,7 @@
 <script>
 import News from './News.vue'
 import Contribution from './Contributions.vue'
-import Forum from './Forum.vue'
+import Forum from '../Forum/Forum.vue'
 import Input from './Input.vue'
 
 export default {
