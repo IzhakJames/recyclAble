@@ -13,18 +13,21 @@
                 class="ui right icon input large"
                 :class="{ loading: spinner }"
               >
-                <input
+                <GmapAutocomplete @place_changed="setPlace" />
+                <!-- <input
                   type="text"
                   placeholder="Enter your address"
                   v-model="address"
-                />
+                /> -->
                 <i
                   class="dot circle link icon"
                   v-on:click="locatorButtonPressed"
                 ></i>
               </div>
             </div>
-            <button class="ui button">GO</button>
+            <button type="button" class="ui button" @click="addMarker">
+              GO
+            </button>
           </div>
         </form>
       </div>
@@ -33,13 +36,14 @@
       <GmapMap
         :center="{ lat: this.latitude, lng: this.longitude }"
         :zoom="zoom"
-        style="position: absolute;
-  top: 70px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #57a890; "
-      ></GmapMap>
+        style="position: absolute; top: 70px; right: 0; bottom: 0; left: 0; background-color: #57a890;"
+      >
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          @click="center = m.position"
+      /></GmapMap>
     </section>
   </div>
 </template>
@@ -56,6 +60,9 @@ export default {
       latitude: 1.3521,
       longitude: 103.8198,
       zoom: 12,
+      currentPlace: null,
+      markers: [],
+      places: [],
     };
   },
   methods: {
@@ -110,6 +117,31 @@ export default {
       this.latitude = latitude;
       this.longitude = longitude;
       this.zoom = 16;
+      this.markers = [];
+      const marker = {
+        lat: latitude,
+        lng: longitude,
+      };
+      this.markers.push({ position: marker });
+    },
+    setPlace(place) {
+      this.currentPlace = place;
+      console.log(place);
+    },
+    addMarker() {
+      if (this.currentPlace) {
+        this.markers = [];
+        const marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng(),
+        };
+        this.markers.push({ position: marker });
+        this.places.push(this.currentPlace);
+        this.latitude = this.currentPlace.geometry.location.lat();
+        this.longitude = this.currentPlace.geometry.location.lng();
+        //this.center = marker;
+        this.currentPlace = null;
+      }
     },
   },
 };
