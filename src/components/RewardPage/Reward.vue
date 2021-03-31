@@ -9,9 +9,9 @@
           <div id="bar-box">
           <div id="bar-progress" v-bind:style="{width: Math.floor(this.points / this.nextTierPoints * 100) + '%' }"></div>
               <br>
-          <p v-if="this.tier == 'bronze'">{{40 - this.points}} pts to SILVER TIER >></p>
-          <p v-else-if="this.tier == 'silver'">{{100 - this.points}} pts to GOLD TIER >></p>
-          <p v-else-if="this.tier == 'gold'">{{200 - this.points}} pts to PLATINUM TIER >></p>
+          <p v-if="this.tier == 'bronze'">{{20 - this.points}} pts to SILVER TIER >></p>
+          <p v-else-if="this.tier == 'silver'">{{50 - this.points}} pts to GOLD TIER >></p>
+          <p v-else-if="this.tier == 'gold'">{{100 - this.points}} pts to PLATINUM TIER >></p>
           <p v-else>You have reached PLATINUM TIER </p>
           </div>
           </div>
@@ -123,18 +123,18 @@ export default {
           this.user = doc.data();
           this.points = Math.floor(this.user.recyclingTripCounter / 5);
           this.pointsRemaining = this.points - this.user.pointsRedeemed;
-          if (this.points < 40) {
+          if (this.points < 20) {
             this.tier = "bronze";
-            this.nextTierPoints = 40;
-          } else if (this.points < 100) {
+            this.nextTierPoints = 20;
+          } else if (this.points < 50) {
             this.tier = "silver";
-            this.nextTierPoints = 100;
-          } else if (this.points < 200) {
+            this.nextTierPoints = 50;
+          } else if (this.points < 100) {
             this.tier = "gold";
-            this.nextTierPoints = 200;
+            this.nextTierPoints = 100;
           } else {
             this.tier = "platinum";
-            this.nextTierPoints = 200;
+            this.nextTierPoints = 100;
           }
           } 
           ) 

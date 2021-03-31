@@ -2,7 +2,7 @@
   <div>
     <header>
       <img class="logo" :src="require(`../../assets/MainLogo.png`)" />
-      <h1>{{ msg }}</h1>
+      <router-link to="/"><h1>{{ msg }}</h1></router-link>
       <div id="link">
         <router-link to="/contact_us" exact v-show="loggedOut"
           >Contact Us</router-link
