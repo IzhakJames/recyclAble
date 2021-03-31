@@ -175,13 +175,13 @@ export default {
 #news {
   float:left;
   margin-left:-0.5%;
-  height:400px;
+  height:410px;
   width:70%;
 }
 #forum-content {
   float:left;
-  margin-top:50px;
-    margin-left:-0.5%; 
+  margin-top:60px;
+  margin-left:-0.5%; 
   width:70%;
   height:400px;
 }

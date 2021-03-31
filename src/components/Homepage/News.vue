@@ -79,8 +79,7 @@ export default {
 
 #content{
   border-radius: 10px;
-  padding-top: 1%;
-  height:350px;
+  height:380px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   padding-left:3%;
