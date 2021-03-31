@@ -1,27 +1,36 @@
 <template>
-  <div id = "background">
-       <div id="Header">Recycling Trip Input Form</div>
+  <div>
+      <br>
+       <div id="Header">
+          <h1> RECYCLING TRIP INPUT FORM</h1>
+        </div>
+       <br><br>
        <div id="Content"> 
            <label id="Label-header">RECYCLING LOCATION:</label><br>
-        <vue-dropdown :config="config" @setSelectedOption="setNewSelectedOption($event)"></vue-dropdown>
+        <vue-dropdown id='drop-down' :config="config" @setSelectedOption="setNewSelectedOption($event)"></vue-dropdown>
         <br><br>
           <label id="Label-header">IMAGE OF RECYCLING TRIP:</label><br>
-        <picture-input id="image"
-            ref="pictureInput"
-            width="300" 
-            height="300" 
-            margin="10" 
-            accept="image/jpeg,image/png" 
-            size="10" 
-            button-class="btn"
-            :custom-strings="{
-                upload: '<h1>Bummer!</h1>',
-                drag: 'Drag or upload your image here 😺'
-            }"
-            @change="onChange">
-        </picture-input>
-
-        <button class='button-1' v-on:click="sendTrip();SubmitTrip(); ">SUBMIT</button> 
+     
+         <br>
+        <div id="image-input">
+          <picture-input 
+              ref="pictureInput"
+              width="400" 
+              height="200" 
+              margin="5" 
+              accept="image/jpeg,image/png" 
+              size="1" 
+              button-class="btn"
+              :custom-strings="{
+                  upload: '<h5>Bummer!</h5>',
+                  drag: '<h6>Drag or upload your image here!</h6>'
+              }"
+              @change="onChange">
+          </picture-input>
+        </div>
+         <img class="form-logo" :src="require(`../../assets/form.png`)"/>
+        <img class="form-logo-2" :src="require(`../../assets/form2.png`)"/>
+        <div id="btn-position"><button class='button-1' v-on:click="sendTrip();SubmitTrip(); ">SUBMIT</button> </div>
 
        </div>
   </div>
@@ -143,7 +152,39 @@ export default {
 </script>
 
 <style scoped>
+#btn-position {
+  margin-top:5%;
+  width:30%;
+  margin-left:35%;
 
+}
+.form-logo {
+  float:right;
+  width:36%;
+  margin-right:-8%;
+  margin-top:-13.5%;
+
+  
+}
+
+.form-logo-2 {
+  float:left;
+  width:35%;
+  margin-left:-10%;
+  margin-top:-6%;
+
+  
+  
+}
+#image-input {
+  width:50%;
+  margin-left:25%;
+}
+#drop-down {
+  background-color: lightgray;
+  border-radius:10px;
+  margin-top:5%;
+}
 .button {
   width: 80%;
   height: 8%;
@@ -154,7 +195,7 @@ export default {
   text-align: center;
   text-decoration: none;
   outline: none;
-  background-color: white;
+  background-color: black;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -163,20 +204,19 @@ export default {
 .button:hover {background-color: #FFFFF0}
 
 .button-1 {
-  text-align: center;
   border-radius: 30px;
   border:none;
   padding:7px;
   width:60%;
-  margin-top: 5%;
+  margin-top: 3%;
   display: inline-block;
-  padding: 15px 25px;
+  padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
-  background-color: white;
+  background-color:whitesmoke;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -208,11 +248,11 @@ export default {
 }
 #Label-header {
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 30;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 41px;
-    color:white;
-    text-align: left;
+    color:black;
+    float:left;
 
 
 }
@@ -224,33 +264,24 @@ export default {
     width: 90%;
 
 }
-#Header {
-    margin-left:5%;
-    margin-top:2%;
+#Header  {
+    float:left;
+    margin-left:-2%;
     padding-top:1%;
     padding-bottom:1%;
-    width: 90%;
-    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+    width:50%;
+    background: #57A890;
+    border-radius: 30px;
+    padding:10px;
+   
+}
+#Header h1 {
     border-radius: 30px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size:15px;
-    font-weight:bold;
-
-
-
-}
-#Form {
-  float:right;
-  height:300px;
-  width:50%;
-  border-radius:30px;
-  background-color:#57A890;
-  text-align: center;
-  background: #57A890;
-  border: 10px solid #FFFFFF;
-  box-sizing: border-box;
-  border-radius: 30px;
-
+    font-size:18px;
+    font-weight:500;
+    background-color: white;
+    padding:5px;
 }
 
 </style>

@@ -69,18 +69,16 @@ export default {
 
 #popup {
   float:left;
-  margin-left: 20%;
-  height:800px;
-  width:50%;
-  border-radius:30px;
-  background-color:#57A890;
+  margin-left: 15%;
+  height:600px;
+  width:60%;
   text-align: center;
-  background: #57A890;
-  border: 10px solid #FFFFFF;
+  background:white;
+  border: 25px solid #57A890;
   box-sizing: border-box;
-  border-radius: 30px;
   position: absolute;
   z-index:100;
+  border-radius:10px;
 }
 .button-1 {
   text-align: center;
@@ -212,7 +210,7 @@ export default {
   right: 10px;
   top: -50px;
   width: 32px;
-  height: 32px;
+  height: 55px;
   opacity: 0.3;
   background-color: transparent;
   border-style:none !important;
@@ -225,7 +223,7 @@ export default {
   position: absolute;
   left: 15px;
   content: ' ';
-  height: 33px;
+  height: 20px;
   width: 2px;
   background-color: #333;
   border:0px;

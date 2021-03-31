@@ -207,7 +207,7 @@ input {
     margin: 1% -1% 1% 4%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:16px;
-    font-weight:300;
+    font-weight:500;
 }
 
 #email {
@@ -222,7 +222,7 @@ input {
     margin: 1% -1% 1% 5%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:16px;
-    font-weight:300;
+    font-weight:500;
 }
 
 #detail {
@@ -238,11 +238,10 @@ button {
     margin:2% 0% 0% 78%;
     background: #4776EE;
     border-radius: 20px;
-
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 25px;
     border:none;
     color: #FFFFFF;
