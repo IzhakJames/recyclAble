@@ -125,13 +125,12 @@ export default {
         
     },
       SubmitTrip: function() {
-        
       //Check form validity
       if (this.cat_selected == "") {
         alert("Please select a category!");
         return;
       }
-      if (this.item_selected == "") {
+      if (!this.item_selected || this.item_selected == "") {
         alert("Please select an item!");
         return;
       }
@@ -143,7 +142,6 @@ export default {
         alert("The item you have selected is not recyclable!")
         return;
       }
-
       //Submit data to firebase
       const tripDetails = {
           image: this.image,
