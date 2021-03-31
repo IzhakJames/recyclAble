@@ -1,106 +1,183 @@
 <template>
-  <div id="background">
-    <div id="rectangle">
-      <img
-        src="https://www.todayonline.com/sites/default/files/styles/new_app_article_detail/public/19356685_0.PNG?itok=yph1Myl7"
-        alt="map"
-      />
-    </div>
+  <div>
+    <section
+      class="ui two column centered grid"
+      style="position:relative; z-index:1;"
+    >
+      <div class="column">
+        <form class="ui segment large form" action="">
+          <div class="ui message red" v-show="error">{{ error }}</div>
+          <div class="ui segment">
+            <div class="field">
+              <div
+                class="ui right icon input large"
+                :class="{ loading: spinner }"
+              >
+                <GmapAutocomplete @place_changed="setPlace" />
+                <!-- <input
+                  type="text"
+                  placeholder="Enter your address"
+                  v-model="address"
+                /> -->
+                <i
+                  class="dot circle link icon"
+                  v-on:click="locatorButtonPressed"
+                ></i>
+              </div>
+            </div>
+            <button type="button" class="ui button" @click="addMarker">
+              GO
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section id="map">
+      <GmapMap
+        :center="{ lat: this.latitude, lng: this.longitude }"
+        :zoom="zoom"
+        style="position: absolute; top: 70px; right: 0; bottom: 0; left: 0; background-color: #57a890;"
+      >
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          @click="center = m.position"
+      /></GmapMap>
+    </section>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
-    return {};
+    return {
+      address: "",
+      error: "",
+      spinner: false,
+      latitude: 1.3521,
+      longitude: 103.8198,
+      zoom: 12,
+      currentPlace: null,
+      markers: [],
+      places: [],
+    };
   },
-
-  methods: {},
+  methods: {
+    locatorButtonPressed() {
+      this.spinner = true;
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.getAddressFrom(
+              position.coords.latitude,
+              position.coords.longitude
+            );
+            this.showUserLocationOnTheMap(
+              position.coords.latitude,
+              position.coords.longitude
+            );
+          },
+          () => {
+            this.error =
+              "Locator is unable to find your address. Please type your location manually";
+            this.spinner = false;
+          }
+        );
+      } else {
+        this.spinner = false;
+        console.log("Your browser does not support geolocation API");
+      }
+    },
+    getAddressFrom(lat, long) {
+      axios
+        .get(
+          "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+            lat +
+            "," +
+            long +
+            "&key=AIzaSyDItXXsDiuvckOpC6MylrNTQ8pNWnOT39E"
+        )
+        .then((response) => {
+          if (response.data.error_message) {
+            this.error = response.data.error_message;
+          } else {
+            this.address = response.data.results[0].formatted_address;
+          }
+          this.spinner = false;
+        })
+        .catch((error) => {
+          this.spinner = false;
+          this.error = error.message;
+        });
+    },
+    showUserLocationOnTheMap(latitude, longitude) {
+      this.latitude = latitude;
+      this.longitude = longitude;
+      this.zoom = 16;
+      this.markers = [];
+      const marker = {
+        lat: latitude,
+        lng: longitude,
+      };
+      this.markers.push({ position: marker });
+    },
+    setPlace(place) {
+      this.currentPlace = place;
+      console.log(place);
+    },
+    addMarker() {
+      if (this.currentPlace) {
+        this.markers = [];
+        const marker = {
+          lat: this.currentPlace.geometry.location.lat(),
+          lng: this.currentPlace.geometry.location.lng(),
+        };
+        this.markers.push({ position: marker });
+        this.places.push(this.currentPlace);
+        this.latitude = this.currentPlace.geometry.location.lat();
+        this.longitude = this.currentPlace.geometry.location.lng();
+        //this.center = marker;
+        this.currentPlace = null;
+      }
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  text-align: center;
-  font-family: Roboto;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 35px;
-  line-height: 53px;
-  margin: 2% 0% 0% 0%;
+.ui.button,
+.dot.cirlce.icon {
+  background-color: #ff5a5f;
+  color: white;
 }
 
-p {
-  font-family: Roboto;
-  font-style: italic;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 29px;
-  text-align: center;
-  padding: 5px;
-  margin: 0%;
+.pac-icon {
+  display: none;
 }
 
-#background {
-  height: 95vh;
-  background-color: #57a890;
-  min-width: 1400px;
+.pac-item {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-#rectangle {
-  min-width: 700px;
-  width: 55%;
-  height: 70%;
-  margin: 5% 25%;
-  background: white;
-  border-radius: 30px;
+.pac-item:hover {
+  background-color: white;
+}
+
+.pac-item-query {
+  font-size: 16px;
+}
+
+/* #map {
   position: absolute;
-}
-
-#fname,
-#lname {
-  width: 38%;
-  height: 10%;
-  margin: 1% 5%;
-
-  background: #e9e9e9;
-}
-
-#email {
-  width: 87%;
-  height: 10%;
-  margin: 1% 5%;
-
-  background: #e9e9e9;
-}
-
-#detail {
-  width: 87%;
-  height: 20%;
-  margin: 1% 5%;
-
-  background: #e9e9e9;
-}
-
-button {
-  width: 15%;
-  height: 8%;
-  margin: 2% 0% 0% 78%;
-  background: #4776ee;
-  border-radius: 20px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 25px;
-
-  color: #ffffff;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-}
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #57a890;
+} */
 </style>

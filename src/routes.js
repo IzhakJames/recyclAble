@@ -15,6 +15,6 @@ export default[
     { path: '/contact_us', component: ContactUs},
     { path: '/map', component: Map},
     { path: '/', component: LandingPage},
-    { path: '/info', component: DataPage}
+    { path: '/data', component: DataPage}
 ]
 
