@@ -7,6 +7,8 @@
                 :key="comment.id"
             ></single-comment>
         </div>
+        <toggle-button @change="changed($event)" :value="false" color="#82C7EB" :labels="{checked: 'Hide Username', unchecked: 'Show Username'}" :width="120" />
+
         <hr>
         <div class="reply">
             <div class="avatar">
@@ -28,14 +30,16 @@
 
 <script>
 import singleComment from './SingleComment'
+
     export default {
         name: 'comments',
         components: {
-            singleComment
+            singleComment,
         },
         data() {
             return {
-                reply: ''
+                reply: '',
+                toggled: false
             }
         },
         methods: {
@@ -44,9 +48,13 @@ import singleComment from './SingleComment'
                     this.$emit('submit-comment', this.reply);
                     this.reply = '';
                 }
+            },
+            changed (event) {
+                this.toggled = event.value
+                this.$emit('changed', this.toggled)
             }
         },
-        props: ['comments', 'current_user', 'comments_wrapper_classes']
+        props: ['comments', 'current_user', 'comments_wrapper_classes'],
     }
 </script>
 

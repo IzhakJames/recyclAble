@@ -12,17 +12,20 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
           <div class="comments-stats">
-            <span><i class="fa fa-thumbs-up"></i> {{ likes }}</span>
+            <span><i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i> {{ likes.length }}</span>
             <span><i class="fa fa-comment"></i> {{ comments.length }}</span>
           </div>
 
         </div>
+
         <comments 
           :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
           :comments="comments"
           :current_user="current_user"
           @submit-comment="submitComment"
+          @changed = "hideUsername"
         ></comments>
+
     </div>
 
   </div>
@@ -42,16 +45,16 @@ export default {
   data() {
     return {
       discussion:{},
-      likes: 0,
-      creator: {
-        avatar: 'http://via.placeholder.com/100x100/a74848',
-        user: 'exampleCreator'
-      },
+      likes: [],
       current_user: {
         avatar: 'http://via.placeholder.com/100x100/a74848',
         user: 'exampler'
       },
-      comments: []
+      comments: [],
+      likeThis: false,
+      unlikedThis: true,
+      showUserName: true,
+      currentUsername:""
     }
   },
   methods: {
@@ -64,7 +67,6 @@ export default {
       }
       this.discussion.Comments.push(currComment);
       database.collection("Forum").doc(this.$route.query.discussionId).update(this.discussion).then(() => {});
-
     },
 
     fetchItems: function(){
@@ -72,18 +74,51 @@ export default {
   .then((doc) => {if (doc.exists) {
               this.discussion = doc.data()
               this.comments = this.discussion.Comments
+              this.likes = this.discussion.Likes
+              for (var i = 0; i < this.likes.length; i++) {
+                if (this.current_user.email === this.likes[i]) {
+                  this.likeThis = true;
+                  this.unlikedThis = false;
+                }
+              }
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
         })
       },
+    like: function() {
+      // unliking
+      if(this.likeThis) {
+        for(var i = 0; i < this.likes.length; i++) {
+          if(this.current_user.email === this.likes[i]) {
+            this.likes.splice(i, 1);
+          }
+        }
+      } else if(!this.likeThis) {
+        this.likes.push(this.current_user.email);
+      }
+      var newObj = {
+        Topic: this.discussion.Topic,
+        Likes: this.likes,
+        Comments: this.comments
+      }
+      database.collection("Forum").doc(this.$route.query.discussionId).update(newObj).then(() => {});
 
+      this.likeThis = !this.likeThis;
+      this.unlikedThis = !this.unlikedThis;
+    },
+    hideUsername: function(toggled) {
+      if(toggled) {
+        this.current_user.user = this.currentUsername.charAt(0) + "********" + this.currentUsername.charAt(this.currentUsername.length - 1)
+      } else {
+        this.current_user.user = this.currentUsername
+      }
+    }
   },
   props:{
   },
   created() {
-    this.fetchItems();
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.loggedOut = false;
@@ -92,11 +127,13 @@ export default {
             if (doc.exists) {
               this.thisUser = doc.data();
               this.current_user.user =  doc.data().fullName;
-
+              this.currentUsername =  doc.data().fullName;
+              this.current_user.email = doc.data().email
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
+          this.fetchItems();
         }).catch((error) => {
             console.log("Error getting document:", error);
         });
@@ -151,6 +188,14 @@ hr {
 .post-owner {
   display: flex;
   align-items: center;
+}
+
+.liked {
+  color: blue
+}
+
+.unliked{
+  color:inherit
 }
 
 </style>
