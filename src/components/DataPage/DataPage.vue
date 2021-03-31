@@ -2,15 +2,24 @@
   <div id = "background">
   <br>
   <div id="rectangle">
-    
+    <BarChart></BarChart>
+    <LineChart></LineChart>
+    <StackedBarChart></StackedBarChart>
   </div>
   </div>
 </template>
 
 <script>
+import BarChart from "./BarChart.vue";
+import LineChart from "./LineChart.vue";
+import StackedBarChart from "./StackedBarChart.vue";
 export default {
-
-}
+  components: {
+    BarChart,
+    LineChart,
+    StackedBarChart
+  }
+};
 </script>
 
 <style scoped>
