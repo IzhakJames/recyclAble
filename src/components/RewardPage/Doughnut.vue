@@ -1,6 +1,6 @@
 <template>
 <div>
-    <p id="title">4/5</p>
+    <p id="title">{{this.trip}}/5</p>
  <svg class="progress" width="200" height="250">
 		<circle class="progress__meter" cx="110" cy="130" r="70" stroke-width="14" />
 		<circle class="progress__value" v-bind:style="{strokeDasharray:477.5 - 42.5 * this.trip}" cx="110" cy="130" r="70" stroke-width="14" />

@@ -6,8 +6,26 @@
         </div>
        <br><br>
        <div id="Content"> 
-           <label id="Label-header">RECYCLING LOCATION:</label><br>
-        <vue-dropdown id='drop-down' :config="config" @setSelectedOption="setNewSelectedOption($event)"></vue-dropdown>
+           
+        <div class="dropdown">
+        <label id="Label-header">ITEM CATEGORY:</label>
+        <br><br>
+        <select class="select-css" v-model="cat_selected" v-on:change="handleChange()">
+            <option>Glass</option>
+            <option>Metal</option>
+            <option>Paper</option>
+            <option>Plastic</option>
+            <option>Others</option>
+        </select>
+        </div>
+        <div class="dropdown">
+        <label v-show="this.cat_selected !== ''" id="Label-header">ITEM: </label><br><br>
+        <select class="select-css" v-show="this.cat_selected !== ''" v-model="item_selected">
+            <option v-for="ele in itemOptions" v-bind:key="ele.item" v-bind:value="ele">
+                {{ele.item}}
+            </option>
+        </select>
+        </div>
         <br><br>
           <label id="Label-header">IMAGE OF RECYCLING TRIP:</label><br>
      
@@ -30,7 +48,7 @@
         </div>
          <img class="form-logo" :src="require(`../../assets/form.png`)"/>
         <img class="form-logo-2" :src="require(`../../assets/form2.png`)"/>
-        <div id="btn-position"><button class='button-1' v-on:click="sendTrip();SubmitTrip(); ">SUBMIT</button> </div>
+        <div id="btn-position"><button class='button-1' v-on:click="SubmitTrip();">SUBMIT</button> </div>
 
        </div>
   </div>
@@ -38,7 +56,6 @@
 
 <script>
 import database from '../../firebase.js'
-import VueDropdown from 'vue-dynamic-dropdown'
 import PictureInput from 'vue-picture-input'
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -68,12 +85,16 @@ export default {
                 width: this.width,
                 newCounter:0,
                 newTotal:0
-            }
+            },
+            cat_selected:"",
+            item_selected:"",
+            show:false,
+            data:[],
+            itemOptions:[]
         }
     },
   name: 'Input',
   components: {
-      "vue-dropdown": VueDropdown,
       PictureInput
   },
   mounted() {
@@ -95,20 +116,8 @@ export default {
         this.width = window.innerHeight
     },
 
-    sendTrip () {     
-      const tripDetails = {
-          image: this.image,
-          location: this.config.placeholder    
-      }
-      database.collection
-      database.collection('Temp Trip Form').add(tripDetails).then(() => {});
-
-    },
-
     onChange (image) {
-        console.log('New picture selected!')
         if (image) {
-            console.log('Picture loaded.')
             this.image = image
         } else {
             console.log('FileReader API not supported: use the <form>, Luke!')
@@ -116,25 +125,47 @@ export default {
         
     },
       SubmitTrip: function() {
-      //add to the total trip in the Website 
+        
+      //Check form validity
+      if (this.cat_selected == "") {
+        alert("Please select a category!");
+        return;
+      }
+      if (this.item_selected == "") {
+        alert("Please select an item!");
+        return;
+      }
+      if (this.image == "") {
+        alert("Please upload an image!");
+        return;
+      }
+      if (!this.item_selected.value) {
+        alert("The item you have selected is not recyclable!")
+        return;
+      }
+
+      //Submit data to firebase
+      const tripDetails = {
+          image: this.image,
+          item_category:this.cat_selected,
+          item:this.item_selected.item,
+          datetime:firebase.firestore.Timestamp.now()
+      }
+      database.collection('Temp Trip Form').add(tripDetails).then(() => {});
+
       database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
           this.newTotal=docRef.data().TotalCounter +1
           database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').update({TotalCounter:this.newTotal})
           })  
       //add to the total trip of user
        firebase.auth().onAuthStateChanged(() => {
-        
            var uid = firebase.auth().currentUser.uid;
-           console.log(uid)
            database.collection('Users').doc(uid).get().then((doc) => {
               this.user =  doc.data()
-              console.log(this.user.recyclingTripCounter)
               this.newCounter= this.user.recyclingTripCounter+1
               this.user.recyclingTripCounter = this.newCounter
               database.collection('Users').doc(uid).update(this.user)
         })})
-
-
 
        database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
         this.newTotal=docRef.data().TotalCounter +1
@@ -145,13 +176,61 @@ export default {
         () => {location.reload()}  
                )
 
-      }
+      },
+      fetchItems:function(){
+          database.collection('RecyclableItem').get().then(snapshot => { 
+          snapshot.docs.forEach(doc => {
+            var obj = doc.data()
+            this.data.push(obj);
+          })
+          }) 
+        },
+
+        handleChange:function() {
+            this.itemOptions = [];
+            for (var ele of this.data) {
+                if (ele.category == this.cat_selected) {
+                    this.itemOptions.push(ele);
+                }
+            }
+            this.itemOptions.sort((a,b) => {return (a.item > b.item) ? 1 : -1});
+            this.item_selected = "";
+        }
+        },
+        created() {
+            this.fetchItems();
+        }
 
   }
-}
 </script>
 
 <style scoped>
+.select-css {
+	display: block;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.3;
+	padding: .6em 1.4em .5em .8em;
+	width: 80%;
+    margin-top:10px;
+	box-sizing: border-box;
+	border: 1px solid #aaa;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+  text-align-last: center; 
+  text-align: center;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	background-repeat: no-repeat, repeat;
+	background-position: right .7em top 50%, 0 0;
+	background-size: .65em auto, 100%;
+    opacity:0.6;
+}
+
 #btn-position {
   margin-top:5%;
   width:30%;
