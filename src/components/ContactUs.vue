@@ -175,7 +175,7 @@ input {
   background-color:#f8f8ff;
   height: 580px;
   width: 100%;
-  margin-top: 8%;
+  margin-top: 12%;
   padding-top:5%;
 }
 #right-content {
