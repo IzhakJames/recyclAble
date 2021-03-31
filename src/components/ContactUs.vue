@@ -2,17 +2,22 @@
   <div id = "background">
 
     <div id="rectangle">
-       <br><br>
-          <div id="header">
-            <h1> CONTACT US </h1>
-              
-          </div>
-        <div id='content'>
-            <div id='left-content'>
-               <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application,
+   
+        
+       <br><br>  <br><br>
+          <div id='header'> Contact Us</div>
+    
+  
+            <img class='wave' :src="require(`../assets/wave.png`)"/>
+          
+
+                <div id='description'> 
+            <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application,
                   please feel free to fill up the form below to let us know :)</p>
-              <img  :src="require(`../assets/contactusBG2.gif`)"/>
-            </div>
+                      <img class='logo' :src="require(`../assets/contactusBG2.gif`)"/>
+                    </div>
+              
+          
             <div id='right-content'>
               <br><br> <br><br>
               <label id="fnLabel">First Name:</label>
@@ -30,7 +35,7 @@
               <input v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"><br>
               <button v-on:click="sendQuestion()">Submit</button>
           </div>
-      </div>
+  
   
              
        </div>
@@ -95,45 +100,57 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.wave { 
+  width:47%;
+  border-radius: 30px;
+  margin-top:6.5%;
+
+}
+#description {
+  position:absolute;
+  width:30%;
+  margin-top:-45%;
+  margin-left:10%;
+}
+#description p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size:20px;
+  font-weight: 200;
+}
+.logo{
+  position:absolute;
+  margin-top:10%;
+  width:80%;
+}
+
 #left-content {
+  position:absolute;
   float:left;
   width:35%;
 }
 
 #left-content img {
-  margin-top:13%;
+  margin-top:8%;
   margin-left:20%;
   width:350px;
   height:350px;
 
 }
-#header {
-  width:20%;
-  float:left;
-  margin-left:-1%;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  border-radius:30px;
-  padding:4px;
-  background-color:#57A890;
-}
-#header h1 {
+
+#header  {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: white;
-  margin-top:2%;
+  font-size: 40px;
+  font-weight: 500;
   padding:3px;
   width:90%;
   border-radius:30px;
   margin-left:5%;
+  text-align: center;
+  letter-spacing: 3px; 
   
 }
-#header:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
+
 
 #left-content p {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -142,7 +159,8 @@ export default {
   margin-left:10%;
   font-weight: 400;
   text-align: center;
-  letter-spacing: 3px; 
+  width:80%;
+  letter-spacing: 2px; 
   
 }
 input {
@@ -171,22 +189,24 @@ input {
 }
 
 #content {
-  background-color:#f8f8ff;
+  background-color: #deebdd;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
   height: 580px;
   width: 100%;
-  margin-top: 12%;
+  margin-top: 7%;
   padding-top:5%;
 }
 #right-content {
   background-color:white;
   height: 650px;
-  width: 58%;
+  width: 50%;
   float:right;
-  margin-top:-8%;
+  margin-top:5%;
+  padding-left:1%;
   margin-right:3%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius:10px;
+  border-radius:30px;
 }
 #right-content:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -203,7 +223,7 @@ input {
 #fnLabel, #lnLabel {
     width: 4%;
     height: 10%;
-    margin: 1% -1% 1% 4%;
+    margin: 1% -1% 1% 2%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:16px;
     font-weight:500;
@@ -231,24 +251,29 @@ input {
     background: #E9E9E9;
 }
 
-button { 
-    width: 15%;
-    height: 8%;
-    margin:2% 0% 0% 78%;
-    background: #4776EE;
-    border-radius: 20px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 25px;
-    border:none;
-    color: #FFFFFF;
-}
 
-button:hover {
-  cursor:pointer;
-  background: lightblue;
+button{
+	display: block;
+	width: 25%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+  float:right;
+  margin-right: 8%;
+
+}
+button:hover{
+	background-position: right;
 }
 
 </style>

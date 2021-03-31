@@ -4,11 +4,11 @@
       <img class="logo" :src="require(`../../assets/MainLogo.png`)" />
       <router-link to="/"><h1>{{ msg }}</h1></router-link>
       <div id="link">
-        <router-link to="/contact_us" exact v-show="loggedOut"
-          >Contact Us</router-link
+        <router-link to="/contact_us" exact v-show="loggedOut" id='nav-header'
+          > Contact Us</router-link
         >
-        <router-link to="/signup" exact v-if="loggedOut">Sign Up</router-link>
-        <router-link to="/login" exact v-if="loggedOut">Login</router-link>
+        <router-link to="/signup" id='nav-header' exact v-if="loggedOut"> Sign Up  </router-link>
+        <router-link to="/login"  id='nav-header' exact v-if="loggedOut"> Login</router-link>
         <button class="button" v-else v-on:click="signOut">
           <span>Logout</span>
         </button>
@@ -109,7 +109,14 @@ export default {
   position: relative;
   transition: 0.5s;
 }
+#nav-header {
+  padding: 8px 10px;
+}
 
+#nav-header:hover {
+  background-color:rgb(124, 180, 161);
+  border-radius: 20px;
+}
 .button span:after {
   content: "\00bb";
   position: absolute;
