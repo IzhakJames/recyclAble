@@ -76,7 +76,7 @@ export default {
 #popup {
   float:left;
   margin-left: 15%;
-  height:600px;
+  height:700px;
   width:60%;
   text-align: center;
   background:white;

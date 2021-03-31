@@ -110,7 +110,8 @@ export default {
   transition: 0.5s;
 }
 #nav-header {
-  padding: 8px 10px;
+  padding: 6px 10px;
+  font-size:16px;
 }
 
 #nav-header:hover {
