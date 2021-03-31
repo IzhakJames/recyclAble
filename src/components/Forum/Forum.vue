@@ -9,7 +9,7 @@
           <ul>
               <li v-for="discussion in discussions" :key="discussion.id">
                   <p id="topic">{{discussion.Topic}}</p>
-                  <span id="likes">{{discussion.Likes}} likes</span>
+                  <span id="likes">{{discussion.Likes.length}} likes</span>
                   <span id="comments">{{discussion.Comments.length}} comments</span>
                   <button id="viewDiscussion" v-on:click="viewDiscussion(discussion.id)">View Discussion</button>
             </li>
