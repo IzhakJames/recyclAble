@@ -138,11 +138,11 @@ export default {
 #left-content p {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
-  margin-top:3%;
+  margin-top:4%;
   margin-left:10%;
-  font-weight: 200;
+  font-weight: 400;
   text-align: center;
-  letter-spacing: 4px; 
+  letter-spacing: 3px; 
   
 }
 input {
@@ -170,7 +170,6 @@ input {
   border-radius: 30px;
 }
 
-
 #content {
   background-color:#f8f8ff;
   height: 580px;
@@ -180,8 +179,8 @@ input {
 }
 #right-content {
   background-color:white;
-  height: 680px;
-  width: 55%;
+  height: 650px;
+  width: 58%;
   float:right;
   margin-top:-8%;
   margin-right:3%;

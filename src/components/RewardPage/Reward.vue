@@ -73,7 +73,7 @@
           </div>
        <br>
         <p id = "trip-text"> {{5 - this.user.recyclingTripCounter % 5}} more trips before the next reward point</p>
-        <button id="home-btn" v-on:click="route">Click to return to homepage</button>
+        <button id="home-btn" v-on:click="route">CLICK TO RETURN TO HOMEPAGE</button>
 
       </div>
       </div>

@@ -7,7 +7,9 @@
               <button v-on:click="close()" class="close"></button>
                <Input></Input> 
           </div>
+           <div id = "transparent" v-if="this.checkpopup"></div>
            <div v-if="this.checkpopup" id='popup'>
+             <button v-on:click="close_2()" class="close"></button>
                <recyclable-input-auth></recyclable-input-auth>
           </div>
         <div id='news' >
@@ -48,9 +50,13 @@ export default {
   }, methods:{
     changed:function(){
       this.popup = true
+    },  changed_2:function(){
+      this.checkpopup = true
     }, 
    close: function() {
       this.popup = false
+    },close_2: function() {
+      this.checkpopup = false
     }
   }
 }

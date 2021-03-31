@@ -1,9 +1,16 @@
 <template>
     <div>
-        <p id="title">RECYCLABLE OR NOT?</p>
-        <p id="subtitle">Try our our most unique feature, RECYCLABLE OR NOT? A feature that allows you to find out if your item is recycable approved!</p>  
+        <br>
+        <div id="Header">
+            <h1> RECYCLABLE OR NOT? </h1>
+        </div>
+        <br><br><br><br>
+        <div id="subtitle">
+            Try our our most unique feature, RECYCLABLE OR NOT?
+            A feature that allows you to find out if your item is recycable approved!
+        </div>
         <div class="dropdown">
-        <label>Item Category:</label><br/>
+        <label>Item Category:</label><br><br>
         <select class="select-css" v-model="cat_selected" v-on:change="handleChange()">
             <option>Glass</option>
             <option>Metal</option>
@@ -13,18 +20,20 @@
         </select>
         </div>
         <div class="dropdown">
-        <label v-show="this.cat_selected !== ''">Item: </label><br/>
+        <label v-show="this.cat_selected !== ''">Item: </label><br><br>
         <select class="select-css" v-show="this.cat_selected !== ''" v-model="item_selected">
             <option v-for="ele in itemOptions" v-bind:key="ele.item" v-bind:value="ele">
                 {{ele.item}}
             </option>
         </select>
-        <p v-if="item_selected !== '' && item_selected.value">
-            Your item is recyclable!
-        </p>
-        <p v-if="item_selected !== '' && !item_selected.value">
-            Your item is not recyclable!
-        </p>
+        <div id="can" v-if="item_selected !== '' && item_selected.value">
+           <p> Your item is recyclable!</p>
+            <img class="tick" :src="require(`../../assets/tick.png`)"/>
+        </div>
+        <div id="can" v-if="item_selected !== '' && !item_selected.value">
+            <p>Your item is not recyclable!</p>
+            <img class="tick" :src="require(`../../assets/cross.png`)"/>
+        </div>
         </div>
     </div>
 </template>
@@ -70,24 +79,43 @@ import database from "../../firebase.js";
 </script>
 
 <style scoped>
+#can p {
+     margin-top:30px;
+    font-size:35px;
 
-#title {
-    font-family: Roboto;
-    font-style: italic;
-    font-size: 60px;  
-    width:80%;
-    margin-top:10px;
-    margin-left:10%;
-    color:white;
-    text-align:center;
+}
+.tick {
+    margin-top:1%;
+    width:15%;
+}
+#Header  {
+    float:left;
+    margin-left:-2%;
+    padding-top:1%;
+    padding-bottom:1%;
+    width:50%;
+    background: #57A890;
+    border-radius: 30px;
+    padding:10px;
+   
+}
+#Header h1 {
+    border-radius: 30px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:18px;
+    font-weight:500;
+    background-color: white;
+    padding:5px;
 }
 
 #subtitle {
-    color:white;
-    margin-top:5px;
-    width:90%;
-    margin-left:5%;
+    color:black;
+    width:80%;
+    margin-left:10%;
     text-align:center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:12px;
+    font-weight: 300;
 }
 
 .dropdown:first-of-type {
@@ -95,19 +123,20 @@ import database from "../../firebase.js";
 }
 
 .dropdown {
-    color:white;
     text-align:center;
     margin-bottom:30px;
 }
 
 .dropdown label {
-    font-size:30px;
+    float:left;
+    font-size:18px;
+    margin-top:2%;
+    margin-left:10%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
 }
 
-.dropdown p {
-    margin-top:50px;
-    font-size:35px;
-}
+
 
 .select-css {
 	display: block;
