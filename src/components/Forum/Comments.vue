@@ -7,7 +7,7 @@
                 :key="comment.id"
             ></single-comment>
         </div>
-        <toggle-button @change="changed($event)" :value="false" color="#82C7EB" :labels="{checked: 'Hide Username', unchecked: 'Show Username'}" :width="120" />
+        <span>Hide My Username</span><toggle-button @change="changed($event)" :value="false" color="#82C7EB"/>
 
         <hr>
         <div class="reply">

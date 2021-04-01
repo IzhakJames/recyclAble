@@ -59,8 +59,8 @@ export default {
 <style scoped>
 
 #forum {
-  overflow-y:scroll;
   max-height:400px;
+  margin-left:10px;
 }
 
 #Subheader {
@@ -93,15 +93,21 @@ ul {
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
+    overflow-x:scroll;
+    overflow-y:unset;
+
+
 }
 li {
     flex-grow: 1;
-    flex-basis: 100%;
+    width:300px;
+    height: 200px;
+    flex-basis: 10%;
     text-align: left;
     padding: 10px;
     border: 1px solid #222;
     margin: 10px;
-
+    display: inline;
 }
 
 span {
