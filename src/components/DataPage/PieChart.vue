@@ -1,12 +1,12 @@
 <template>
   <div class="chart">
-    <h2>Total Waste Disposed & Recycled (Mil Tonnes)</h2>
+    <h2>Recycling Trips by Category</h2>
     <Chart id="chart-style"></Chart>
   </div>
 </template>
 
 <script>
-import Chart from "./LineChart.js";
+import Chart from "./PieChart.js";
 export default {
   components: {
     Chart
@@ -28,7 +28,6 @@ export default {
   width:32%;
   margin-left:1%;
   float:left;
-  margin-bottom:10px;
 }
 h2 {
   margin-top: 0;
@@ -36,7 +35,6 @@ h2 {
   color:  #333;
   border-bottom: 1px solid #ccc;
   font-size:17px;
-  
 }
 
 #chart-style {

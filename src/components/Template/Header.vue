@@ -25,7 +25,7 @@
           <router-link to="/reward" exact id="nav-content">Rewards</router-link>
         </li>
         <li>
-          <router-link to="/info" exact id="nav-content">Data</router-link>
+          <router-link to="/data" exact id="nav-content">Data</router-link>
         </li>
         <li>
           <router-link to="/contact_us" exact id="nav-content"

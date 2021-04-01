@@ -144,6 +144,7 @@ export default {
       }
       //Submit data to firebase
       const tripDetails = {
+          uid:firebase.auth().currentUser.uid,
           image: this.image,
           item_category:this.cat_selected,
           item:this.item_selected.item,

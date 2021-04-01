@@ -459,7 +459,7 @@ padding:7px;
 #background {
     width: 100%;
     min-width:1400px;
-    height:1000px;
+    height:970px;
     background: #57A890;
 }
 
