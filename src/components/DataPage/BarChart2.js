@@ -29,15 +29,32 @@ export default {
     },
     methods: {
       fetchItems: function () {
-          var totalItems = {"Glass":0,"Metal":0,"Paper":0,"Plastic":0,"Others":0}
+          var months = {}
+          var currMth = new Date().getMonth()+1
+          var currYear = new Date().getFullYear() - 2000
+          var i;
+          for (i = 11;i>=0;i--) {
+            var nextMth = currMth - i;
+            var nextYear = currYear;
+            if (nextMth < 1) {
+              nextMth = 12 + nextMth;
+              nextYear = currYear - 1;
+            }
+            var string = nextMth + "/" + nextYear
+            months[string] = 0;
+          }
+
           database.collection('Temp Trip Form').get().then(querySnapShot => {
             querySnapShot.forEach(doc => { 
-                var trip = doc.data()
-                totalItems[trip.item_category]++;
+                var trip = doc.data();
+                var month = trip.datetime.toDate().getMonth() + 1;
+                var year = trip.datetime.toDate().getFullYear() - 2000;
+                var dateString = month + "/" + year;
+                months[dateString]++;
             })
-            for (var item of Object.keys(totalItems).sort()) {
+            for (var item of Object.keys(months)) {
               this.datacollection.labels.push(item)
-              this.datacollection.datasets[0].data.push(totalItems[item])
+              this.datacollection.datasets[0].data.push(months[item])
             }
             this.renderChart(this.datacollection, this.options)
           })
