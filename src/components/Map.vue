@@ -14,11 +14,6 @@
                 :class="{ loading: spinner }"
               >
                 <GmapAutocomplete @place_changed="setPlace" />
-                <!-- <input
-                  type="text"
-                  placeholder="Enter your address"
-                  v-model="address"
-                /> -->
                 <i
                   class="dot circle link icon"
                   v-on:click="locatorButtonPressed"
@@ -28,13 +23,19 @@
             <button type="button" class="ui button" @click="addMarker">
               GO
             </button>
+            <button type="button" class="ui button" @click="drawMarkers">
+              E-waste
+            </button>
+            <button type="button" class="ui button" @click="drawRecycling">
+              Recycling
+            </button>
           </div>
         </form>
       </div>
     </section>
     <section id="map">
       <GmapMap
-        :center="{ lat: this.latitude, lng: this.longitude }"
+        :center="center"
         :zoom="zoom"
         style="position: absolute; top: 70px; right: 0; bottom: 0; left: 0; background-color: #57a890;"
       >
@@ -57,12 +58,27 @@ export default {
       address: "",
       error: "",
       spinner: false,
-      latitude: 1.3521,
-      longitude: 103.8198,
+      center: { lat: 1.3521, lng: 103.8198 },
       zoom: 12,
       currentPlace: null,
       markers: [],
       places: [],
+      birdPark: { lat: 1.318728, lng: 103.706452 },
+      home: { lat: 1.3427323447666637, lng: 103.70637582144454 },
+      markerFlag: false,
+      recyclingFlag: false,
+      ewaste: [
+        { position: { lat: 1.3398697505595927, lng: 103.70647666076151 } },
+        { position: { lat: 1.344127, lng: 103.707642 } },
+        { position: { lat: 1.350142, lng: 103.701351 } },
+        { position: { lat: 1.348393, lng: 103.698817 } },
+        { position: { lat: 1.341519, lng: 103.69698 } },
+        { position: { lat: 1.339423358356876, lng: 103.7053711146369 } },
+      ],
+      recycling: [
+        { position: { lat: 1.342613590866828, lng: 103.70742418511506 } },
+        { position: { lat: 1.3433733635314813, lng: 103.70587431879868 } },
+      ],
     };
   },
   methods: {
@@ -105,6 +121,7 @@ export default {
             this.error = response.data.error_message;
           } else {
             this.address = response.data.results[0].formatted_address;
+            console.log(this.address);
           }
           this.spinner = false;
         })
@@ -114,8 +131,7 @@ export default {
         });
     },
     showUserLocationOnTheMap(latitude, longitude) {
-      this.latitude = latitude;
-      this.longitude = longitude;
+      this.center = { lat: latitude, lng: longitude };
       this.zoom = 16;
       this.markers = [];
       const marker = {
@@ -137,10 +153,27 @@ export default {
         };
         this.markers.push({ position: marker });
         this.places.push(this.currentPlace);
-        this.latitude = this.currentPlace.geometry.location.lat();
-        this.longitude = this.currentPlace.geometry.location.lng();
-        //this.center = marker;
+        this.center = marker;
         this.currentPlace = null;
+        this.zoom = 14;
+      }
+    },
+    drawMarkers() {
+      if (!this.markerFlag) {
+        this.markers = this.ewaste;
+        this.markerFlag = true;
+      } else {
+        this.markers = [];
+        this.markerFlag = false;
+      }
+    },
+    drawRecycling() {
+      if (!this.recyclingFlag) {
+        this.markers = this.recycling;
+        this.recyclingFlag = true;
+      } else {
+        this.markers = [];
+        this.recyclingFlag = false;
       }
     },
   },
@@ -171,13 +204,4 @@ export default {
 .pac-item-query {
   font-size: 16px;
 }
-
-/* #map {
-  position: absolute;
-  top: 70px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #57a890;
-} */
 </style>
