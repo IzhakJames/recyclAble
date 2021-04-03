@@ -27,8 +27,12 @@
               E-waste
             </button>
             <button type="button" class="ui button" @click="drawRecycling">
-              Recycling
+              General Recycling
             </button>
+            <button type="button" class="ui button" @click="drawLighting">
+              Lighting-waste
+            </button>
+            <div class="loader" v-show="load"></div>
           </div>
         </form>
       </div>
@@ -51,6 +55,7 @@
 
 <script>
 import axios from "axios";
+import database from "../firebase.js";
 
 export default {
   data() {
@@ -63,22 +68,10 @@ export default {
       currentPlace: null,
       markers: [],
       places: [],
-      birdPark: { lat: 1.318728, lng: 103.706452 },
-      home: { lat: 1.3427323447666637, lng: 103.70637582144454 },
       markerFlag: false,
       recyclingFlag: false,
-      ewaste: [
-        { position: { lat: 1.3398697505595927, lng: 103.70647666076151 } },
-        { position: { lat: 1.344127, lng: 103.707642 } },
-        { position: { lat: 1.350142, lng: 103.701351 } },
-        { position: { lat: 1.348393, lng: 103.698817 } },
-        { position: { lat: 1.341519, lng: 103.69698 } },
-        { position: { lat: 1.339423358356876, lng: 103.7053711146369 } },
-      ],
-      recycling: [
-        { position: { lat: 1.342613590866828, lng: 103.70742418511506 } },
-        { position: { lat: 1.3433733635314813, lng: 103.70587431879868 } },
-      ],
+      lightingFlag: false,
+      load: false,
     };
   },
   methods: {
@@ -160,7 +153,19 @@ export default {
     },
     drawMarkers() {
       if (!this.markerFlag) {
-        this.markers = this.ewaste;
+        this.load = true;
+        database
+          .collection("Locations")
+          .get()
+          .then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+              if (doc.data().category === "ewaste") {
+                console.log(doc.data());
+                this.markers.push({ position: doc.data().position });
+              }
+            });
+            this.load = false;
+          });
         this.markerFlag = true;
       } else {
         this.markers = [];
@@ -169,11 +174,44 @@ export default {
     },
     drawRecycling() {
       if (!this.recyclingFlag) {
-        this.markers = this.recycling;
+        this.load = true;
+        database
+          .collection("Locations")
+          .get()
+          .then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+              if (doc.data().category === "general") {
+                console.log(doc.data());
+                this.markers.push({ position: doc.data().position });
+              }
+            });
+            this.load = false;
+          });
         this.recyclingFlag = true;
       } else {
         this.markers = [];
         this.recyclingFlag = false;
+      }
+    },
+    drawLighting() {
+      if (!this.lightingFlag) {
+        this.load = true;
+        database
+          .collection("Locations")
+          .get()
+          .then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+              if (doc.data().category === "lightingwaste") {
+                console.log(doc.data());
+                this.markers.push({ position: doc.data().position });
+              }
+            });
+            this.load = false;
+          });
+        this.lightingFlag = true;
+      } else {
+        this.markers = [];
+        this.lightingFlag = false;
       }
     },
   },
@@ -203,5 +241,23 @@ export default {
 
 .pac-item-query {
   font-size: 16px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
