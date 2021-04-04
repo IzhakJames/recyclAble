@@ -6,6 +6,7 @@ import ContactUs from './components/ContactUs.vue'
 import Map from './components/Map.vue'
 import LandingPage from './components/LandingPage/LandingPage.vue'
 import DataPage from './components/DataPage/DataPage.vue'
+import Discussion from './components/Forum/DiscussionApp.vue'
 
 export default[
     { path: '/signup', component: SignUp},
@@ -15,6 +16,7 @@ export default[
     { path: '/contact_us', component: ContactUs},
     { path: '/map', component: Map},
     { path: '/', component: LandingPage},
-    { path: '/data', component: DataPage}
+    { path: '/data', component: DataPage},
+    { path: '/discussion', component: Discussion}
 ]
 

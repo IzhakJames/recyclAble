@@ -33,7 +33,7 @@
 <script>
 import News from './News.vue'
 import Contribution from './Contributions.vue'
-import Forum from './Forum.vue'
+import Forum from '../Forum/Forum.vue'
 import Input from './Input.vue'
 import RecyclableInputAuth from './RecyclableInputAuth.vue';
 
@@ -180,7 +180,7 @@ export default {
 }
 #forum-content {
   float:left;
-  margin-top:60px;
+  margin-top:100px;
   margin-left:-0.5%; 
   width:70%;
   height:400px;

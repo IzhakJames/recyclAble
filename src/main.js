@@ -6,6 +6,9 @@ import axios from "axios"
 import firebase from "firebase/app";
 import "firebase/auth";
 import * as VueGoogleMaps from 'vue2-google-maps';
+import ToggleButton from 'vue-js-toggle-button'
+Vue.use(ToggleButton)
+
 
 Vue.use(VueGoogleMaps, {
   load: {
