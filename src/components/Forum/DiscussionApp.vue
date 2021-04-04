@@ -1,14 +1,17 @@
 <template>
  <div id="Outerpage" >
     <div id="Innerpage" >
-      <!-- <div class='header'>
+      <div class='header'>
+        <img class="likes-img" :src="require(`../../assets/RecycleBg.png`)"/>
          <h3> recyclABLE Forum Discussion</h3>
          <p> Aiming to connect environmentally-conscious people</p> 
-      </div> -->
+      </div>
+      <br>
        <div class="topic">
             <h3> Discussion Topic: {{this.discussion.Topic}} </h3>
           
         </div>
+        
         <div id="likes">
           {{discussion.Likes.length}} likes   
           <i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i>
@@ -16,13 +19,16 @@
           <i class="fa fa-comment"></i> 
         </div>
         <hr>
-        <comments 
-          :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
-          :comments="comments"
-          :current_user="current_user"
-          @submit-comment="submitComment"
-          @changed = "hideUsername"
-        ></comments>
+        <div id="comment">Comments</div>
+     
+          <comments 
+            :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
+            :comments="comments"
+            :current_user="current_user"
+            @submit-comment="submitComment"
+            @changed = "hideUsername"
+          ></comments>
+       
         
 
  
@@ -160,12 +166,30 @@ export default {
 </script>
 
 <style>
-.header img {
-  width:10%;
-}
 
+.header img {
+  width:20%;
+  float:left;
+  margin-left:5%;
+
+}
+.header h3 {
+  text-align: center;
+  padding-top: 2%;
+  margin-left: 15%;
+  float:left;
+  font-size:30px;
+  font-weight: 200;
+}
+.header p {
+  text-align: center;
+  margin-left: 15%;
+  float:left;
+}
 .topic {
   height:100px;
+  margin-top:8%;
+  
 }
 #likes {
  float:right;
@@ -177,6 +201,8 @@ export default {
   padding-top:4%;
   float:left;
   margin-left:5%;
+font-weight: 400;
+  font-size:18px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 

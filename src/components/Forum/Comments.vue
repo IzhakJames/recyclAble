@@ -68,7 +68,7 @@ import singleComment from './SingleComment'
     padding-top: 0;
 }
 .comments-wrapper {
-    max-height: 500px;
+    max-height: 420px;
     overflow-y: auto;
     padding-right: 10px;
 }

@@ -1,5 +1,6 @@
 <template>
     <div class="comment">
+     
         <div class="avatar">
             <img :src="comment.avatar" alt="">
         </div>
