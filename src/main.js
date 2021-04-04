@@ -5,11 +5,10 @@ import Routescomp from './routes.js'
 import axios from "axios"
 import firebase from "firebase/app";
 import "firebase/auth";
-<<<<<<< HEAD
+import * as VueGoogleMaps from 'vue2-google-maps';
 import ToggleButton from 'vue-js-toggle-button'
 Vue.use(ToggleButton)
-=======
-import * as VueGoogleMaps from 'vue2-google-maps';
+
 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -17,7 +16,6 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places',
   }
 })
->>>>>>> origin/main
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false

@@ -7,7 +7,7 @@
                 :key="comment.id"
             ></single-comment>
         </div>
-        <span>Hide My Username</span><toggle-button @change="changed($event)" :value="false" color="#82C7EB"/>
+        <span id="username">Hide My Username</span><toggle-button @change="changed($event)" :value="false" color="#82C7EB"/>
 
         <hr>
         <div class="reply">
@@ -59,13 +59,16 @@ import singleComment from './SingleComment'
 </script>
 
 <style scoped>
+#username {
+    padding-right:1%;
+}
 .comments {
     margin-top: 20px;
     padding: 20px;
     padding-top: 0;
 }
 .comments-wrapper {
-    max-height: 250px;
+    max-height: 500px;
     overflow-y: auto;
     padding-right: 10px;
 }
@@ -93,12 +96,20 @@ import singleComment from './SingleComment'
 /* Reply component */
 .reply {
     display: flex;
-    position: relative;
+    padding: 10px;
+    margin-bottom: 15px;
     align-items: center;
-    background-color: #EBEBEB;
-    border-radius: 30px;
-    padding: 5px 10px;
-    overflow: hidden;
+    color: #333;
+    background-color:whitesmoke;
+    border-radius: 5px;
+    height:100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding-left:3%;
+    padding-right:4%;
+}
+.reply:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .reply .avatar {
     position: absolute;

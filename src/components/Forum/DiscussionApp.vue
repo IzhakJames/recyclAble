@@ -1,23 +1,21 @@
 <template>
-  <div id="app">
-    <div class="comments-outside">
-      <div class="comments-header">
-            <div class="post-owner">
-            <div class="topic">
-              {{this.discussion.Topic}}
-            </div>
-          </div>
-          <link rel="stylesheet" 
-        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
-        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
-        crossorigin="anonymous">
-          <div class="comments-stats">
-            <span><i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i> {{ likes.length }}</span>
-            <span><i class="fa fa-comment"></i> {{ comments.length }}</span>
-          </div>
-
+ <div id="Outerpage" >
+    <div id="Innerpage" >
+      <!-- <div class='header'>
+         <h3> recyclABLE Forum Discussion</h3>
+         <p> Aiming to connect environmentally-conscious people</p> 
+      </div> -->
+       <div class="topic">
+            <h3> Discussion Topic: {{this.discussion.Topic}} </h3>
+          
         </div>
-
+        <div id="likes">
+          {{discussion.Likes.length}} likes   
+          <i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i>
+          {{ comments.length }}
+          <i class="fa fa-comment"></i> 
+        </div>
+        <hr>
         <comments 
           :comments_wrapper_classes="['custom-scrollbar', 'comments-wrapper']"
           :comments="comments"
@@ -25,10 +23,25 @@
           @submit-comment="submitComment"
           @changed = "hideUsername"
         ></comments>
+        
 
-    </div>
+ 
+  
+         
+          <link rel="stylesheet" 
+        href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
+        crossorigin="anonymous">
+       
 
-  </div>
+  
+
+
+   
+     </div>
+      </div>
+
+ 
 </template>
 
 <script>
@@ -147,6 +160,42 @@ export default {
 </script>
 
 <style>
+.header img {
+  width:10%;
+}
+
+.topic {
+  height:100px;
+}
+#likes {
+ float:right;
+ margin-right:5%;
+ margin-top:-1%;
+
+}
+.topic h3{
+  padding-top:4%;
+  float:left;
+  margin-left:5%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#Innerpage {
+  width: 90%;
+  height: 920px;
+  margin:0px 5%;
+  background: white;
+  border-radius: 30px;
+
+}
+
+#Outerpage {
+    padding-top:1.5%;
+    width: 100%;
+    min-width:1400px;
+    height:970px;
+    background: #57A890;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -184,10 +233,6 @@ hr {
 }
 .comments-header .comments-stats span {
   margin-left: 10px;
-}
-.post-owner {
-  display: flex;
-  align-items: center;
 }
 
 .liked {

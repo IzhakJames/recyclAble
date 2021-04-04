@@ -21,12 +21,19 @@
 .comment {
     display: flex;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     align-items: center;
     color: #333;
-    background-color: #F2F2F2;
-    border-radius: 30px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    background-color:whitesmoke;
+    border-radius: 5px;
+    height:100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding-left:3%;
+    padding-right:4%;
+}
+.content:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .comment .avatar {
     align-self: flex-start;

@@ -4,16 +4,26 @@
         <div id="Header">
             <div id="Subheader"> FORUM </div>
         </div> 
-        <div id="forum_content">
-          <div>Trending Topics</div>  
-          <ul>
-              <li v-for="discussion in discussions" :key="discussion.id">
-                  <p id="topic">{{discussion.Topic}}</p>
-                  <span id="likes">{{discussion.Likes.length}} likes</span>
-                  <span id="comments">{{discussion.Comments.length}} comments</span>
-                  <button id="viewDiscussion" v-on:click="viewDiscussion(discussion.id)">View Discussion</button>
-            </li>
-          </ul>
+        <div class ='scroller'>
+            <div v-for="discussion in discussions" :key="discussion.id">
+              <div id='news-card'>
+                <div id='content'>
+                  <br>
+                  <p>Topic </p>
+                  <h4>{{discussion.Topic}}</h4>
+                  <hr>
+                  <span id="likes">{{discussion.Likes.length}} likes   
+                    <img class="likes-img" :src="require(`../../assets/likes.png`)"/>
+                  </span>
+
+                  <span id="comments">{{discussion.Comments.length}} comments
+                     <img class="comment-img" :src="require(`../../assets/comment.png`)"/>
+                  </span>
+               
+                  <button  v-on:click="viewDiscussion(discussion.id)">View Discussion</button>
+                </div>
+              </div>
+          </div>
         </div>
   </div>
 </template>
@@ -57,7 +67,12 @@ export default {
 </script>
 
 <style scoped>
-
+.likes-img {
+  width:5%;
+}
+.comment-img {
+  width:5%;
+}
 #forum {
   max-height:400px;
   margin-left:10px;
@@ -88,28 +103,44 @@ export default {
      font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding: 0;
-    overflow-x:scroll;
-    overflow-y:unset;
-
-
-}
-li {
-    flex-grow: 1;
-    width:300px;
-    height: 200px;
-    flex-basis: 10%;
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #222;
-    margin: 10px;
-    display: inline;
+.scroller {
+  display: flex;
+  flex-wrap: no-wrap;
+  overflow-x: auto;
+  margin: 20px;
+  padding-left:1%;
 }
 
+#content{
+  border-radius: 10px;
+  height:2450px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding-left:3%;
+  padding-right:4%;
+}
+
+
+#content:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+#content h4 {
+  margin-top:-5%;
+  padding-bottom:1%;
+}
+#content p {
+  font-size:18px;
+  font-weight:500
+
+}
+
+
+#news-card {
+  display: inline-block;
+  width: 350px;
+  padding: 10px; 
+
+}
 span {
   margin-right:10px;
 }
@@ -125,6 +156,7 @@ button {
   padding: 10px 25px;
   font-size: 10px;
   cursor: pointer;
+  padding-top:6%;
   text-align: center;
   text-decoration: none;
   outline: none;

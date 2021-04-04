@@ -180,7 +180,7 @@ export default {
 }
 #forum-content {
   float:left;
-  margin-top:60px;
+  margin-top:100px;
   margin-left:-0.5%; 
   width:70%;
   height:400px;
