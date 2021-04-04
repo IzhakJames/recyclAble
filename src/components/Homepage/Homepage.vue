@@ -1,11 +1,16 @@
 <template>
-    <div id="Homepage">
-
+    <div id="Homepage" >
+      <div id = "transparent" v-if="this.popup"></div>
        <div id="Innerpage">
        <br><br>
         <div v-if="this.popup" id='popup'>
+              <button v-on:click="close()" class="close"></button>
                <Input></Input> 
-              <button class='button-1' v-on:click="SubmitTrip()">SUBMIT</button> 
+          </div>
+           <div id = "transparent" v-if="this.checkpopup"></div>
+           <div v-if="this.checkpopup" id='popup'>
+             <button v-on:click="close_2()" class="close"></button>
+               <recyclable-input-auth></recyclable-input-auth>
           </div>
         <div id='news' >
             <News></News> 
@@ -13,7 +18,8 @@
         <div id='contribution'>
             <contribution> </contribution>
             <button class='button-2'  v-on:click="changed()">CLICK TO INPUT TRIP </button>
-  
+              <button class='button-3'  v-on:click="changed_2()"> RECYCLABLE OR NOT? </button>
+        
         </div>
         <div id='forum-content'> 
           <forum></forum>
@@ -29,23 +35,28 @@ import News from './News.vue'
 import Contribution from './Contributions.vue'
 import Forum from '../Forum/Forum.vue'
 import Input from './Input.vue'
+import RecyclableInputAuth from './RecyclableInputAuth.vue';
 
 export default {
   name: 'Homepage',
   components : {
-      News,Contribution,Forum,Input
+      News,Contribution,Forum,Input,RecyclableInputAuth 
   }, data() {
     return {
-      popup:false
+      popup:false,
+      checkpopup:false,
       
     }
   }, methods:{
     changed:function(){
       this.popup = true
+    },  changed_2:function(){
+      this.checkpopup = true
     }, 
-    SubmitTrip: function() {
+   close: function() {
       this.popup = false
-
+    },close_2: function() {
+      this.checkpopup = false
     }
   }
 }
@@ -53,20 +64,27 @@ export default {
 
 <style scoped>
 
+#transparent {
+  z-index:99;
+  position:absolute;
+  width:100%;
+  height:130%;
+  background-color:white;
+  opacity:0.8;
+}
 
 #popup {
   float:left;
-  margin-left: 20%;
-  height:400px;
-  width:50%;
-  border-radius:30px;
-  background-color:#57A890;
+  margin-left: 15%;
+  height:700px;
+  width:60%;
   text-align: center;
-  background: #57A890;
-  border: 10px solid #FFFFFF;
+  background:white;
+  border: 25px solid #57A890;
   box-sizing: border-box;
-  border-radius: 30px;
   position: absolute;
+  z-index:100;
+  border-radius:10px;
 }
 .button-1 {
   text-align: center;
@@ -125,25 +143,54 @@ export default {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.button-3 {
+  text-align: center;
+  border-radius: 30px;
+  border:none;
+  padding:7px;
+  width:80%;
+  margin-left:10%;
+  margin-top: 10%;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 10gpx;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-weight:bold;
+  
+}
+.button-3:hover {background-color: #FFFFF0}
+
+.button-3:active {
+  background-color: #FFFFF0 ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 #news {
   float:left;
   margin-left:-0.5%;
-  height:400px;
+  height:410px;
   width:70%;
 }
 #forum-content {
   float:left;
-  margin-top:50px;
-    margin-left:-0.5%; 
+  margin-top:60px;
+  margin-left:-0.5%; 
   width:70%;
   height:400px;
 }
 #contribution {
   float:right;
-  margin-right:3%;
-  margin-top:200px;
   height:700px;
   width:25%;
+  margin-top:18%;
+  margin-right:3%;
   border-radius:30px;
   background-color:#57A890;
 }
@@ -160,7 +207,45 @@ export default {
     padding-top:1.5%;
     width: 100%;
     min-width:1400px;
-    height:1000px;
+    height:970px;
     background: #57A890;
 }
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: -50px;
+  width: 32px;
+  height: 55px;
+  opacity: 0.3;
+  background-color: transparent;
+  border-style:none !important;
+}
+.close:hover {
+  border-style:none;
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #333;
+  border:0px;
+}
+
+.close:active {
+  border:0px;
+}
+
+.close:before {
+  border:0px;
+  transform: rotate(45deg);
+
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
 </style>

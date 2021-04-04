@@ -5,7 +5,7 @@
             <div id="Subheader"> RECENT NEWS </div>
         </div> 
         <div class ='scroller' >
-          <div v-for= "news in articles[0]" :key="news.source.id" >
+          <div v-for= "news in articles" :key="news.source.id" >
               <div id='news-card'>
                 <div id='content'>
                   <h3> {{news.title}}</h3>
@@ -15,7 +15,6 @@
                   <p> {{news.description}} </p> 
                   <a  id='newslink' v-bind:href="news.url"> MORE >> </a> 
                 </div>
-                
                
               </div>
       
@@ -28,7 +27,9 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import database from '../../firebase.js'
+
 export default {
   data() {
     return {
@@ -41,21 +42,24 @@ export default {
  
   }, 
   methods: {
-   
-    fetchData : function(){
-      axios.get("http://newsapi.org/v2/everything?domains=channelnewsasia.com&q=recycling&apiKey=95b5a7d7204e43a89a0daa2c06938374")
-      .then(response=>{
-
-           console.log(response.data)
-           this.articles.push(response.data.articles.slice(1,8))
-
+  //  Only able to scrap using localhost so we will store it in firestore and refresh 
+  //   fetchData : function(){
+  //     axios.get("https://newsapi.org/v2/everything?domains=channelnewsasia.com&q=recycling&apiKey=95b5a7d7204e43a89a0daa2c06938374")
+  //     .then(response=>{
+  //          for (var item of response.data.articles.slice(1,8)) {
+  //            database.collection('News').add(item);
+  //          }
+  //         })
+  // }
+    fetchData : function() {
+      database.collection('News').get().then(snapshot => { 
+          snapshot.docs.forEach(doc => {
+            this.articles.push(doc.data());
           })
-          
- 
-  }
+        })
+    }
   },
-   mounted(){
-       // console.log('Do I come here')
+   created(){
         this.fetchData()
 }}
 </script>
@@ -75,8 +79,7 @@ export default {
 
 #content{
   border-radius: 10px;
-  padding-top: 1%;
-  height:350px;
+  height:380px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   padding-left:3%;
