@@ -1,6 +1,10 @@
 <template>
   <div id = "background">
     <br>
+    <div v-if="this.popup" id='popup'>
+      <button v-on:click="close()" class="close">X</button>
+      <Input v-bind:code="code"></Input> 
+    </div>
     <div id="rectangle">
       <div id="top-row">
           <img v-if="this.tier != ''" id="tier-logo" :src="require(`../../assets/${this.tier}.png`)"/>
@@ -51,7 +55,8 @@
           </div>
 
         <div v-else class="reward-box">
-          <div class="reward" v-for="voucher in this.user.rewardsRedeemed" v-bind:key="voucher.name">
+          <div v-for="voucher in this.user.rewardsRedeemed" v-bind:key="voucher.name">
+            <div class="reward" v-if="voucher.count > 0">
                 <img class="logo" :src="require(`../../assets/${voucher.name}.png`)"/>
                 <div class="voucher">
                   ${{voucher.value}} SHOPPING VOUCHER
@@ -59,9 +64,10 @@
                 </div>
                 <div class="redeem-box">
                 <p class="point">QTY: {{voucher.count}}</p>
-                <button class="collect-btn">REDEEM</button>
+                <button class="collect-btn" v-on:click="voucherRedeem(voucher)">REDEEM</button>
                 </div>
               </div>
+          </div>
 
         </div>
       
@@ -86,6 +92,7 @@
 import database from '../../firebase.js'
 import firebase from "firebase/app";
 import "firebase/auth";
+import Input from './Input.vue'
 import Doughnut from './Doughnut.vue';
 
 export default {
@@ -97,11 +104,14 @@ export default {
       points:0,
       pointsRemaining:0,
       nextTierPoints:0,
-      tier:""
+      tier:"",
+      popup:false,
+      code:""
     }
   },
   components: {
-    Doughnut
+    Doughnut,
+    Input
   }
   ,methods : {
      route:function(){
@@ -160,8 +170,23 @@ export default {
           } else {
             alert("Insufficient points to redeem voucher");
           }
-
-        }
+        },
+        voucherRedeem:function(voucher) {
+          database.collection('Voucher').doc(voucher.voucherID).get().then(
+            doc => {
+              this.code = doc.data().codes[0]
+              this.popup = true
+              var index = this.user.rewardsRedeemed.indexOf(voucher);
+              this.user.rewardsRedeemed[index].count--;
+              var uid = firebase.auth().currentUser.uid;
+              database.collection('Users').doc(uid).update({rewardsRedeemed:this.user.rewardsRedeemed})
+              database.collection('Voucher').doc(voucher.voucherID).update({codes:doc.data().codes.slice(1)})
+            }
+          )
+        }, 
+   close: function() {
+      this.popup = false
+    }
   },
     created(){
       this.fetchItems()  
@@ -173,6 +198,32 @@ export default {
 <style scoped>
 
 /* Set the sizes of the elements that make up the progress bar */
+#popup {
+  float:left;
+  margin-top:350px;
+  margin-left: 35%;
+  height:150px;
+  width:30%;
+  text-align: center;
+  background:white;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  position: absolute;
+  z-index:100;
+  border-radius:10px;
+  min-width:400px;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  width: 32px;
+  font-size:20px;
+  height: 55px;
+  background-color: transparent;
+  border-style:none !important;
+}
 
 .user {
   width:70px;
