@@ -165,7 +165,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .header img {
   width:20%;
