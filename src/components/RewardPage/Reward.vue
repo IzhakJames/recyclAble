@@ -249,16 +249,11 @@ margin-top:60px;
 }
 
 #home-btn {
-  text-align: center;
-  border-radius: 30px;
   border:none;
-  padding:7px;
   width:80%;
-  margin-left:10%;
   margin-top: 10%;
   display: inline-block;
   padding: 15px 25px;
-  font-size: 10gpx;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -287,14 +282,6 @@ text-align: center;
 color:white;
 }
 
-#trip-box {
-  margin-top:10px;
-  border-radius:20px;
-  height:350px;
-  width:80%;
-  margin-left:10%;
-  background:white;
-}
 
 
 #trip-title {
@@ -422,7 +409,6 @@ padding:7px;
 
 #right-box {
   float:right;
-  margin-top:-0.5%;
   margin-right:3%;
   height:700px;
   width:25%;
