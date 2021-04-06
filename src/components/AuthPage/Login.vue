@@ -1,6 +1,6 @@
 <template>
   <div id="background">
-     
+     <br>
       <div id='Innerpage'>
              <div id='description'> 
             <h1> recyclABLE</h1>
@@ -72,12 +72,14 @@ export default {
 
 }
 #description {
-  max-width: 400px;
+
   width:30%;
   margin-left:12%;
   float:left;
-  margin-top:150px;
- 
+  margin-top:200px;
+
+
+
 }
 #description h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -110,6 +112,7 @@ export default {
   background-size: 1800px;
   background-repeat: no-repeat;
   background-color: white;
+
  
   
 

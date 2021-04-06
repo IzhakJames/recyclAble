@@ -4,7 +4,7 @@
     <div id="rectangle">
    
         
-       <br><br>  <br><br>
+       <br><br>  <br>
           <div id='header'> Contact Us</div>
     
   
@@ -184,7 +184,7 @@ input {
   height: 650px;
   width: 50%;
   float:right;
-  margin-top:100px;
+  margin-top:50px;
   padding-left:1%;
   margin-right:3%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

@@ -2,14 +2,13 @@
 <template>
   <div id="background">
      
-      <div id='Innerpage'>
-          
-           <img class='logo' :src="require(`../../assets/logo.png`)"/> 
-          <img class='wave' :src="require(`../../assets/wave.png`)"/>
-           <div id='description'> 
+     <div id='Innerpage'>
+             <div id='description'> 
             <h1> recyclABLE</h1>
             <p>Your 1 stop Recycling Buddy!</p>
+             <img class='logo' :src="require(`../../assets/logo.png`)"/> 
           </div>
+        
         
           <div id='left-box'>
             <div id='left-content'>
@@ -64,11 +63,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.logo{
+  float:left;
+  margin-top:-5%;
+  width:150%;
+  margin-left:-15%;
+
+}
 #description {
-  position:absolute;
+
   width:30%;
-  margin-top:-50%;
-  margin-left:10%;
+  margin-left:12%;
+  float:left;
+  margin-top:200px;
+
+
+
 }
 #description h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -80,10 +90,6 @@ export default {
   font-size:20px;
   font-weight: 200;
 }
-.logo{
-  position:absolute;
-  margin-top:20%;
-}
 .avatar {
   width:30%;
   margin-left:35%;
@@ -93,8 +99,13 @@ export default {
   width: 90%;
   height: 920px;
   margin:0px 5%;
-  background: white;
   border-radius: 30px;
+  background-image: url("../../assets/loginBg.png");
+  background-size: 1800px;
+  background-repeat: no-repeat;
+  background-color: white;
+ 
+  
 
 }
 #Header {
