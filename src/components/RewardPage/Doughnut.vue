@@ -23,8 +23,8 @@ export default {
   display: inline-block;
   margin: 1rem;
   margin-top:30px;
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height:200px;
   border-radius: 50%;
   background-color: #ebebeb; }
 
@@ -39,7 +39,7 @@ export default {
 
 .progress-circle span {
   font-size: 1.5rem;
-  color: #8b8b8b;
+  color: black;
   position: absolute;
   left: 50%;
   top: 50%;

@@ -60,7 +60,7 @@ import singleComment from './SingleComment'
 
 <style scoped>
 #username {
-    padding-right:1%;
+margin-left:48.5%;
 }
 .comments {
     margin-top: 20px;
@@ -68,7 +68,7 @@ import singleComment from './SingleComment'
     padding-top: 0;
 }
 .comments-wrapper {
-    max-height: 420px;
+    max-height: 400px;
     overflow-y: auto;
     padding-right: 10px;
 }

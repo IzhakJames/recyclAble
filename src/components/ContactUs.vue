@@ -11,7 +11,7 @@
                 <div id='description'> 
             <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application,
                   please feel free to fill up the form below to let us know :)</p>
-                <div class='logo'>  <img  :src="require(`../assets/contactusBG2.gif`)"/> </div>
+              <img  class='logo' :src="require(`../assets/contactusBG2.gif`)"/> 
                     </div>
               
        
@@ -99,14 +99,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.logo {
-  width:100%;
+.logo{
+  float:left;
+  margin-top:10px;
+  width:70%;
+  margin-left:-15%;
 
 }
 
 
 #description {
-
+ max-width: 400px;
   width:30%;
   margin-left:10%;
   float:left;

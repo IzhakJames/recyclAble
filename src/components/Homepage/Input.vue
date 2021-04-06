@@ -231,7 +231,7 @@ export default {
 }
 
 #btn-position {
-  margin-top:5%;
+  margin-top:50px;
   width:30%;
   margin-left:35%;
 

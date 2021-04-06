@@ -85,13 +85,13 @@ import database from "../../firebase.js";
 
 }
 .tick {
-    margin-top:1%;
+    margin-top:5px;
     width:15%;
     max-width: 200px;
 }
 #Header  {
     float:left;
-    margin-left:-2%;
+    margin-left:-1%;
     padding-top:1%;
     padding-bottom:1%;
     width:50%;

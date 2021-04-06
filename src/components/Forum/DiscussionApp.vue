@@ -5,19 +5,20 @@
         <img class="likes-img" :src="require(`../../assets/RecycleBg.png`)"/>
          <h3> recyclABLE Forum Discussion</h3>
          <p> Aiming to connect environmentally-conscious people</p> 
+         <button class='button' v-on:click="route">  <span>Home</span></button>
       </div>
       <br>
        <div class="topic">
             <h3> Discussion Topic: {{this.discussion.Topic}} </h3>
-          
-        </div>
-        
-        <div id="likes">
+             <div id="likes">
           {{discussion.Likes.length}} likes   
           <i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i>
           {{ comments.length }}
           <i class="fa fa-comment"></i> 
         </div>
+          
+        </div>
+       
         <hr>
         <div id="comment">Comments</div>
      
@@ -86,6 +87,10 @@ export default {
       }
       this.discussion.Comments.push(currComment);
       database.collection("Forum").doc(this.$route.query.discussionId).update(this.discussion).then(() => {});
+    },   route:function(){
+        //pass user prop id here
+        this.$router.push({ path: '/home'}
+        )
     },
 
     fetchItems: function(){
@@ -166,42 +171,96 @@ export default {
 </script>
 
 <style scoped>
+.button {
+  
+  border: none;
+  color: #FFFFFF;
+  padding: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  background:#57A890;
+  text-align: center;
+  font-size: 20px;
+  width: 5%;
+  float:right;
+  margin-right:2%;
+  margin-top:10px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
 
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#comment {
+  text-align: center;
+}
+.header {
+  height:150px;
+ 
+
+}
 .header img {
-  width:20%;
+  height:150px;
   float:left;
   margin-left:5%;
+ 
 
 }
 .header h3 {
   text-align: center;
-  padding-top: 2%;
   margin-left: 15%;
   float:left;
+  margin-top:50px;
   font-size:30px;
   font-weight: 200;
 }
 .header p {
-  text-align: center;
-  margin-left: 15%;
+
+  margin-left: -10%;
   float:left;
+  margin-top:100px;
 }
 .topic {
-  height:100px;
-  margin-top:8%;
+  height:90px;
+
   
 }
 #likes {
  float:right;
  margin-right:5%;
- margin-top:-1%;
+ margin-top:50px;
 
 }
 .topic h3{
-  padding-top:4%;
+  margin-top:50px;
   float:left;
-  margin-left:5%;
-font-weight: 400;
+  margin-left: 4%;
+  font-weight: 400;
   font-size:18px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -256,6 +315,7 @@ hr {
   color: #333;
   min-height: 80px;
   font-size: 20px;
+
 }
 .comments-header .comments-stats span {
   margin-left: 10px;

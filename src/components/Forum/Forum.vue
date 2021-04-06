@@ -12,6 +12,7 @@
                   <p>Topic </p>
                   <h4>{{discussion.Topic}}</h4>
                   <hr>
+                  <br>
                   <span id="likes">{{discussion.Likes.length}} likes   
                     <img class="likes-img" :src="require(`../../assets/likes.png`)"/>
                   </span>
@@ -69,9 +70,11 @@ export default {
 <style scoped>
 .likes-img {
   width:5%;
+
 }
 .comment-img {
   width:5%;
+  
 }
 #forum {
   max-height:400px;
@@ -118,6 +121,7 @@ export default {
   transition: 0.3s;
   padding-left:3%;
   padding-right:4%;
+  text-align: center;
 }
 
 

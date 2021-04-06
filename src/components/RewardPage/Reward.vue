@@ -29,8 +29,7 @@
 
                <p>{{this.pointsRemaining}} pts unredeemed </p>
              </h5>
-             <!-- change to button to link to user profile -->
-             <h6> View Profile >> </h6> 
+    
             
           </div>
           <div id="nav-btn">
@@ -75,7 +74,9 @@
       <div id="right-box">
         <div id="trip-title">RECYCLING TRIPS</div>
           <div id="trip-box">
-            <Doughnut v-bind:trip="this.user.recyclingTripCounter % 5"></Doughnut>
+            <div id='chart'>
+              <Doughnut v-bind:trip="this.user.recyclingTripCounter % 5"></Doughnut>
+            </div>
           </div>
        <br>
         <p id = "trip-text"> {{5 - this.user.recyclingTripCounter % 5}} more trips before the next reward point</p>
@@ -198,6 +199,18 @@ export default {
 <style scoped>
 
 /* Set the sizes of the elements that make up the progress bar */
+#trip-box{
+  background-color:white;
+  margin-top:20px;
+  margin-left:10%;
+  width:80%;
+  height:300px;
+  border-radius: 20px;
+}
+#chart {
+  width:50%;
+
+}
 #popup {
   float:left;
   margin-top:350px;
@@ -226,14 +239,16 @@ export default {
 }
 
 .user {
-  width:70px;
-  margin-top:1%;
+  height:60px;
+  margin-top:15px;
   float:left;
   margin-left:5%;
+  margin-right:1%;
 }
 .redeem-box {
   float:right;
   margin-right:5%;
+  
 }
 
 #nav-btn {
@@ -295,8 +310,8 @@ margin-top:60px;
   float:left;
   margin-top:30px;
   margin-left:3%;
-  width:30%;
-  height:70px;
+  height:50px;
+  max-width:150px;
 }
 
 #home-btn {
@@ -429,7 +444,7 @@ padding:7px;
 #point-text p {
   float:left;
   margin-left:25%;
-  margin-top:15%;
+  margin-top:15px;
   font-size:12px;
   font-weight: 100;
 }
@@ -438,21 +453,13 @@ padding:7px;
   float:left;
   font-size:18px;
   margin-left:-2%;
-  margin-top:2%;
+  margin-top:20px;
 }
-#point-text h6{
-  float:right;
-  font-size:14px;
-  margin-right:4%;
-  margin-top:5%;
-  font-weight:400;
-  color:#006400;
-  
-}
+
 #left-box {
   float:left;
   margin-left:5%;
-  margin-top:-0.5px;
+
   height:700px;
   width:60%;
   border-radius:30px;
@@ -483,7 +490,7 @@ padding:7px;
   background-color:green;
   height:20px;
   border-radius:10px;
-  margin-top:3%;
+  margin-top:10px;
   max-width:100%;
 }
 
@@ -491,7 +498,7 @@ padding:7px;
   float:left;
   width:70%;
   margin-right:5%;
-  margin-top:8%;
+  margin-top:100px;
 }
 
 #background {
@@ -519,10 +526,10 @@ padding:7px;
 
 #tier-logo {
   float:left;
-  margin:15px 3% 0% 7%;
+  margin-left:7%;
+  margin-right:3%;
   height: 140px;
-  width: 12%;
-  margin-top:5%;
+  margin-top:80px;
 }
 
 #point-box h1 {
