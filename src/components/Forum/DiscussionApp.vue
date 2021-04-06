@@ -172,7 +172,6 @@ export default {
 
 <style scoped>
 .button {
-  
   border: none;
   color: #FFFFFF;
   padding: 20px;
@@ -184,8 +183,8 @@ export default {
   border: none;
   background:#57A890;
   text-align: center;
-  font-size: 20px;
-  width: 5%;
+  font-size: 14px;
+  width: 8%;
   float:right;
   margin-right:2%;
   margin-top:10px;
