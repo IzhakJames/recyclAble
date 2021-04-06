@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='chart'>
     <chart></chart>
   </div>
 </template>
@@ -14,4 +14,9 @@ export default {
 </script>
 
 <style scoped>
+#chart {
+  width:75%;
+  margin-left:10%;
+  
+}
 </style>

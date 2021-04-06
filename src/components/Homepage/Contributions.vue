@@ -67,47 +67,19 @@ export default {
 
 <style scoped>
 #donut-inner {
-  position:absolute;
   font-Size:30px;
   margin-left:6%;
   text-align:center;
   padding-top:5%;
-  padding-bottom:7%;
+  padding-bottom:1%;
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight:500;
 }
-.button {
-  text-align: center;
-  border-radius: 30px;
-  border:none;
-  padding:7px;
-  width:60%;
-  margin-left:20%;
-  margin-top: 10%;
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  background-color: white;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  font-weight:bold;
-}
-.button:hover {background-color: #FFFFF0}
 
-.button:active {
-  background-color: #FFFFF0 ;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 #Content {
-  margin-top:10px;
+  margin-top:20px;
   border-radius:20px;
-  height:400px;
+  height:450px;
   width:80%;
   margin-left:10%;
   background:white;

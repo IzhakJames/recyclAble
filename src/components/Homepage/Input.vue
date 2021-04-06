@@ -46,8 +46,8 @@
               @change="onChange">
           </picture-input>
         </div>
-         <img class="form-logo" :src="require(`../../assets/form.png`)"/>
-        <img class="form-logo-2" :src="require(`../../assets/form2.png`)"/>
+        <div class="form-logo"> <img :src="require(`../../assets/form.png`)"/> </div>
+         <div class="form-logo-2"> <img  :src="require(`../../assets/form2.png`)"/> </div>
         <div id="btn-position"><button class='button-1' v-on:click="SubmitTrip();">SUBMIT</button> </div>
 
        </div>
@@ -238,21 +238,29 @@ export default {
 }
 .form-logo {
   float:right;
-  width:36%;
-  margin-right:-8%;
-  margin-top:-13.5%;
+  width:20%;
+  margin-right:10%;
+  margin-top:-170px;
+  max-width:200px;
 
-  
+}
+
+.form-logo  img{
+  width:200%;
+
 }
 
 .form-logo-2 {
   float:left;
-  width:35%;
   margin-left:-10%;
-  margin-top:-6%;
-
+  margin-top:-100px;
+  width:20%;
+  max-width:200px;
   
-  
+ 
+}
+.form-logo-2 img { 
+  width:200%;
 }
 #image-input {
   width:50%;
@@ -286,7 +294,7 @@ export default {
   border:none;
   padding:7px;
   width:60%;
-  margin-top: 3%;
+  margin-top: 1px;
   display: inline-block;
   padding: 10px 15px;
   font-size: 16px;
@@ -340,11 +348,12 @@ export default {
     margin-top:2%;
     padding-top:1%;
     width: 90%;
+  
 
 }
 #Header  {
     float:left;
-    margin-left:-2%;
+    margin-left:-1%;
     padding-top:1%;
     padding-bottom:1%;
     width:50%;

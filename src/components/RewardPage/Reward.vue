@@ -302,7 +302,8 @@ margin-top:60px;
 #home-btn {
   border:none;
   width:80%;
-  margin-top: 10%;
+  margin-top: 10px;
+  margin-left:10%;
   display: inline-block;
   padding: 15px 25px;
   cursor: pointer;
@@ -451,7 +452,7 @@ padding:7px;
 #left-box {
   float:left;
   margin-left:5%;
-  margin-top:-0.5%;
+  margin-top:-0.5px;
   height:700px;
   width:60%;
   border-radius:30px;

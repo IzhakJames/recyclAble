@@ -8,16 +8,13 @@
           <div id='header'> Contact Us</div>
     
   
-            <img class='wave' :src="require(`../assets/wave.png`)"/>
-          
-
                 <div id='description'> 
             <p>If you think your item is wrongly classified as recyclable, or if you have any further enquiries related to recycling or our application,
                   please feel free to fill up the form below to let us know :)</p>
-                      <img class='logo' :src="require(`../assets/contactusBG2.gif`)"/>
+                <div class='logo'>  <img  :src="require(`../assets/contactusBG2.gif`)"/> </div>
                     </div>
               
-          
+       
             <div id='right-content'>
               <br><br> <br><br>
               <label id="fnLabel">First Name:</label>
@@ -35,6 +32,7 @@
               <input v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"><br>
               <button v-on:click="sendQuestion()">Submit</button>
           </div>
+      
   
   
              
@@ -100,42 +98,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.wave { 
-  width:47%;
-  border-radius: 30px;
-  margin-top:6.5%;
+
+.logo {
+  width:100%;
 
 }
+
+
 #description {
-  position:absolute;
+
   width:30%;
-  margin-top:-45%;
   margin-left:10%;
+  float:left;
+  margin-top:150px;
+
+
+
 }
 #description p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size:20px;
-  font-weight: 200;
-}
-.logo{
-  position:absolute;
-  margin-top:10%;
-  width:80%;
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+
+  margin-left:-5%;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 2px; 
 }
 
-#left-content {
-  position:absolute;
-  float:left;
-  width:35%;
-}
 
-#left-content img {
-  margin-top:8%;
-  margin-left:20%;
-  width:350px;
-  height:350px;
 
-}
 
 #header  {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -148,27 +139,17 @@ export default {
   margin-left:5%;
   text-align: center;
   letter-spacing: 3px; 
+
   
 }
 
 
-#left-content p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  margin-top:4%;
-  margin-left:10%;
-  font-weight: 400;
-  text-align: center;
-  width:80%;
-  letter-spacing: 2px; 
-  
-}
+
 input {
   border-radius:5px;
   padding:10px;
   border:none;
 }
-
 
 
 
@@ -181,27 +162,26 @@ input {
 }
 
 #rectangle {
-  background: white;
+
   width: 90%;
   height: 920px;
   margin:0px 5%;
   border-radius: 30px;
+  background-image: url("../assets/loginBg.png");
+  background-size: 1800px;
+  background-repeat: no-repeat;
+  background-color: white;
+ 
+
 }
 
-#content {
-  background-color: #deebdd;
-	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
-  height: 580px;
-  width: 100%;
-  margin-top: 7%;
-  padding-top:5%;
-}
+
 #right-content {
   background-color:white;
   height: 650px;
   width: 50%;
   float:right;
-  margin-top:5%;
+  margin-top:100px;
   padding-left:1%;
   margin-right:3%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

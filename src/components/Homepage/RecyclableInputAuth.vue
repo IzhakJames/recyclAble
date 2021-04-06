@@ -87,6 +87,7 @@ import database from "../../firebase.js";
 .tick {
     margin-top:1%;
     width:15%;
+    max-width: 200px;
 }
 #Header  {
     float:left;

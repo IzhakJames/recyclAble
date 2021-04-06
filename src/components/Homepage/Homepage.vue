@@ -85,6 +85,7 @@ export default {
   position: absolute;
   z-index:100;
   border-radius:10px;
+  min-height: 700px;
 }
 .button-1 {
   text-align: center;
@@ -114,7 +115,7 @@ export default {
   padding:7px;
   width:80%;
   margin-left:10%;
-  margin-top: 10%;
+  margin-top: 20px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 10gpx;
@@ -150,7 +151,7 @@ export default {
   padding:7px;
   width:80%;
   margin-left:10%;
-  margin-top: 10%;
+  margin-top: 20px;
   display: inline-block;
   padding: 15px 25px;
   font-size: 10gpx;
@@ -189,7 +190,7 @@ export default {
   float:right;
   height:700px;
   width:25%;
-  margin-top:18%;
+  margin-top:200px;
   margin-right:3%;
   border-radius:30px;
   background-color:#57A890;
@@ -200,6 +201,7 @@ export default {
   margin:0px 5%;
   background: white;
   border-radius: 30px;
+
 
 }
 
