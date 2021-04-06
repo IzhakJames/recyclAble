@@ -11,5 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Push to heroku
-        run: git push -f https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/recyclable-app.git
+        run: git push -f https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/recyclable-app.git
