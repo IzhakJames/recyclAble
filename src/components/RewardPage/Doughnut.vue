@@ -21,9 +21,10 @@ export default {
 .progress-circle {
   position: relative;
   display: inline-block;
-  margin: 1rem;
-  margin-top:30px;
-  width: 200px;
+  margin-top:48px;
+  left: 90%;
+  transform: translateX(-44%);
+  width: 200px; 
   height:200px;
   border-radius: 50%;
   background-color: #ebebeb; }
@@ -38,17 +39,17 @@ export default {
   animation: colorload 2s; }
 
 .progress-circle span {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: black;
   position: absolute;
   left: 50%;
   top: 50%;
   display: block;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  margin-left: -30px;
-  margin-top: -30px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
   text-align: center;
   border-radius: 50%;
   background: #fff;

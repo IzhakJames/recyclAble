@@ -287,6 +287,8 @@ margin-top:60px;
   font-size: 16px;
   padding-left:5%;
   padding-right:5%;
+  text-align:center;
+  width:90%;
   background-color:lightgrey;
   border-radius: 10px;
 }
