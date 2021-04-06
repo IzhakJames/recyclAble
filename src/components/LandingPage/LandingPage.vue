@@ -6,7 +6,7 @@
              <div id='description'> 
             <h1> recyclABLE</h1>
             <p>Your 1 stop Recycling Buddy!</p>
-             <img class='logo' :src="require(`../../assets/logo.png`)"/> 
+               <div class='logo'><img  :src="require(`../../assets/logo.png`)"/> </div>
           </div>
         
         

@@ -104,6 +104,7 @@ import database from "../../firebase.js";
   font-weight: 600;
   letter-spacing: 2px; 
   margin-top:5%;
+  color: #255029;
   
 }
 

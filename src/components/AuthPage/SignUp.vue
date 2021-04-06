@@ -137,7 +137,7 @@ export default {
   font-weight: 600;
   letter-spacing: 2px; 
   margin-top:5%;
-  color:#57A890;
+  color: #255029;
   
 }
 #background {
