@@ -2,7 +2,7 @@
   <div>
     <section
       class="ui two column centered grid"
-      style="position:relative; z-index:1;"
+      style="position:relative; z-index:1; min-width:1400px;"
     >
       <div class="column">
         <form class="ui segment large form" action="">
@@ -13,7 +13,7 @@
                 class="ui right icon input large"
                 :class="{ loading: spinner }"
               >
-                <GmapAutocomplete @place_changed="setPlace" />
+                <GmapAutocomplete @place_changed="setPlace" v-on:keydown.enter.prevent="addMarker"/>
                 <i
                   class="dot circle link icon"
                   v-on:click="locatorButtonPressed"
@@ -23,16 +23,19 @@
             <button type="button" class="ui button" @click="addMarker">
               GO
             </button>
-            <button type="button" class="ui button" @click="drawMarkers">
+            <button type="button" class="ui button" v-bind:class="{active: this.option == 'ewaste'}" @click="drawMarkers">
               E-waste
             </button>
-            <button type="button" class="ui button" @click="drawRecycling">
+            <button type="button" class="ui button" v-bind:class="{active: this.option == 'general'}" @click="drawRecycling">
               General Recycling
             </button>
-            <button type="button" class="ui button" @click="drawLighting">
+            <button type="button" class="ui button" v-bind:class="{active: this.option == 'lightingwaste'}" @click="drawLighting">
               Lighting-waste
             </button>
-            <div class="loader" v-show="load"></div>
+            <div class="loader" v-show="load">
+              <p class="loader-text">Loading...<p>
+              <div class="loader-circle"></div>
+            </div>
           </div>
         </form>
       </div>
@@ -41,8 +44,24 @@
       <GmapMap
         :center="center"
         :zoom="zoom"
+        :options="{
+   mapTypeControl: false,
+   scaleControl: true,
+   streetViewControl: false,
+   rotateControl: false,
+   fullscreenControl: false,
+   disableDefaultUi: false
+ }"
         style="position: absolute; top: 70px; right: 0; bottom: 0; left: 0; background-color: #57a890;"
       >
+        <GmapMarker
+          :key="index"
+          v-for="(m, index) in currentPlaceCoord"
+          :position="m.position"
+          @click="center = m.position"
+          :icon="{ url: require('../assets/home.png')}"
+      />
+
         <GmapMarker
           :key="index"
           v-for="(m, index) in markers"
@@ -61,16 +80,15 @@ export default {
   data() {
     return {
       address: "",
+      clickStyle:{backgroundColor:"blue"},
       error: "",
       spinner: false,
       center: { lat: 1.3521, lng: 103.8198 },
       zoom: 12,
       currentPlace: null,
+      currentPlaceCoord:[],
       markers: [],
-      places: [],
-      markerFlag: false,
-      recyclingFlag: false,
-      lightingFlag: false,
+      option:'',
       load: false,
     };
   },
@@ -114,7 +132,6 @@ export default {
             this.error = response.data.error_message;
           } else {
             this.address = response.data.results[0].formatted_address;
-            console.log(this.address);
           }
           this.spinner = false;
         })
@@ -126,33 +143,36 @@ export default {
     showUserLocationOnTheMap(latitude, longitude) {
       this.center = { lat: latitude, lng: longitude };
       this.zoom = 16;
-      this.markers = [];
+      this.currentPlaceCoord = [];
       const marker = {
         lat: latitude,
         lng: longitude,
       };
-      this.markers.push({ position: marker });
+      this.currentPlaceCoord.push({position:marker});
     },
     setPlace(place) {
       this.currentPlace = place;
-      console.log(place);
     },
     addMarker() {
       if (this.currentPlace) {
-        this.markers = [];
+        this.currentPlaceCoord = [];
         const marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng(),
         };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
+        this.currentPlaceCoord.push({position:marker});
         this.center = marker;
-        this.currentPlace = null;
         this.zoom = 14;
       }
     },
     drawMarkers() {
-      if (!this.markerFlag) {
+      //Cannot click others when loading
+      if (this.load) {
+        return;
+      }
+      if (this.option !== "ewaste") {
+        this.markers = [];
+        this.option = "ewaste"
         this.load = true;
         database
           .collection("Locations")
@@ -160,20 +180,24 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "ewaste") {
-                console.log(doc.data());
                 this.markers.push({ position: doc.data().position });
               }
             });
             this.load = false;
           });
-        this.markerFlag = true;
       } else {
         this.markers = [];
-        this.markerFlag = false;
+        this.option = "";
       }
     },
     drawRecycling() {
-      if (!this.recyclingFlag) {
+      //Cannot click others when loading
+      if (this.load) {
+        return;
+      }
+      if (this.option !== "general") {
+        this.markers = [];
+        this.option = "general"
         this.load = true;
         database
           .collection("Locations")
@@ -181,20 +205,24 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "general") {
-                console.log(doc.data());
                 this.markers.push({ position: doc.data().position });
               }
             });
             this.load = false;
           });
-        this.recyclingFlag = true;
       } else {
         this.markers = [];
-        this.recyclingFlag = false;
+        this.option = "";
       }
     },
     drawLighting() {
-      if (!this.lightingFlag) {
+      //Cannot click others when loading
+      if (this.load) {
+        return;
+      }
+      if (this.option !== "lightingwaste") {
+        this.markers = [];
+        this.option = "lightingwaste"
         this.load = true;
         database
           .collection("Locations")
@@ -202,16 +230,14 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "lightingwaste") {
-                console.log(doc.data());
                 this.markers.push({ position: doc.data().position });
               }
             });
             this.load = false;
           });
-        this.lightingFlag = true;
       } else {
         this.markers = [];
-        this.lightingFlag = false;
+        this.option = "";
       }
     },
   },
@@ -225,9 +251,19 @@ export default {
   color: white;
 }
 
+.ui.button:hover {
+  background-color:lightgreen;
+}
+
+.active {
+  background-color:green !important;
+}
+
 .pac-icon {
   display: none;
 }
+
+
 
 .pac-item {
   padding: 10px;
@@ -243,13 +279,26 @@ export default {
   font-size: 16px;
 }
 
-.loader {
+.loader-circle {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 150px;
+  height: 150px;
   animation: spin 2s linear infinite;
+
+}
+
+.loader-text {
+  text-align:center;
+  font-size:30px;
+  margin-bottom:0px;
+}
+
+.loader {
+  position:absolute;
+  top:200px;
+  margin-left:38%;
 }
 
 @keyframes spin {

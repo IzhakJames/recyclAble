@@ -20,7 +20,7 @@ export default {
 <style scoped>
 .footer {
  background: #57A890;
-  margin: 0;
+  padding-bottom: 10px;
   background-size:1530px 80px;
 }
 
@@ -30,7 +30,7 @@ footer {
   float: bottom;
   width: 20%;
   height: 40px;
-  bottom: 10px;
+  bottom: 5px;
   margin-left: 40%;
   min-width: 230px;
   text-align: center;
