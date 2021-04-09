@@ -31,20 +31,20 @@
      
          <br>
         <div id="image-input">
-          <picture-input 
-              ref="pictureInput"
-              width="400" 
-              height="200" 
-              margin="5" 
-              accept="image/jpeg,image/png" 
-              size="1" 
-              button-class="btn"
-              :custom-strings="{
-                  upload: '<h5>Bummer!</h5>',
-                  drag: '<h6>Drag or upload your image here!</h6>'
-              }"
-              @change="onChange">
-          </picture-input>
+        <picture-input 
+            ref="pictureInput"
+            width="350" 
+            height="250" 
+            margin="10" 
+            accept="image/jpeg,image/png" 
+            size="10" 
+            button-class="btn"
+            :custom-strings="{
+                upload: '<h5>Bummer!</h5>',
+                drag: 'Drag or upload your image here! 😺'
+            }"
+            @change="onChange">
+        </picture-input>
         </div>
         <div class="form-logo"> <img :src="require(`../../assets/form.png`)"/> </div>
          <div class="form-logo-2"> <img  :src="require(`../../assets/form2.png`)"/> </div>

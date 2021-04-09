@@ -221,7 +221,7 @@ export default {
   height: 55px;
   opacity: 0.3;
   background-color: transparent;
-  border-style:none !important;
+  border-style:none;
 }
 .close:hover {
   border-style:none;
