@@ -143,6 +143,8 @@ export default {
               this.current_user.user =  doc.data().fullName;
               this.currentUsername =  doc.data().fullName;
               this.current_user.email = doc.data().email
+              this.current_user.avatar = require("../../assets/profile_icon/" + this.currentUsername.charAt(0).toUpperCase() + ".png")
+              //this.current_user.avatar = require("../../assets/profile_icon/J.png")
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
