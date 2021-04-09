@@ -1,9 +1,7 @@
 <template>
   <div id = "background">
 
-    <div id="rectangle">
-   
-        
+    <div id="rectangle">      
        <br><br>  <br>
           <div id='header'> Contact Us</div>
     
@@ -29,16 +27,10 @@
               <input v-show="!this.loggedOut" v-model="question.Email" type="text" id="email" name="email"><br>
              <br><br>
              <label id="emLabel">Your Queries:</label>
-              <input v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"><br>
+              <textarea v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"></textarea><br>
               <button v-on:click="sendQuestion()">Submit</button>
           </div>
-      
-  
-  
-             
        </div>
-
-    
   </div>
 </template>
 
@@ -134,7 +126,7 @@ export default {
 #header  {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 500;
   padding:3px;
   width:90%;
@@ -199,14 +191,14 @@ input {
 #fname, #lname {
     width: 25%;
     height: 10%;
-    margin: 1% 5%;
+    margin: 1% 3%;
     background: #E9E9E9;
 }
 
 #fnLabel, #lnLabel {
     width: 4%;
     height: 10%;
-    margin: 1% -1% 1% 2%;
+    margin: 1% -1% 1% 5%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:16px;
     font-weight:500;
@@ -232,6 +224,9 @@ input {
     height: 20%;
     margin: 1% 5%;
     background: #E9E9E9;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    padding:5px;
 }
 
 
