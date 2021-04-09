@@ -11,9 +11,9 @@
        <div class="topic">
             <h3> Discussion Topic: {{this.discussion.Topic}} </h3>
              <div id="likes">
-          {{discussion.Likes.length}} likes   
+          {{discussion.Likes.length}} likes 
           <i class="fa fa-thumbs-up" id="like" v-bind:class="{'liked': likeThis, 'unliked': unlikedThis}" v-on:click="like()"></i>
-          {{ comments.length }}
+          {{ comments.length }} comments
           <i class="fa fa-comment"></i> 
         </div>
           
@@ -29,22 +29,12 @@
             @submit-comment="submitComment"
             @changed = "hideUsername"
           ></comments>
-       
-        
-
- 
-  
-         
+   
           <link rel="stylesheet" 
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
-       
-
-  
-
-
-   
+ 
      </div>
       </div>
 
@@ -220,8 +210,10 @@ export default {
 }
 .header {
   height:150px;
- 
+}
 
+i{
+  size: 100px;
 }
 .header img {
   height:150px;
@@ -253,7 +245,12 @@ export default {
  float:right;
  margin-right:5%;
  margin-top:50px;
+ font-size: 20px;;
 
+}
+
+#like {
+  margin-right:5px;
 }
 .topic h3{
   margin-top:50px;
@@ -263,6 +260,7 @@ export default {
   font-size:18px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 
 #Innerpage {
   width: 90%;

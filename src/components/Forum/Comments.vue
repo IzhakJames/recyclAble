@@ -7,7 +7,7 @@
                 :key="comment.id"
             ></single-comment>
         </div>
-        <span id="username">Hide My Username</span><toggle-button @change="changed($event)" :value="false" color="#82C7EB"/>
+        <span id="username">Hide My Username </span><toggle-button @change="changed($event)" :value="false" color="#82C7EB"/>
 
         <hr>
         <div class="reply">
@@ -60,7 +60,7 @@ import singleComment from './SingleComment'
 
 <style scoped>
 #username {
-margin-left:48.5%;
+margin-left:45%;
 }
 .comments {
     margin-top: 20px;

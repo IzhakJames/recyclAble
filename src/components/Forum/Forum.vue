@@ -21,7 +21,7 @@
                      <img class="comment-img" :src="require(`../../assets/comment.png`)"/>
                   </span>
                
-                  <button  v-on:click="viewDiscussion(discussion.id)">View Discussion</button>
+                  <button v-on:click="viewDiscussion(discussion.id)">View Discussion</button>
                 </div>
               </div>
           </div>
@@ -69,11 +69,11 @@ export default {
 
 <style scoped>
 .likes-img {
-  width:5%;
+  width:6%;
 
 }
 .comment-img {
-  width:5%;
+  width:6%;
   
 }
 #forum {

@@ -1,6 +1,5 @@
 <template>
     <div class="comment">
-     
         <div class="avatar">
             <img :src="comment.avatar" alt="">
         </div>
@@ -44,6 +43,7 @@
     height: 40px;
     border-radius: 100%;
     align-self: start;
+    margin-top:35%;
 }
 .comment .text {
     text-align: left;
