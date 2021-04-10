@@ -53,7 +53,7 @@ export default {
         
            database.collection('Users').doc(uid).get().then((doc) => {
             
-              this.userCounter= doc.data().recyclingTripCounter+1
+              this.userCounter= doc.data().recyclingTripCounter
                 this.percent = Number( (this.userCounter /this.total *100).toPrecision(3) )
         })})
         }
