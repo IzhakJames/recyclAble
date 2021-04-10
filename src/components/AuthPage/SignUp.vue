@@ -46,28 +46,52 @@
 
 <script>
 import firebase from "firebase/app";
+import database from "../../firebase.js";
 import "firebase/auth";
 
 export default {
   data() {
     return {
+      uid: "",
+      fullName: "",
       email: "",
       password: "",
-      error: "",
+      repeatPassword: "",
+      error: ""
     };
   },
   methods: {
     pressed() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          alert("Successfully logged in");
-          this.$router.push({ name: "Home" });
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
+      if (this.password === this.repeatPassword) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(() => {
+            this.uid = firebase.auth().currentUser.uid;
+            database
+              .collection("Users")
+              .doc(this.uid)
+              .set({
+                email: this.email,
+                fullName: this.fullName,
+                password: this.password,
+                pointsRedeemed: 0,
+                rewardsRedeemed: [],
+                recyclingTripCounter: 0,
+                RecyclingHistory: [],
+              })
+              .then(() => {
+                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+              });
+            alert("Successfully registered! Welcome!");
+            this.$router.push({ name: "Home" });
+          })
+          .catch((error) => {
+            alert(error.message);
+          });
+      } else {
+        alert("Passwords not the same");
+      }
     },
   },
 };
