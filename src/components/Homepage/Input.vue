@@ -27,10 +27,11 @@
         </select>
         </div>
         <br><br>
-          <label id="Label-header">IMAGE OF RECYCLING TRIP:</label><br>
+          <label id="Label-header">IMAGE OF RECYCLING TRIP: (Refer to Sample Picture)</label><br>
      
          <br>
         <div id="image-input">
+        <div v-show="!showSample">
         <picture-input 
             ref="pictureInput"
             width="350" 
@@ -46,6 +47,12 @@
             @change="onChange">
         </picture-input>
         </div>
+        <img src="../../assets/tripPic.jpg" width="350" height="250" v-show="showSample">
+
+        </div>
+        <span v-show="!showSample" v-on:click="showSample = !showSample">Click to show sample</span>
+        <span v-show="showSample" v-on:click="showSample = !showSample">Click to upload image</span>
+
         <div class="form-logo"> <img :src="require(`../../assets/form.png`)"/> </div>
          <div class="form-logo-2"> <img  :src="require(`../../assets/form2.png`)"/> </div>
         <div id="btn-position"><button class='button-1' v-on:click="SubmitTrip();">SUBMIT</button> </div>
@@ -90,7 +97,8 @@ export default {
             item_selected:"",
             show:false,
             data:[],
-            itemOptions:[]
+            itemOptions:[],
+            showSample:false,
         }
     },
   name: 'Input',
@@ -341,6 +349,16 @@ export default {
     float:left;
 
 
+}
+
+span {
+  margin-left:20%
+}
+
+span:hover {
+  cursor:pointer;
+  color:blue;
+  text-decoration: underline;
 }
 
 #Content {
