@@ -29,6 +29,11 @@
         <div id="can" v-if="item_selected !== '' && item_selected.value">
            <p> Your item is recyclable!</p>
             <img class="tick" :src="require(`../../assets/tick.png`)"/>
+            <div id="steps" v-if="item_selected.steps.length > 0">
+           <ul>
+                <li v-for="step in item_selected.steps" v-bind:key="step"> {{step}} </li>
+           </ul>
+           </div>
         </div>
         <div id="can" v-if="item_selected !== '' && !item_selected.value">
             <p>Your item is not recyclable!</p>
@@ -82,8 +87,32 @@ import database from "../../firebase.js";
 #can p {
      margin-top:30px;
     font-size:35px;
-
+    margin-bottom:10px;
 }
+
+#steps {
+    margin-top:15px;
+    width:50%;
+    margin-left:25%;
+    border:2px;
+    border-color: darkgrey;
+    border-style:solid;
+    border-radius:10px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+    padding:10px;
+}
+
+#can ul {
+    margin-left:30px;
+    font-size:20px;
+}
+
+#can li:not(:last-child) {
+    margin-bottom:15px;
+}
+
 .tick {
     margin-top:5px;
     width:15%;
