@@ -44,9 +44,10 @@ export default {
        fetchItems:function(){
           //   to edit again - need to pass user id prop from login to this file
           // Total number of recycling trip in the webapp 
-          database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
-          this.total=docRef.data().TotalCounter
-          })  
+           database.collection('Temp Trip Form').get().then(snap => {
+              this.total= snap.size
+            });
+         
             firebase.auth().onAuthStateChanged(() => {
         
            var uid = firebase.auth().currentUser.uid;

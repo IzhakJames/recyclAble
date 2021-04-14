@@ -19,4 +19,3 @@ export default[
     { path: '/data', component: DataPage},
     { path: '/discussion', component: Discussion}
 ]
-
