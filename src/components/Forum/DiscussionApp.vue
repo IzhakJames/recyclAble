@@ -247,12 +247,15 @@ i{
  float:right;
  margin-right:5%;
  margin-top:50px;
- font-size: 20px;;
-
+ font-size: 20px;
 }
 
 #like {
   margin-right:5px;
+}
+
+#like:hover {
+  cursor:pointer;
 }
 .topic h3{
   margin-top:50px;
