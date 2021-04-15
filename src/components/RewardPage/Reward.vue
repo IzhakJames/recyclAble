@@ -33,8 +33,13 @@
             
           </div>
           <div id="nav-btn">
-            <button id="redeem-btn" v-on:click="selectRedeem=true">REWARDS REDEEMED</button>
-            <button id="avail-btn" v-on:click="selectRedeem=false">REWARDS AVAILABLE</button>
+            
+            <button id="nonactive-btn" v-on:click="selectRedeem=false" v-if="selectRedeem" >REWARDS AVAILABLE</button>
+            <button id="active-btn" v-on:click="selectRedeem=false" v-if="!selectRedeem" >REWARDS AVAILABLE</button>
+            <button id="nonactive-btn" v-on:click="selectRedeem=true" v-if="!selectRedeem">REWARDS REDEEMED</button>
+            <button id="active-btn" v-on:click="selectRedeem=true" v-if="selectRedeem" >REWARDS REDEEMED</button>
+            
+            
            </div>
             <div class="reward-box" v-if="!selectRedeem">
               
@@ -251,12 +256,7 @@ export default {
   
 }
 
-#nav-btn {
-  background-color: white;
-  width:90%;
-  margin-left:5%;
-  border-radius: 10px;
-}
+
 .collect-btn {
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-weight: 400;
@@ -392,39 +392,49 @@ padding:5px;
   overflow:scroll;
 }
 
-#redeem-btn {
+ #nav-btn {
+  background-color: white;
+  width:90%;
+  height: 30px;
+  border-radius: 10px;
+  margin-left:5%;
+} 
+
+#nonactive-btn {
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 16px;
 font-weight:500;
 text-align: center;
 border-radius: 10px;
-background: #FFFFFF;
+width:50%;
 border:none;
+float:right;
+height:30px;
 padding:7px;
-padding-left:10%;
-padding-right:10%;
+background-color:white;
 }
-
-#redeem-btn:hover{
+#active-btn:hover{
   background-color: lightgrey;
-  text-decoration:line;
+  padding-left:10%;
+  padding-right:10%;
   border-radius: 10px;
  
 }
 
-#avail-btn {
+#active-btn {
 font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 font-size: 16px;
 font-weight:500;
 text-align: center;
 border-radius: 10px;
-background: #FFFFFF;
+width:50%;
 border:none;
 float:right;
-margin-right:10%;
+height:30px;
 padding:7px;
+background-color:lightgrey;
 }
-#avail-btn:hover{
+#nonactive-btn:hover{
   background-color: lightgrey;
   padding-left:10%;
   padding-right:10%;
@@ -461,7 +471,6 @@ padding:7px;
 #left-box {
   float:left;
   margin-left:5%;
-
   height:700px;
   width:60%;
   border-radius:30px;
