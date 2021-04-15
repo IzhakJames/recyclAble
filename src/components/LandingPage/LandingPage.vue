@@ -137,12 +137,12 @@ export default {
 #right-content {
   background-color: white;
   width:45%;
-  height: 700px;
+  height: 750px;
   float:right;
   border-radius: 30px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  margin-top:8%;
+  margin-top:100px;
   margin-right:5%;
 
 }
@@ -164,7 +164,7 @@ export default {
 #inner-content {
   width:60%;
   margin-left:20%;
-  margin-top:8%;
+  margin-top:50px;
 
 }
 #left-box {

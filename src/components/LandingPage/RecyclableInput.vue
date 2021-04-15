@@ -23,10 +23,13 @@
                 {{ele.item}}
             </option>
         </select>
+        <br>
          <div id="can" v-if="item_selected !== '' && item_selected.value">
            <p> Your item is recyclable!</p>
             <img class="tick" :src="require(`../../assets/tick.png`)"/>
+           <br> <br>
             <div id="steps" v-if="item_selected.steps.length > 0">
+                  <h3> Steps to adhere to before recycling your item : </h3>
            <ul>
                 <li v-for="step in item_selected.steps" v-bind:key="step"> {{step}} </li>
            </ul>
@@ -82,15 +85,16 @@ import database from "../../firebase.js";
 
 <style scoped>
 #can p {
-     margin-top:30px;
+    margin-top:10px;
     font-size:35px;
     margin-bottom:10px;
 }
 
 #steps {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top:15px;
-    width:75%;
-    margin-left:12.5%;
+    width:80%;
+    margin-left:10%;
     border:2px;
     border-color: darkgrey;
     border-style:solid;
@@ -99,6 +103,18 @@ import database from "../../firebase.js";
     -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
     padding:10px;
+    height:100px;
+}
+#steps li { 
+    font-size:14px;
+    float:left;
+   
+
+}
+#steps h3 { 
+    font-size:16px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 
 #can ul {
@@ -111,8 +127,9 @@ import database from "../../firebase.js";
 }
 
 .tick {
-    margin-top:1%;
+    margin-top:5px;
     width:15%;
+    max-width: 100px;
 }
 #Header {
   text-align: center;
@@ -120,18 +137,20 @@ import database from "../../firebase.js";
   font-size:40px;
   font-weight: 600;
   letter-spacing: 2px; 
-  margin-top:5%;
+  margin-top:10px;
   width:150%;
   margin-left:-20%;
+  max-height: 100px;
   
 }
 #Header p{
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size:14px;
+  font-size:12px;
   font-weight: 600;
   letter-spacing: 2px; 
-  margin-top:5%;
+  margin-top:40px;
+    max-height: 100px;
   color: #255029;
   
 }

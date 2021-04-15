@@ -50,9 +50,10 @@
         <img src="../../assets/tripPic.jpg" width="350" height="250" v-show="showSample">
 
         </div>
+       <div id='samplelink'> 
         <span v-show="!showSample" v-on:click="showSample = !showSample">Click to show sample</span>
         <span v-show="showSample" v-on:click="showSample = !showSample">Click to upload image</span>
-
+       </div>
         <div class="form-logo"> <img :src="require(`../../assets/form.png`)"/> </div>
          <div class="form-logo-2"> <img  :src="require(`../../assets/form2.png`)"/> </div>
         <div id="btn-position"><button class='button-1' v-on:click="SubmitTrip();">SUBMIT</button> </div>
@@ -212,6 +213,10 @@ export default {
 </script>
 
 <style scoped>
+
+#samplelink span{
+  margin-left:-1%;
+}
 .select-css {
 	display: block;
 	font-size: 16px;
@@ -252,7 +257,7 @@ img {
 .form-logo {
   float:right;
   width:20%;
-  margin-right:10%;
+  margin-right:80px;
   margin-top:-250px;
   max-width:200px;
 
@@ -265,7 +270,7 @@ img {
 
 .form-logo-2 {
   float:left;
-  margin-left:-10%;
+  margin-left:-80px;
   margin-top:-180px;
   width:20%;
   max-width:200px;
