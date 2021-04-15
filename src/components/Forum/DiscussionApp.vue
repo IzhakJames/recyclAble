@@ -234,7 +234,7 @@ i{
 }
 .header p {
 
-  margin-left: -10%;
+  margin-left: -15%;
   float:left;
   margin-top:100px;
 }

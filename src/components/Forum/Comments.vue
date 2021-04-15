@@ -137,7 +137,6 @@ margin-left:45%;
     right: 10px;
 }
 .reply .reply--button {
-    position: absolute;
     right: -100px;
     border: 1px solid #2a629c;
     background-color: transparent;
