@@ -76,7 +76,7 @@ export default {
 #popup {
   float:left;
   margin-left: 15%;
-  height:750px;
+  height:850px;
   width:60%;
   text-align: center;
   background:white;
@@ -182,7 +182,7 @@ export default {
 #forum-content {
   float:left;
   margin-top:100px;
-  margin-left:-0.5%; 
+  margin-left:-1%; 
   width:70%;
   height:400px;
 }

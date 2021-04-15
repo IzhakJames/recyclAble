@@ -29,7 +29,7 @@
         <br><br>
           <label id="Label-header">IMAGE OF RECYCLING TRIP: (Refer to Sample Picture)</label><br>
      
-         <br>
+         <br><br>
         <div id="image-input">
         <div v-show="!showSample">
         <picture-input 
@@ -160,7 +160,10 @@ export default {
       }
       database.collection('Temp Trip Form').add(tripDetails).then(() => {});
 
-   
+      database.collection('Users').doc('Admin').get().then((docRef) => { 
+          this.newTotal=docRef.data().TotalCounter +1
+          database.collection('Users').doc('Admin').update({TotalCounter:this.newTotal})
+          })  
       //add to the total trip of user
        firebase.auth().onAuthStateChanged(() => {
            var uid = firebase.auth().currentUser.uid;
@@ -171,9 +174,9 @@ export default {
               database.collection('Users').doc(uid).update(this.user)
         })})
 
-       database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').get().then((docRef) => { 
+       database.collection('Users').doc('Admin').get().then((docRef) => { 
         this.newTotal=docRef.data().TotalCounter +1
-        database.collection('TotalCounter').doc('zDNR308gXbNgZkBQs3Gy').update({TotalCounter:this.newTotal})
+        database.collection('Users').doc('Admin').update({TotalCounter:this.newTotal})
        alert("Thank You For Your Submission!")
 
       }).then(
@@ -241,11 +244,12 @@ export default {
   margin-left:35%;
 
 }
+
 .form-logo {
   float:right;
   width:20%;
   margin-right:10%;
-  margin-top:-170px;
+  margin-top:-250px;
   max-width:200px;
 
 }
@@ -258,7 +262,7 @@ export default {
 .form-logo-2 {
   float:left;
   margin-left:-10%;
-  margin-top:-100px;
+  margin-top:-180px;
   width:20%;
   max-width:200px;
   

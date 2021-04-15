@@ -6,7 +6,7 @@
             <div id="Header"> CONTRIBUTIONS </div>
             <div id="Content">
                  <div id='donut-inner'> {{this.percent}}%</div>
-              <doughnut></doughnut>
+                <doughnut></doughnut>
             </div>
       
 
@@ -44,10 +44,9 @@ export default {
        fetchItems:function(){
           //   to edit again - need to pass user id prop from login to this file
           // Total number of recycling trip in the webapp 
-           database.collection('Temp Trip Form').get().then(snap => {
-              this.total= snap.size
-            });
-         
+            database.collection('Users').doc('Admin').get().then((doc2) => {
+          this.total = doc2.data().TotalCounter
+        });    
             firebase.auth().onAuthStateChanged(() => {
         
            var uid = firebase.auth().currentUser.uid;
@@ -67,6 +66,7 @@ export default {
 </script>
 
 <style scoped>
+
 #donut-inner {
   font-Size:30px;
   margin-left:6%;
@@ -85,6 +85,7 @@ export default {
   margin-left:10%;
   background:white;
   padding-left:8%;
+  margin-right:10%;
   padding-right:5%;
   padding-bottom:5%;
 

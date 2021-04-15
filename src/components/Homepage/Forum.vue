@@ -23,7 +23,7 @@ export default {
     width: 90%;
     padding-left:1%;
     left: 20px;
-    top: 60%;
+    top: 10%;
     background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
     border-radius: 30px;
     font-size:18px;
@@ -38,7 +38,7 @@ export default {
     padding-top:0.5%;
     padding-bottom: 0.5%;
     padding-left:1%;
-    top: 20%;
+    top: 10%;
     background: #57A890;
     border-radius: 30px;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
