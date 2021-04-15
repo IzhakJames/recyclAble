@@ -245,6 +245,10 @@ export default {
 
 }
 
+img {
+  border-radius: 10px;
+}
+
 .form-logo {
   float:right;
   width:20%;
