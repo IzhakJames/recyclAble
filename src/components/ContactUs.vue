@@ -68,6 +68,7 @@ export default {
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
+
             }
         }).catch((error) => {
             console.log("Error getting document:", error);
@@ -80,8 +81,14 @@ export default {
 
 
   methods: {
-    sendQuestion:function(){      
+    sendQuestion:function(){ 
+        if ( this.question.Fname =='' || this.question.Email == '' || this.question.Lname==''
+        || this. question.Question =='') {
+          alert("Incomplete Submission!")
+
+        } else {
         database.collection('Questions').add(this.question).then(() => {location.reload(alert("Your question is submitted successfully. Our team will respond within 3 working days."))});
+        }    
     }
   },
 
