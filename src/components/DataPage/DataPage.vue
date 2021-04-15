@@ -2,14 +2,17 @@
   <div id = "background">
   <br>
   <div id="rectangle">
+    <br>
     <h2> Singapore Environmental Statistics </h2>
+    <br>
     <BarChart></BarChart>
     <LineChart></LineChart>
     <StackedBarChart></StackedBarChart>
-    <h2> recyclABLE User Statistics </h2>
+    <h2>User Statistics </h2>
+    <br>
     <PieChart></PieChart>
     <BarChart2></BarChart2>
-    <Table></Table>
+    <Table></Table> 
   </div>
   </div>
 </template>
@@ -35,9 +38,10 @@ export default {
 
 <style scoped>
 #background {
+    padding-top:1.5%;
     width: 100%;
     min-width:1400px;
-    height:810px;
+    height:970px;
     background: #57A890;
 }
 
@@ -48,10 +52,12 @@ h2 {
 
 #rectangle {
   width: 90%;
-  height: 780px;
+  height: 920px;
   margin:0px 5%;
   background: white;
   border-radius: 30px;
 }
+
+
 
 </style>

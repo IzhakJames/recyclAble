@@ -30,7 +30,9 @@ export default {
         database.collection('Users').get().then(querySnapShot => {
           querySnapShot.forEach(doc => { 
               var user = doc.data();
+            if (user.fullName != 'Admin') {
               this.data.push([user.fullName,user.recyclingTripCounter]);
+            }
           })
         }).then(() => {
             this.data.sort((x,y) => {return y[1] - x[1]});

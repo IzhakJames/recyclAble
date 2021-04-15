@@ -1,6 +1,6 @@
 <template>
   <div class="chart">
-    <h2>Recycling Trips in Past Year</h2>
+    <h2> Your Recycling Trips in Past Year</h2>
     <Chart id="chart-style"></Chart>
   </div>
 </template>

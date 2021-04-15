@@ -28,7 +28,7 @@ export default {
   width:32%;
   margin-left:1%;
   float:left;
-  margin-bottom:10px;
+  margin-bottom:50px;
 }
 h2 {
   margin-top: 0;

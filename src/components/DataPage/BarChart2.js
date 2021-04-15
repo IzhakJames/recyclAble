@@ -1,5 +1,6 @@
 import { Bar } from 'vue-chartjs'
 import database from '../../firebase.js'
+import firebase from "firebase/app";
 
 export default {
     extends: Bar,
@@ -43,20 +44,24 @@ export default {
             var string = nextMth + "/" + nextYear
             months[string] = 0;
           }
-
-          database.collection('Temp Trip Form').get().then(querySnapShot => {
-            querySnapShot.forEach(doc => { 
-                var trip = doc.data();
-                var month = trip.datetime.toDate().getMonth() + 1;
-                var year = trip.datetime.toDate().getFullYear() - 2000;
-                var dateString = month + "/" + year;
-                months[dateString]++;
+          firebase.auth().onAuthStateChanged(() => {
+            var userid = firebase.auth().currentUser.uid;
+            database.collection('Temp Trip Form').get().then(querySnapShot => {
+              querySnapShot.forEach(doc => { 
+                  var trip = doc.data();
+                if (trip.uid == userid ) {
+                    var month = trip.datetime.toDate().getMonth() + 1;
+                    var year = trip.datetime.toDate().getFullYear() - 2000;
+                    var dateString = month + "/" + year;
+                    months[dateString]++;
+                }
+              })
+              for (var item of Object.keys(months)) {
+                this.datacollection.labels.push(item)
+                this.datacollection.datasets[0].data.push(months[item])
+              }
+              this.renderChart(this.datacollection, this.options)
             })
-            for (var item of Object.keys(months)) {
-              this.datacollection.labels.push(item)
-              this.datacollection.datasets[0].data.push(months[item])
-            }
-            this.renderChart(this.datacollection, this.options)
           })
         }
     },
