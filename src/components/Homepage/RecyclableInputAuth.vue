@@ -108,11 +108,13 @@ import database from "../../firebase.js";
     -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
     padding:10px;
-    padding-bottom: 5%;
+    height:100px;
+    
 }
 #steps li { 
     font-size:14px;
     float:left;
+
 
 }
 #steps h3 { 
