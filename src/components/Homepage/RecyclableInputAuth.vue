@@ -26,12 +26,17 @@
                 {{ele.item}}
             </option>
         </select>
+        <br>
         <div id="can" v-if="item_selected !== '' && item_selected.value">
            <p> Your item is recyclable!</p>
             <img class="tick" :src="require(`../../assets/tick.png`)"/>
+              <br> <br>
             <div id="steps" v-if="item_selected.steps.length > 0">
+          
+                <h3> Steps to adhere to before recycling your item : </h3>
            <ul>
-                <li v-for="step in item_selected.steps" v-bind:key="step"> {{step}} </li>
+                <li v-for="step in item_selected.steps" v-bind:key="step"> 
+                   {{step}}</li>
            </ul>
            </div>
         </div>
@@ -91,9 +96,10 @@ import database from "../../firebase.js";
 }
 
 #steps {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top:15px;
-    width:50%;
-    margin-left:25%;
+    width:70%;
+    margin-left:15%;
     border:2px;
     border-color: darkgrey;
     border-style:solid;
@@ -102,6 +108,17 @@ import database from "../../firebase.js";
     -moz-box-shadow: 0 10px 6px -6px #777;
     box-shadow: 0 10px 6px -6px #777;
     padding:10px;
+    padding-bottom: 5%;
+}
+#steps li { 
+    font-size:14px;
+    float:left;
+
+}
+#steps h3 { 
+    font-size:16px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 
 #can ul {
@@ -139,13 +156,12 @@ import database from "../../firebase.js";
 }
 
 #subtitle {
-    color:black;
     width:80%;
     margin-left:10%;
     text-align:center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:12px;
-    font-weight: 300;
+    color: #255029;
 }
 
 .dropdown:first-of-type {
