@@ -1,14 +1,30 @@
 [
   {
     "": 0,
-    "lat": 1.3126056503473,
+    "category": "lightingwaste",
+    "postalCode": 455871,
+    "description": "Recycle your old lightbulbs and florescent tubes.",
+    "buildingName": "Three Cubes",
+    "unitNumber": "#01-06",
+    "blockHouseNumber": 55,
+    "floorNumber": "",
+    "name": "Lightbulb/Lamp Recycling Points",
+    "streetName": "Siglap Road",
     "lng": 103.923168090089,
-    "category": "lightingwaste"
+    "lat": 1.3126056503473
   },
   {
     "": 1,
-    "lat": 1.28797431732068,
+    "category": "lightingwaste",
+    "postalCode": 159965,
+    "description": "Recycle your old lightbulbs and florescent tubes.",
+    "buildingName": "IKEA",
+    "unitNumber": "",
+    "blockHouseNumber": 317,
+    "floorNumber": "",
+    "name": "Lightbulb/Lamp Recycling Points",
+    "streetName": "Alexandra Road",
     "lng": 103.805808773108,
-    "category": "lightingwaste"
+    "lat": 1.28797431732068
   }
 ]
