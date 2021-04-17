@@ -8,6 +8,8 @@
 <script>
 import VueTableDynamic from 'vue-table-dynamic';
 import database from '../../firebase.js';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   components: {
@@ -21,7 +23,9 @@ export default {
           ['Rank', 'User', 'Contributions']
         ],
         header: 'row',
-        border: true
+        border: true,
+        highlight:{},
+        highlightedColor:'rgb(243, 235, 200)'
       }
     }
   },
@@ -31,15 +35,19 @@ export default {
           querySnapShot.forEach(doc => { 
               var user = doc.data();
             if (user.fullName != 'Admin') {
-              this.data.push([user.fullName,user.recyclingTripCounter]);
+              this.data.push([user.fullName,user.recyclingTripCounter,doc.id]);
             }
           })
         }).then(() => {
             this.data.sort((x,y) => {return y[1] - x[1]});
             for (var index in this.data) {
+                var uid = firebase.auth().currentUser.uid;
+                if (uid == this.data[index][2]) {
+                  this.params.highlight = {row:[parseInt(index)+1]}
+                }
                 this.params.data.push([parseInt(index)+1,this.data[index][0],this.data[index][1]]);
             }
-        }) 
+        })
       }
   },
   created() {
