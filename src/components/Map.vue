@@ -50,7 +50,8 @@
    streetViewControl: false,
    rotateControl: false,
    fullscreenControl: false,
-   disableDefaultUi: false
+   disableDefaultUi: false,
+   clickableIcons: false
  }"
         style="position: absolute; top: 70px; right: 0; bottom: 0; left: 0; background-color: #57a890;"
       >
@@ -66,8 +67,18 @@
           :key="index"
           v-for="(m, index) in markers"
           :position="m.position"
-          @click="center = m.position"
-      /></GmapMap>
+          @click="center = m.position;toggleInfoWindow(m,index)"
+      />
+
+      <gmap-info-window
+        :options="infoOptions"
+        :position="infoWindowPos"
+        :opened="infoWinOpen"
+        @closeclick="infoWinOpen=false"
+      >
+        <div v-html="infoContent"></div>
+      </gmap-info-window>
+    </GmapMap>
     </section>
   </div>
 </template>
@@ -90,9 +101,49 @@ export default {
       markers: [],
       option:'',
       load: false,
+      infoContent: 'a',
+      infoWindowPos: {
+          lat: 0,
+          lng: 0
+        },
+      infoWinOpen: false,
+       infoOptions: {
+          pixelOffset: {
+            width: 0,
+            height: -35
+          }
+       },
+       currentMidx: null
     };
   },
   methods: {
+    toggleInfoWindow: function (marker, idx) {
+        this.infoWindowPos = marker.position;
+        this.infoContent = this.getInfoWindowContent(marker);
+        //check if its the same marker that was selected if yes toggle
+        if (this.currentMidx == idx) {
+          this.infoWinOpen = !this.infoWinOpen;
+        }
+        //if different marker set infowindow to open and reset current marker index
+        else {
+          this.infoWinOpen = true;
+          this.currentMidx = idx;
+        }
+      },
+
+      getInfoWindowContent: function (marker) {
+              return (`<div class="card">
+        Street Name: ${(marker.address.streetName == "") ? "N/A" : marker.address.streetName}
+        <br>
+        Building Name: ${(marker.address.buildingName == "") ? "N/A" : marker.address.buildingName}
+        <br>
+        Block Number: ${(marker.address.blockNumber == "") ? "N/A" : marker.address.blockNumber}
+        <br>
+        Postal Code: ${(marker.address.postalCode == "") ? "N/A" : marker.address.postalCode}
+        </div>`
+        );
+      },
+
     locatorButtonPressed() {
       this.spinner = true;
       if (navigator.geolocation) {
@@ -180,7 +231,7 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "ewaste") {
-                this.markers.push({ position: doc.data().position });
+                this.markers.push({ position: doc.data().position, address:doc.data().address });
               }
             });
             this.load = false;
@@ -205,7 +256,7 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "general") {
-                this.markers.push({ position: doc.data().position });
+                this.markers.push({ position: doc.data().position, address:doc.data().address });
               }
             });
             this.load = false;
@@ -230,7 +281,7 @@ export default {
           .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
               if (doc.data().category === "lightingwaste") {
-                this.markers.push({ position: doc.data().position });
+                this.markers.push({ position: doc.data().position, address:doc.data().address});
               }
             });
             this.load = false;
