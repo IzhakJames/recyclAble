@@ -77,8 +77,7 @@ export default {
                 password: this.password,
                 pointsRedeemed: 0,
                 rewardsRedeemed: [],
-                recyclingTripCounter: 0,
-                RecyclingHistory: [],
+                recyclingTripCounter: 0
               })
               .then(() => {
                 firebase.auth().signInWithEmailAndPassword(this.email, this.password)
