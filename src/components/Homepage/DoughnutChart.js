@@ -33,8 +33,7 @@ export default {
         this.user = doc.data().recyclingTripCounter
         this.datacollection.datasets[0].data.push(this.user)
         database.collection('Users').doc('Admin').get().then((doc2) => {
-          this.datacollection.datasets[0].data.push(doc2.data().TotalCounter)
-          console.log(doc2.data().TotalCounter)
+        this.datacollection.datasets[0].data.push(doc2.data().TotalCounter - this.user)
         });    
     })})
        
