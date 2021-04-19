@@ -17,14 +17,14 @@
               <br><br> <br><br>
               <label id="fnLabel">First Name:</label>
               <input v-show="this.loggedOut" v-model="question.Fname" type="text" id="fname" name="fname" placeholder="First Name">
-              <input v-show="!this.loggedOut" v-model="this.question.Fname" type="text" id="fname" name="fname">
+              <input v-show="!this.loggedOut" v-model="this.question.Fname" type="text" id="fname1" name="fname">
               <label id="lnLabel">Last Name:</label>
               <input v-show="this.loggedOut" v-model="question.Lname" type="text" id="lname" name="lname" placeholder="Last Name"><br v-show="this.loggedOut">
-              <input v-show="!this.loggedOut" v-model="question.Lname" type="text" id="lname" name="lname"><br>
+              <input v-show="!this.loggedOut" v-model="question.Lname" type="text" id="lname1" name="lname"><br>
               <br><br>
               <label id="emLabel">Email:</label>
               <input v-show="this.loggedOut" v-model="question.Email" type="text" id="email" name="email" placeholder="Email"><br v-show="this.loggedOut">
-              <input v-show="!this.loggedOut" v-model="question.Email" type="text" id="email" name="email"><br>
+              <input v-show="!this.loggedOut" v-model="question.Email" type="text" id="email1" name="email"><br>
              <br><br>
              <label id="emLabel">Your Queries:</label>
               <textarea v-model="question.Question" type="text" id="detail" name="detail" placeholder="Ask your question here!"></textarea><br>
@@ -195,7 +195,7 @@ input {
 }
 
 
-#fname, #lname {
+#fname, #lname, #fname1, #lname1{
     width: 25%;
     height: 10%;
     margin: 1% 3%;
@@ -211,7 +211,7 @@ input {
     font-weight:500;
 }
 
-#email {
+#email, #email1 {
     width: 77%;
     height: 10%;
     margin: 1% 5%;
