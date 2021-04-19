@@ -49,12 +49,11 @@ export default {
             database.collection('Temp Trip Form').where("uid", "==",userid).get().then(querySnapShot => {
               querySnapShot.forEach(doc => { 
                   var trip = doc.data();
-                if (trip.uid == userid ) {
-                    var month = trip.datetime.toDate().getMonth() + 1;
-                    var year = trip.datetime.toDate().getFullYear() - 2000;
-                    var dateString = month + "/" + year;
-                    months[dateString]++;
-                }
+                  var month = trip.datetime.toDate().getMonth() + 1;
+                  var year = trip.datetime.toDate().getFullYear() - 2000;
+                  var dateString = month + "/" + year;
+                  months[dateString]++;
+                
               })
               for (var item of Object.keys(months)) {
                 this.datacollection.labels.push(item)

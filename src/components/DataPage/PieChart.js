@@ -30,9 +30,8 @@ export default {
         database.collection('Temp Trip Form').where("uid", "==",userid).get().then(querySnapShot => {
           querySnapShot.forEach(doc => { 
               var trip = doc.data()
-              if (trip.uid == userid ) {
-                totalItems[trip.item_category]++;
-              }
+              totalItems[trip.item_category]++;
+              
           })
           for (var item of Object.keys(totalItems).sort()) {
             this.datacollection.labels.push(item)
