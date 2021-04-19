@@ -46,7 +46,7 @@ export default {
           }
           firebase.auth().onAuthStateChanged(() => {
             var userid = firebase.auth().currentUser.uid;
-            database.collection('Temp Trip Form').get().then(querySnapShot => {
+            database.collection('Temp Trip Form').where("uid", "==",userid).get().then(querySnapShot => {
               querySnapShot.forEach(doc => { 
                   var trip = doc.data();
                 if (trip.uid == userid ) {

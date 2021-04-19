@@ -9,7 +9,7 @@ import Chart from "./DoughnutChart.js";
 export default {
   components: {
     Chart
-  }
+  }, 
 };
 </script>
 

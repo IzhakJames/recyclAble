@@ -1,3 +1,4 @@
+
 <template>
   <div class="chart">
     <h2>Your Recycling Trips by Category</h2>
@@ -36,7 +37,6 @@ h2 {
   border-bottom: 1px solid #ccc;
   font-size:17px;
 }
-
 #chart-style {
   height:250px;
 }

@@ -13,7 +13,7 @@ export default {
             datasets: [{
                 label: "%",
                 backgroundColor: ["#3e95cd", "#8e5ea2"],
-                data: [100],
+                data: [],
               }]
         },
         options: {
@@ -38,17 +38,17 @@ export default {
   
         database.collection('Users').doc('Admin').get().then((doc2) => {
           this.datacollection.datasets[0].data.push(doc2.data().TotalCounter - userdata)
-
-        });    
-    })})
+          this.renderChart(this.datacollection, this.options)    
+        });
        
+    })
+  
+  
+  })
+   
   
     
-    }
-  },
-  mounted () {
-    this.renderChart(this.datacollection, this.options)
-  },  created() {
+    }}, created() {
     this.fetchItems();
   }
  
