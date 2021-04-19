@@ -5,7 +5,7 @@
         <div id = "Contribution">
             <div id="Header"> CONTRIBUTIONS </div>
             <div id="Content">
-                 <div id='donut-inner'> {{this.percent}}%</div>
+                 <div id='donut-inner'> {{percent}}%</div>
                 <doughnut></doughnut>
             </div>
       
@@ -32,8 +32,7 @@ export default {
   data() {
     return {
       total :0,
-      userCounter:0,
-      percent:0
+      userCounter:0
     }
   }, methods : {
      route:function(){
@@ -54,9 +53,13 @@ export default {
            database.collection('Users').doc(uid).get().then((doc) => {
             
               this.userCounter= doc.data().recyclingTripCounter
-                this.percent = Number( (this.userCounter /this.total *100).toPrecision(3) )
         })})
         }
+  },
+  computed: {
+    percent: function() {
+      return Number( (this.userCounter /this.total *100).toPrecision(3) )
+    }
   },
     created(){
       this.fetchItems()  
