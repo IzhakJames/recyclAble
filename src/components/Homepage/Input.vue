@@ -161,10 +161,7 @@ export default {
       }
       database.collection('Temp Trip Form').add(tripDetails).then(() => {});
 
-      database.collection('Users').doc('Admin').get().then((docRef) => { 
-          this.newTotal=docRef.data().TotalCounter +1
-          database.collection('Users').doc('Admin').update({TotalCounter:this.newTotal})
-          })  
+
       //add to the total trip of user
        firebase.auth().onAuthStateChanged(() => {
            var uid = firebase.auth().currentUser.uid;
